@@ -1,18 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Header from './Header';
+import Technologies from './Technologies';
+import Footer from './Footer';
 
-function App() {
+
+
+const App = () => {
   return (
     <div className="App">
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JS</li>
-        <li>React</li>
-      </ul>
+      <Header />
+      <Technologies />             
+      <Footer />
     </div>
   );
 }
+
 
 export default App;
