@@ -1,13 +1,12 @@
-
 import React from 'react';
-
+import './Footer.sass';
 
 const Footer = () => {
   return (
-    <div className="Footer">
-      <h2>My Footer</h2>
-    </div>
-  );
+    <footer className='footer'>
+      Footer
+    </footer>
+  )
 }
 
 export default Footer;
