@@ -8,6 +8,15 @@
   // justify-content: space-between
 
 
-.item a
-  color: #ffffff
-  text-decoration: none
+
+.item 
+  &:last-child
+    // justify-self: flex-end
+    margin-top: auto
+  a
+    color: #ffffff
+    text-decoration: none
+
+.item a.active
+  color: #1300ff
+

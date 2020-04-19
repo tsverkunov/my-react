@@ -1,12 +1,20 @@
 import React from 'react';
 import s from './Post.module.sass';
 
-const Post = () => {
+const Post = (props) => {
   return (
-    <div className={s.post}>
-      <div className={s.circle}></div>
-      Post 1
+    <div>
+      <div className={s.post}>
+        <div className={s.circle}>
+
+        </div>
+        {props.name}: {props.message}
+      </div>
+      <div className={s.like}>
+          Like: {props.likesCount}
+        </div>      
     </div>
+
   )
 }
 
