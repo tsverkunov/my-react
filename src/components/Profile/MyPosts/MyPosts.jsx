@@ -16,8 +16,8 @@ const MyPosts = (props) => {
                     <a href="#">Send</a>
                 </div>
             </div>
-            <Post name='Ivan' message='Hi, how are you?' likesCount='10'/>
-            <Post name='Valeria' message="It's my first post!" likesCount='25'/>
+            <Post message='Hi, how are you?' likesCount='10'/>
+            <Post message="It's my first post!" likesCount='25'/>
         </div>
     )
 }
