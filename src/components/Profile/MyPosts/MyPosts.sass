@@ -6,23 +6,30 @@
   display: flex
   flex-direction: column
   margin: auto 100px
+
   .news
-    background: #d8d8d8 
-    height: 80px 
+    background: #d8d8d8
+    height: 80px
     text-align: left
     padding-left: 20px
     border-radius: 20px
-    box-shadow: 0px 5px 15px #000000
+    box-shadow: 0px 3px 10px #000000
     outline: none
+
   .buttonSend
     align-self: flex-end
     background: #c08403
     width: 80px
-    border-radius: 40px  
+    border-radius: 40px
     display: block
     text-align: center
     margin-top: 20px
-    box-shadow: 0px 3px 15px #000000
+    box-shadow: 0px 3px 10px #000000
+    transition: all .3s
+
+    &:hover
+      box-shadow: 0px 2px 5px #000000
+
     a
       display: block
       height: 100%

@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Post.module.sass';
+import LikeIcon from './../../../../img/like_icon.svg'
 
 const Post = (props) => {
     return (
@@ -9,7 +10,7 @@ const Post = (props) => {
                 {props.message}
             </div>
             <div className={s.like}>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQKOVqElc_z-T2uuxtcdGTzRx9fHGDGzvyUy_RkAOqTIPNqwB7n&usqp=CAU"></img>
+                <img src={LikeIcon}></img>
                 {props.likesCount}
             </div>
         </div>
