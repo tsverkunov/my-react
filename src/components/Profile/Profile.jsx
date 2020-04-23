@@ -1,15 +1,15 @@
 import React from 'react';
-import s from './Profile.module.sass';
+import style from './Profile.module.sass';
 import MyPosts from './MyPosts/MyPosts';
 import Description from './Description/Description';
 import Avatar from "./Avatar/Avatar";
 
-const Profile = () => {
+const Profile = (props) => {
     return (
-        <div className={s.wrapperContent}>
+        <div className={style.wrapperContent}>
             <Avatar/>
             <Description/>
-            <MyPosts/>
+            <MyPosts post={props.state.post} addPost={props.addPost}/>
         </div>
     )
 }

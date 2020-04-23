@@ -1,24 +1,26 @@
 import React from 'react';
-import s from './Navbar.module.sass';
+import style from './Navbar.module.sass';
 import {NavLink} from "react-router-dom";
+import SideBar from "./SideBar/SideBar";
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
-        <nav className={s.nav}>
-            <div className={s.item}>
-                <NavLink to="/profile" activeClassName={s.active}>Profile</NavLink>
+        <nav className={style.nav}>
+            <div className={style.item}>
+                <NavLink to="/profile" activeClassName={style.active}>Profile</NavLink>
             </div>
-            <div className={s.item}>
-                <NavLink to="/dialogs" activeClassName={s.active}>Messages</NavLink>
+            <div className={style.item}>
+                <NavLink to="/dialogs" activeClassName={style.active}>Messages</NavLink>
             </div>
-            <div className={s.item}>
-                <NavLink to="/music" activeClassName={s.active}>My Music</NavLink>
+            <div className={style.item}>
+                <NavLink to="/music" activeClassName={style.active}>My Music</NavLink>
             </div>
-            <div className={s.item}>
-                <NavLink to="/news" activeClassName={s.active}>News</NavLink>
+            <div className={style.item}>
+                <NavLink to="/news" activeClassName={style.active}>News</NavLink>
             </div>
-            <div className={s.item}>
-                <NavLink to="/setting" activeClassName={s.active}>Settings</NavLink>
+            <SideBar friends={props.state.friends}/>
+            <div className={style.item}>
+                <NavLink to="/setting" activeClassName={style.active}>Settings</NavLink>
             </div>
         </nav>
     )
