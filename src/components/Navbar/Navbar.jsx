@@ -18,7 +18,7 @@ const Navbar = (props) => {
             <div className={style.item}>
                 <NavLink to="/news" activeClassName={style.active}>News</NavLink>
             </div>
-            <SideBar friends={props.state.friends}/>
+            <SideBar state={props.state}/>
             <div className={style.item}>
                 <NavLink to="/setting" activeClassName={style.active}>Settings</NavLink>
             </div>

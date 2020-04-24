@@ -3,8 +3,7 @@ import './MyPosts.sass';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-
-    let postElement = props.post.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    let postElement = props.state.profilePage.post.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
     let newPostElement = React.createRef();       // создаём React-ссылку
 
@@ -25,8 +24,8 @@ const MyPosts = (props) => {
             <div className="newPost">
                 <textarea ref={newPostElement} /*назначаем React-ссылку елементу "textarea"*/
                           onChange={onPostChange}
-                          value={props.newPostText}
-                          className="news" />
+                          value={props.state.profilePage.newPostText}
+                          className="news"/>
                 <div onClick={addPost} className="buttonSend">
                     Send
                 </div>
