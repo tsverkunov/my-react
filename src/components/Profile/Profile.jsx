@@ -9,7 +9,10 @@ const Profile = (props) => {
         <div className={style.wrapperContent}>
             <Avatar/>
             <Description/>
-            <MyPosts post={props.state.post} addPost={props.addPost}/>
+            <MyPosts post={props.profilePage.post}
+                     addPost={props.addPost}
+                     updateNewPostText={props.updateNewPostText}
+                     newPostText={props.profilePage.newPostText}/>
         </div>
     )
 }
