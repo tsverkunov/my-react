@@ -11,8 +11,7 @@ const Profile = (props) => {
             <Avatar/>
             <Description/>
             <MyPosts state={props.state}
-                     addPost={props.addPost}
-                     updateNewPostText={props.updateNewPostText}/>
+                     dispatch={props.dispatch} />
         </div>
     )
 }

@@ -13,24 +13,22 @@ import Setting from "./components/Setting/Setting";
 
 const App = (props) => {
     return (
-            <div className="app-wrapper">
-                <Header/>
-                <Navbar state={props.state}/>
-                    <Route path='/profile'
-                           render={ () => <Profile
-                                state={props.state}
-                                addPost={props.addPost}
-                                updateNewPostText={props.updateNewPostText} /> } />
-                    <Route path='/dialogs'
-                           render={ () => <Dialogs
-                                state={props.state}
-                                addMessage={props.addMessage}
-                                updateNewMessageText={props.updateNewMessageText} /> } />
-                    <Route path='/music' render={ () => <Music/> } />
-                    <Route path='/news' render={ () => <News/> } />
-                    <Route path='/setting' render={ () => <Setting/> } />
-                <Footer/>
-            </div>
+        <div className="app-wrapper">
+            <Header/>
+            <Navbar state={props.state}/>
+            <Route path='/profile'
+                   render={() => <Profile
+                       state={props.state}
+                       dispatch={props.dispatch}/>}/>
+            <Route path='/dialogs'
+                   render={() => <Dialogs
+                       state={props.state}
+                       dispatch={props.dispatch}/>}/>
+            <Route path='/music' render={() => <Music/>}/>
+            <Route path='/news' render={() => <News/>}/>
+            <Route path='/setting' render={() => <Setting/>}/>
+            <Footer/>
+        </div>
     );
 }
 

@@ -1,35 +1,19 @@
 import React from 'react';
-import './MyPosts.sass';
+import style from './MyPosts.module.sass';
 import Post from './Post/Post';
+import AddNewPost from "./AddNewPost/AddNewPost";
+
 
 const MyPosts = (props) => {
-    let postElement = props.state.profilePage.post.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
-
-    let newPostElement = React.createRef();       // создаём React-ссылку
-
-    let addPost = () => {
-        props.addPost();
-    }
-
-    let onPostChange = () => {
-        let newText = newPostElement.current.value;
-        props.updateNewPostText(newText);
-    }
+    let postElement =
+        props.state.profilePage.post.map(p => <Post message={p.message} likesCount={p.likesCount}/>);
 
     return (
-        <div className="posts">
+        <div className={style.posts}>
             <div>
                 <h3>My posts</h3>
             </div>
-            <div className="newPost">
-                <textarea ref={newPostElement} /*назначаем React-ссылку елементу "textarea"*/
-                          onChange={onPostChange}
-                          value={props.state.profilePage.newPostText}
-                          className="news"/>
-                <div onClick={addPost} className="buttonSend">
-                    Send
-                </div>
-            </div>
+            <AddNewPost state={props.state} dispatch={props.dispatch}/>
             {postElement}
         </div>
     )
