@@ -6,14 +6,16 @@ import AddNewPost from "./AddNewPost/AddNewPost";
 
 const MyPosts = (props) => {
     let postElement =
-        props.state.profilePage.post.map(p => <Post message={p.message} likesCount={p.likesCount}/>);
+        props.post.map(p => <Post message={p.message} likesCount={p.likesCount} key={p.id}/>);
 
     return (
         <div className={style.posts}>
             <div>
                 <h3>My posts</h3>
             </div>
-            <AddNewPost state={props.state} dispatch={props.dispatch}/>
+            <AddNewPost newPostText={props.newPostText}
+                        addPost={props.onAddPost}
+                        updateNewPostText={props.onPostChange}/>
             {postElement}
         </div>
     )

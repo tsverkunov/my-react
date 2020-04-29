@@ -5,10 +5,9 @@ import Chat from "./Chat/Chat";
 import AddMessage from "./AddMessage/AddMessage";
 
 
-
 const Dialogs = (props) => {
-    let dialogElements = props.state.messagePage.dialogs.map(d => <DialogItem ava={d.ava} name={d.name} id={d.id}/>);
-    let chatsElements = props.state.messagePage.chats.map(c => <Chat message={c.message}/>);
+    let dialogElements = props.dialogs.map(d => <DialogItem ava={d.ava} name={d.name} id={d.id} key={d.id}/>);
+    let chatsElements = props.chats.map(c => <Chat message={c.message} key={c.id}/>);
 
     return (
         <div className={style.wrapperContent}>
@@ -17,7 +16,9 @@ const Dialogs = (props) => {
             </div>
             <div className={style.chat}>
                 {chatsElements}
-                <AddMessage state={props.state} dispatch={props.dispatch}/>
+                <AddMessage addNewMessage={props.addNewMessage}
+                            addMessage={props.onAddMessage}
+                            updateNewMessageText={props.onChangeMessage}/>
             </div>
         </div>
     );
