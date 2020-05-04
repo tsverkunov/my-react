@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Post.module.sass';
-import LikeIcon from './../../../../img/like_icon.svg'
+import LikeIcon from '../../../../common/img/like_icon.svg'
 
 const Post = (props) => {
     let onAddLike = () => {

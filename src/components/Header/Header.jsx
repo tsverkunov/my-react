@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.sass';
-import logo from './../../img/EXAH-business-black.svg'
+import logo from '../../common/img/EXAH-business-black.svg'
 
 const Header = () => {
     return (
