@@ -6,7 +6,11 @@ import AddNewPost from "./AddNewPost/AddNewPost";
 
 const MyPosts = (props) => {
     let postElement =
-        props.post.map(p => <Post message={p.message} likesCount={p.likesCount} key={p.id}/>);
+        props.post.map(p => <Post addLike={props.onAddLike}
+                                  message={p.message}
+                                  likesCount={p.likesCount}
+                                  id={p.id}
+                                  key={p.id}/>);
 
     return (
         <div className={style.posts}>
