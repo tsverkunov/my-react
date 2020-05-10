@@ -49,15 +49,29 @@
   font-size: 20px
   color: #fdb964
 .unSub
-  background: #8a8988
+  background: #969696
+  color: lighten(#333333, 15%)
   border: none
-  box-shadow: 0 2px 10px #000000
+  box-shadow: 0 2px 8px #000000
   outline: none
   cursor: pointer
+  transition: all, .2s
+  &:hover
+    box-shadow: 0 1px 5px #000000
+  &:disabled
+    color: lighten(#333333, 60%)
+    box-shadow: 0 1px 5px #000000
 .sub
   background: #c90813
   border: none
-  box-shadow: 0 2px 10px #000000
+  box-shadow: 0 2px 8px #000000
   outline: none
   cursor: pointer
+  transition: all, .2s
   color: #ffffff
+  &:hover
+    box-shadow: 0 1px 5px #000000
+  &:disabled
+    color: lighten(#333333, 50%)
+    box-shadow: 0 1px 5px #000000
+    background: lighten(#c90813, 30%)

@@ -1,33 +1,20 @@
 import React from 'react';
 import Header from "./Header";
-import * as axios from "axios";
 import {connect} from "react-redux";
 import {setCurrentUserAva, setUserData} from "../../redux/authReducer";
+import {authDataAPI} from "../../api/api";
 
 
 class HeaderContainer extends React.Component{
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-         withCredentials: true,
-            headers: {
-                "API-KEY": "ece8ec33-8cc4-4d7e-9ea7-23ed4606e36c"
-            }
-        })
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    let {id, email, login} = response.data.data;
+            authDataAPI.setData().then(data => {
+                if (data.resultCode === 0) {
+                    let {id, email, login} = data.data;
                     this.props.setUserData(id, email, login);
 
-                    let userId = this.props.id;
-                    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`, {
-                            withCredentials: true,
-                            headers: {
-                                "API-KEY": "ece8ec33-8cc4-4d7e-9ea7-23ed4606e36c"
-                            }
-                        })
-                        .then(response => {
-                            this.props.setCurrentUserAva(response.data.photos);
+                        authDataAPI.setAva(this.props.id).then(data => {
+                            this.props.setCurrentUserAva(data.photos);
                         })
                 }
             });
