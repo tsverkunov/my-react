@@ -56,7 +56,6 @@ export const updateNewPostTextCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, 
 export const addLikeAC = (postId) => ({type: ADD_LIKE, postId})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
-
 export const setProfile = (userId) =>  (dispatch) => {
         usersAPI.setProfile(userId).then(data => {
             dispatch(setUserProfile(data));
