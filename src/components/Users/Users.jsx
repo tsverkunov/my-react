@@ -2,13 +2,11 @@ import React from "react";
 import style from "./Users.module.sass";
 import usersIcon from "../../common/img/users_icon.png";
 import {NavLink} from "react-router-dom";
-import {followedAPI} from "../../api/api";
 
 
 let Users = (props) => {
 
     let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
-
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
@@ -34,24 +32,20 @@ let Users = (props) => {
                     </div>
                     <div>
                         {u.followed
-                            ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                props.toggleFollowingProgress(true, u.id);
-                                followedAPI.unfollow(u.id).then(data => {
-                                    if (data.resultCode == 0) {
-                                        props.unfollow(u.id);
-                                    }
-                                    props.toggleFollowingProgress(false, u.id);
-                                });
-                            }} className={style.unSub}>UNSUBSCRIBE</button>
+                            ? <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                      onClick={() => {props.unfollow(u.id)}}
+                                      className={style.unSub}>UNSUBSCRIBE</button>
 
-                            : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                props.toggleFollowingProgress(true, u.id);
-                                followedAPI.follow(u.id).then(data => {
-                                    if (data.resultCode == 0) {
-                                        props.follow(u.id);
-                                    }
-                                    props.toggleFollowingProgress(false, u.id);
-                                });
+                            : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                      onClick={() => {props.follow(u.id)
+
+                                // props.toggleFollowingProgress(true, u.id);
+                                // usersAPI.follow(u.id).then(data => {
+                                //     if (data.resultCode == 0) {
+                                //         props.follow(u.id);
+                                //     }
+                                //     props.toggleFollowingProgress(false, u.id);
+                                // });
                             }} className={style.sub}>SUBSCRIBE</button>
                         }
                     </div>

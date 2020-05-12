@@ -17,10 +17,7 @@ export const usersAPI = {
             .then(response => {
                 return response.data;
             });
-    }
-}
-
-export const followedAPI = {
+    },
     follow (id) {
         return instance.post(`follow/${id}`)
             .then(response => {
@@ -32,17 +29,8 @@ export const followedAPI = {
             .then(response => {
                 return response.data;
             });
-    }
-}
-
-export const authDataAPI = {
-    setData () {
-        return instance.get(`auth/me`)
-            .then(response => {
-                return response.data;
-            });
     },
-    setAva (id) {
+    setProfile (id) {
         return instance.get(`profile/${id}`)
             .then(response => {
                 return response.data;
@@ -50,8 +38,14 @@ export const authDataAPI = {
     }
 }
 
-export const profileAPI = {
-    setProfile (id) {
+export const authAPI = {
+    setData () {
+        return instance.get(`auth/me`)
+            .then(response => {
+                return response.data;
+            });
+    },
+    setAva (id) {
         return instance.get(`profile/${id}`)
             .then(response => {
                 return response.data;

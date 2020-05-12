@@ -1,25 +1,24 @@
 import React from 'react';
 import Header from "./Header";
 import {connect} from "react-redux";
-import {setCurrentUserAva, setUserData} from "../../redux/authReducer";
-import {authDataAPI} from "../../api/api";
+import { getAuthUserData } from "../../redux/authReducer";
 
 
 class HeaderContainer extends React.Component{
 
     componentDidMount() {
-            authDataAPI.setData().then(data => {
-                if (data.resultCode === 0) {
-                    let {id, email, login} = data.data;
-                    this.props.setUserData(id, email, login);
-
-                        authDataAPI.setAva(this.props.id).then(data => {
-                            this.props.setCurrentUserAva(data.photos);
-                        })
-                }
-            });
+        this.props.getAuthUserData();
+        // authDataAPI.setData().then(data => {
+        //     if (data.resultCode === 0) {
+        //         let {id, email, login} = data.data;
+        //         this.props.setUserData(id, email, login);
+        //
+        //             authDataAPI.setAva(this.props.id).then(data => {
+        //                 this.props.setCurrentUserAva(data.photos);
+        //             })
+        //     }
+        // });
     }
-
     render() {
         return <Header {...this.props}/>
     }
@@ -35,4 +34,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{ setUserData, setCurrentUserAva })(HeaderContainer);
+export default connect(mapStateToProps,{getAuthUserData})(HeaderContainer);
