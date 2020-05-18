@@ -6,7 +6,7 @@ import AddNewPost from "./AddNewPost/AddNewPost";
 
 const MyPosts = (props) => {
     let postElement =
-        props.post.map(p => <Post addLike={props.onAddLike}
+        props.post.map(p => <Post addLike={props.addLike}
                                   message={p.message}
                                   likesCount={p.likesCount}
                                   id={p.id}
@@ -18,8 +18,8 @@ const MyPosts = (props) => {
                 <h3>My posts</h3>
             </div>
             <AddNewPost newPostText={props.newPostText}
-                        addPost={props.onAddPost}
-                        updateNewPostText={props.onPostChange}/>
+                        addPost={props.addPost}
+                        postChange={props.postChange}/>
             {postElement}
         </div>
     )

@@ -12,29 +12,41 @@ const instance = axios.create({
 
 
 export const usersAPI = {
-    getUsers (currentPage = 1, pageSize = 10) {
+    getUsers(currentPage = 1, pageSize = 10) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => {
                 return response.data;
             });
     },
-    follow (id) {
+    follow(id) {
         return instance.post(`follow/${id}`)
             .then(response => {
                 return response.data;
             });
     },
-    unfollow (id) {
+    unfollow(id) {
         return instance.delete(`follow/${id}`)
             .then(response => {
                 return response.data;
             });
-    },
-    setProfile (id) {
+    }
+}
+
+export const profileAPI = {
+    getProfile (id) {
         return instance.get(`profile/${id}`)
             .then(response => {
                 return response.data;
             });
+    },
+    getStatus (id) {
+        return instance.get(`profile/status/${id}`)
+            .then(response => {
+                return response.data;
+            });
+    },
+    updateStatus (status) {
+        return instance.put(`profile/status`, {status: status});
     }
 }
 

@@ -19,9 +19,7 @@ let initialState = {
         {id: 6, name: 'Bill', ava: 'https://lifeglobe.net/x/entry/6503/1.jpg'}
     ],
     chats: [
-        {id: 1, message: 'In half a year I will be a programmer!'},
-        {id: 2, message: 'I learn Javascript!'},
-        {id: 3, message: 'I will live in my house'},
+        {id: 1, message: 'In half a year I will be a programmer!'}
     ],
     addNewMessage: ''
 };

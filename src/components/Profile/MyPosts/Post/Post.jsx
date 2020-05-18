@@ -3,7 +3,7 @@ import style from './Post.module.sass';
 import LikeIcon from '../../../../common/img/like_icon.svg'
 
 const Post = (props) => {
-    let onAddLike = () => {
+    let addLike = () => {
         props.addLike(props.id);
     }
 
@@ -14,7 +14,7 @@ const Post = (props) => {
                 {props.message}
             </div>
             <div className={style.like}>
-                <img onClick={onAddLike} src={LikeIcon}></img>
+                <img onClick={addLike} src={LikeIcon}></img>
                 {props.likesCount}
             </div>
         </div>

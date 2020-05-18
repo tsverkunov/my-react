@@ -1,7 +1,8 @@
 import React from 'react';
 import MyPosts from "./MyPosts";
-import {addLikeAC, addPostCreator, updateNewPostTextCreator} from "../../../redux/profileReducer";
+import {addLike, addPost, postChange} from "../../../redux/profileReducer";
 import {connect} from "react-redux";
+import {compose} from "redux";
 
 
 const mapStateToProps= (state) => {
@@ -10,21 +11,10 @@ const mapStateToProps= (state) => {
         newPostText: state.profileReducer.newPostText
     }
 }
-const mapDispatchToProps= (dispatch) => {
-    return{
-        onAddPost: () => {
-            dispatch(addPostCreator());
-        },
-        onPostChange: (text) => {
-            dispatch(updateNewPostTextCreator(text));
-        },
-        onAddLike: (postId) => {
-            dispatch(addLikeAC(postId));
-        }
-    }
-}
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+// const MyPostsContainer = connect(mapStateToProps, {addPost, postChange, addLike})(MyPosts);
+// export default MyPostsContainer;
 
-
-export default MyPostsContainer;
+export default compose(
+    connect(mapStateToProps, {addPost, postChange, addLike})
+)(MyPosts);

@@ -3,6 +3,7 @@ import style from './Description.module.sass';
 import yesIcon from "../../../common/img/yes.png"
 import noIcon from "../../../common/img/no.png"
 import userIcon from "../../../common/img/users_icon.png"
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 const Description = (props) => {
     return (
@@ -10,11 +11,11 @@ const Description = (props) => {
             <div>
                 <img className={style.avatar}
                      src={props.profile.photos.large != null
-                         ? props.profile.photos.large
-                         : userIcon}/>
+                         ? props.profile.photos.large : userIcon}/>
             </div>
             <div className={style.userDescription}>
                 <h2>{props.profile.fullName}</h2>
+                <ProfileStatus />
                 <p><span>О себе: </span>{props.profile.aboutMe}</p>
                 <span>Я в сети:</span><br/>
                 <p><a href={props.profile.contacts.facebook}>{props.profile.contacts.facebook}</a></p>
