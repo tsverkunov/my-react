@@ -1,26 +1,27 @@
 import React from "react";
-import style from './AddMessage.module.sass';
+import style from "./AddMessage.module.sass";
+import {Field, reduxForm} from "redux-form";
 
+
+const AddMessageForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit} className={style.newPost}>
+            <Field component="textarea" name="newMessageBody" placeholder="new message..."
+                   className={style.newMessage}/>
+            <button className={style.buttonSend}>Send</button>
+        </form>
+    )
+}
+
+const AddMessageReduxForm = reduxForm({form: 'newMessageBody'})(AddMessageForm)
 
 const AddMessage = (props) => {
-    let onAddMessage = () => {
-        props.addMessage()
-    }
-    let onChangeMessage = (e) => {
-        let text = e.target.value;
-        props.updateNewMessageText(text);
+    let addNewMessage = (values) => {
+        props.addMessage(values.newMessageBody)
     }
 
     return (
-        <div className={style.newPost}>
-            <textarea onChange={onChangeMessage}
-                      value={props.addNewMessage}
-                      className={style.newMessage}
-                      placeholder="new message..."/>
-            <button onClick={onAddMessage} className={style.buttonSend}>
-                Send
-            </button>
-        </div>
+        <AddMessageReduxForm onSubmit={addNewMessage}/>
     );
 }
 

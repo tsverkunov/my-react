@@ -1,6 +1,6 @@
-import React from 'react';
-import style from './MyPosts.module.sass';
-import Post from './Post/Post';
+import React from "react";
+import style from "./MyPosts.module.sass";
+import Post from "./Post/Post";
 import AddNewPost from "./AddNewPost/AddNewPost";
 
 
@@ -17,9 +17,7 @@ const MyPosts = (props) => {
             <div>
                 <h3>My posts</h3>
             </div>
-            <AddNewPost newPostText={props.newPostText}
-                        addPost={props.addPost}
-                        postChange={props.postChange}/>
+            <AddNewPost addPost={props.addPost}/>
             {postElement}
         </div>
     )

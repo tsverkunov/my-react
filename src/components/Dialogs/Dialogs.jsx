@@ -1,5 +1,5 @@
 import React from "react";
-import style from './Dialogs.module.sass';
+import style from "./Dialogs.module.sass";
 import DialogItem from "./Dialogitem/DialogItem";
 import Chat from "./Chat/Chat";
 import AddMessage from "./AddMessage/AddMessage";
@@ -16,9 +16,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.chat}>
                 {chatsElements}
-                <AddMessage addNewMessage={props.addNewMessage}
-                            addMessage={props.onAddMessage}
-                            updateNewMessageText={props.onChangeMessage}/>
+                <AddMessage addMessage={props.addMessage}/>
             </div>
         </div>
     );

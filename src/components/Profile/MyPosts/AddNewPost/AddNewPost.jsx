@@ -1,30 +1,40 @@
-import React from 'react';
-import style from './AddNewPost.module.sass';
-
+import React from "react";
+import style from "./AddNewPost.module.sass";
+import {Field, reduxForm} from "redux-form";
 
 const AddNewPost = (props) => {
-    let newPostElement = React.createRef();       // создаём React-ссылку
-
-    let onAddPost = () => {
-        props.addPost();
-    }
-
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.postChange(text);
+    let addNewPost = (values) => {
+        props.addPost(values.newPostBody);
     }
     return (
-        <div className={style.newPost}>
-                <textarea ref={newPostElement} /*назначаем React-ссылку елементу "textarea"*/
-                          onChange={onPostChange}
-                          value={props.newPostText}
-                          className={style.news}
-                          placeholder='new post...'/>
-            <button onClick={onAddPost} className={style.buttonSend}>
-                Send
-            </button>
-        </div>
+        <AddNewPostReduxForm onSubmit={addNewPost}/>
     )
 }
 
+const AddNewPostForm = (props) => {
+    // let onAddPost = () => {
+    //     props.addPost();
+    // }
+    // let onPostChange = (e) => {
+    //     let text = e.currentTarget.value;
+    //     props.postChange(text);
+    // }
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div className={style.newPost}>
+                <Field component="textarea" name={"newPostBody"} className={style.news} placeholder='new post...'/>
+                <button className={style.buttonSend}>Send</button>
+            </div>
+        </form>
+    )
+}
+
+const AddNewPostReduxForm = reduxForm({form: 'newPostBody'})(AddNewPostForm)
+
+
 export default AddNewPost;
+
+
+// let newPostElement = React.createRef();       // создаём React-ссылку
+// let text = newPostElement.current.value;
+/*  ref={newPostElement} назначаем React-ссылку елементу "textarea"*/

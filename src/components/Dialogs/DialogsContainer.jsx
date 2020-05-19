@@ -1,6 +1,6 @@
 import React from "react";
 import Dialogs from "./Dialogs";
-import {addMessageCreator, updateNewMessageTextCreator} from "../../redux/messageReducer";
+import {addMessageCreator} from "../../redux/messageReducer";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
@@ -9,17 +9,13 @@ import {compose} from "redux";
 const mapStateToProps = (state) => {
     return {
         dialogs: state.messageReducer.dialogs,
-        chats: state.messageReducer.chats,
-        addNewMessage: state.messageReducer.addNewMessage
+        chats: state.messageReducer.chats
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddMessage: () => {
-            dispatch(addMessageCreator());
-        },
-        onChangeMessage: (text) => {
-            dispatch(updateNewMessageTextCreator(text));
+        addMessage: (newMessageBody) => {
+            dispatch(addMessageCreator(newMessageBody));
         }
     }
 }
