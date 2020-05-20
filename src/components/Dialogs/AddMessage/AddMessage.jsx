@@ -19,7 +19,6 @@ const AddMessage = (props) => {
     let addNewMessage = (values) => {
         props.addMessage(values.newMessageBody)
     }
-
     return (
         <AddMessageReduxForm onSubmit={addNewMessage}/>
     );

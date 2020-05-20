@@ -9,9 +9,8 @@ const Description = (props) => {
     return (
         <div className={style.wrap}>
             <div>
-                <img className={style.avatar}
-                     src={props.profile.photos.large != null
-                         ? props.profile.photos.large : userIcon}/>
+                <img  src={props.profile.photos.large != null ? props.profile.photos.large : userIcon}
+                      className={style.avatar}/>
             </div>
             <div className={style.userDescription}>
                 <h2>{props.profile.fullName}</h2>

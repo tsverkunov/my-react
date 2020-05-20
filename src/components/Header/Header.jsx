@@ -21,7 +21,7 @@ const Header = (props) => {
                         <span>{props.login}</span>
                         <img src={userPhoto != null ? userPhoto : userIcon}/>
                     </div>
-                    : <NavLink to={'/login'}>Login</NavLink>
+                    : <NavLink to={'/login'}>Sign In</NavLink>
                 }
             </div>
         </header>
