@@ -1,4 +1,5 @@
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const SET_CURRENT_USER_DATA = 'SET_CURRENT_USER_DATA';
@@ -17,10 +18,9 @@ const authReducer = (state = initialState, action) => {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.payload
             };
-            case SET_CURRENT_USER_DATA:
+        case SET_CURRENT_USER_DATA:
             return {
                 ...state, currentAva: action.ava
             };
@@ -30,24 +30,41 @@ const authReducer = (state = initialState, action) => {
 }
 
 
-export const setUserData = (id, email, login) => ({type: SET_USER_DATA, data: {id, email, login}})
+export const setUserData = (id, email, login, isAuth) => ({type: SET_USER_DATA, payload: {id, email, login, isAuth}})
 export const setCurrentUserAva = (ava) => ({type: SET_CURRENT_USER_DATA, ava})
 
 export const getAuthUserData = () => (dispatch) => {
-      authAPI.setData().then(data => {
-          if (data.resultCode === 0) {
-              let {id, email, login} = data.data;
-              dispatch(setUserData(id, email, login));
-              setAva(id);
-          }
-      });
+    authAPI.setData().then(data => {
+        if (data.resultCode === 0) {
+            let {id, email, login} = data.data;
+            dispatch(setUserData(id, email, login, true));
+            dispatch(setAva(id));
+        }
+    });
+}
+export const login = (email, password, rememberMe) => (dispatch) => {
+    authAPI.login(email, password, rememberMe).then(data => {
+        if (data.resultCode === 0) {
+            dispatch(getAuthUserData());
+        }else {
+            let message = data.messages.length > 0 ? data.messages[0] : "Some error";
+            dispatch(stopSubmit('login', {_error: message}));
+        }
+    });
+}
+export const logout = () => (dispatch) => {
+    authAPI.logout().then(data => {
+        if (data.resultCode === 0) {
+            dispatch(setUserData(null, null, null, false));
+        }
+    });
 }
 const setAva = (id) => {
-  return (dispatch) => {
-              authAPI.setAva(id).then(data => {
-                  dispatch(setCurrentUserAva(data.photos));
-              })
-      };
+    return (dispatch) => {
+        authAPI.setAva(id).then(data => {
+            dispatch(setCurrentUserAva(data.photos));
+        })
+    };
 }
 
 export default authReducer;

@@ -16,12 +16,17 @@ const Header = (props) => {
         <header className={style.header}>
             <img src={logo}></img>
             <div className={style.loginItem}>
-                {props.isAuth ?
-                    <div className={style.ava}>
+                {props.isAuth
+                    ? <div className={style.ava}>
                         <span>{props.login}</span>
                         <img src={userPhoto != null ? userPhoto : userIcon}/>
+                        {/*<NavLink to={'/login'} onClick={props.logout}>Log Out</NavLink>*/}
+                        <button onClick={props.logout}>Log Out</button>
                     </div>
-                    : <NavLink to={'/login'}>Sign In</NavLink>
+
+                    : <div>
+                        <NavLink to={'/login'}>Sign In</NavLink>
+                    </div>
                 }
             </div>
         </header>
