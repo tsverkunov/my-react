@@ -1,8 +1,8 @@
-import {authAPI} from "../api/api";
+import {authAPI, profileAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA';
-const SET_CURRENT_USER_DATA = 'SET_CURRENT_USER_DATA';
+const SET_CURRENT_USER_AVA = 'SET_CURRENT_USER_AVA';
 
 
 let initialState = {
@@ -20,7 +20,7 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload
             };
-        case SET_CURRENT_USER_DATA:
+        case SET_CURRENT_USER_AVA:
             return {
                 ...state, currentAva: action.ava
             };
@@ -31,10 +31,10 @@ const authReducer = (state = initialState, action) => {
 
 
 export const setUserData = (id, email, login, isAuth) => ({type: SET_USER_DATA, payload: {id, email, login, isAuth}})
-export const setCurrentUserAva = (ava) => ({type: SET_CURRENT_USER_DATA, ava})
+export const setCurrentUserAva = (ava) => ({type: SET_CURRENT_USER_AVA, ava})
 
 export const getAuthUserData = () => (dispatch) => {
-    authAPI.setData().then(data => {
+    return  authAPI.setData().then(data => {
         if (data.resultCode === 0) {
             let {id, email, login} = data.data;
             dispatch(setUserData(id, email, login, true));
@@ -61,7 +61,7 @@ export const logout = () => (dispatch) => {
 }
 const setAva = (id) => {
     return (dispatch) => {
-        authAPI.setAva(id).then(data => {
+        profileAPI.getProfile(id).then(data => {
             dispatch(setCurrentUserAva(data.photos));
         })
     };

@@ -14,10 +14,12 @@ let initialState = {
     totalUserCount: 0,
     currentPage: 1,
     isFetching: false,
-    followingInProgress: []
+    followingInProgress: [],
+    fake: 10
 }
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
+        case "FAKE": return {...state, fake: state.fake + 1}
         case SUBSCRIBE:
             return {
                 ...state,
@@ -68,18 +70,17 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId})
 
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(setCurrentPage(currentPage));
         dispatch(toggleIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
+        usersAPI.requestUsers(currentPage, pageSize).then(data => {
             dispatch(toggleIsFetching(false));
             dispatch(setUsers(data.items));
             dispatch(setTotalUserCount(data.totalCount / 100));
         });
     }
 }
-
 export const unfollow = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));

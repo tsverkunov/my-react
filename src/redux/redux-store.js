@@ -4,8 +4,10 @@ import messageReducer from "./messageReducer";
 import sideBarReducer from "./sideBarReducer";
 import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
+import appReducer from "./appReducer";
 import thunkMiddleware from "redux-thunk";
-import { reducer as formReducer } from 'redux-form'
+import { reducer as formReducer } from "redux-form";
+import musicReducer from "./musicReducer";
 
 let reducers = combineReducers({
     profileReducer,
@@ -13,7 +15,9 @@ let reducers = combineReducers({
     sideBarReducer,
     usersReducer,
     authReducer,
-    form: formReducer
+    form: formReducer,
+    appReducer,
+    musicReducer
 });
 
 

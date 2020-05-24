@@ -14,7 +14,7 @@ const Description = (props) => {
             </div>
             <div className={style.userDescription}>
                 <h2>{props.profile.fullName}</h2>
-                <ProfileStatus />
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 <p><span>О себе: </span>{props.profile.aboutMe}</p>
                 <span>Я в сети:</span><br/>
                 <p><a href={props.profile.contacts.facebook}>{props.profile.contacts.facebook}</a></p>
@@ -26,5 +26,7 @@ const Description = (props) => {
         </div>
     )
 }
+
+
 
 export default Description;
