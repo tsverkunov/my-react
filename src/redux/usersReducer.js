@@ -15,11 +15,11 @@ let initialState = {
     currentPage: 1,
     isFetching: false,
     followingInProgress: [],
-    fake: 10
+    // fake: 10
 }
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "FAKE": return {...state, fake: state.fake + 1}
+        // case "FAKE": return {...state, fake: state.fake + 1}
         case SUBSCRIBE:
             return {
                 ...state,
