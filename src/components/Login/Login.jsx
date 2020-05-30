@@ -9,7 +9,8 @@ import {Redirect} from "react-router-dom";
 
 
 const LoginForm = (props) => {
-    const { error, handleSubmit, pristine, reset, submitting } = props
+    // const { error, handleSubmit, pristine, reset, submitting } = props
+    debugger
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
@@ -29,7 +30,7 @@ const LoginForm = (props) => {
                 </div>
             }
             <div className={style.buttonItem}>
-                <button type="submit" disabled={submitting} >Log In</button>
+                <button type="submit" disabled={props.submitting} >Log In</button>
             </div>
         </form>
     )

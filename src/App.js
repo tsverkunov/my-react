@@ -15,6 +15,7 @@ import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
 import PreloaderBall from "./common/preloaderBall/PreloaderBall";
 import MusicContainer from "./components/Music/MusicContainer";
+import LoginFormik from "./components/Login/LoginFormik";
 
 
 class App extends React.Component {
@@ -34,7 +35,7 @@ class App extends React.Component {
                 <Navbar/>
                 <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                 <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                <Route path='/login' render={() => <Login/>}/>
+                <Route path='/login' render={() => <LoginFormik/>}/>
                 <Route path='/music' render={() => <MusicContainer/>}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/users' render={() => <UsersContainer/>}/>

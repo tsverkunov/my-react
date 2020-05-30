@@ -3,9 +3,6 @@ import style from "./ProfileStatus.module.sass"
 
 
 class ProfileStatus extends React.Component {
-    componentDidMount() {
-    };
-
     state = {
         editMode: false,
         status: this.props.status
