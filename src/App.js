@@ -35,7 +35,7 @@ class App extends React.Component {
                 <Navbar/>
                 <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                 <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                <Route path='/login' render={() => <LoginFormik/>}/>
+                <Route path='/login' render={() => <Login/>}/>
                 <Route path='/music' render={() => <MusicContainer/>}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/users' render={() => <UsersContainer/>}/>

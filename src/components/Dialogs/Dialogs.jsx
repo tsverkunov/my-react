@@ -3,6 +3,7 @@ import style from "./Dialogs.module.sass";
 import DialogItem from "./Dialogitem/DialogItem";
 import Chat from "./Chat/Chat";
 import AddMessage from "./AddMessage/AddMessage";
+import AddMessageFormik from "./AddMessage/AddMessageFormik";
 
 
 const Dialogs = (props) => {
@@ -16,7 +17,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.chat}>
                 {chatsElements}
-                <AddMessage addMessage={props.addMessage}/>
+                <AddMessageFormik addMessage={props.addMessage}/>
             </div>
         </div>
     );

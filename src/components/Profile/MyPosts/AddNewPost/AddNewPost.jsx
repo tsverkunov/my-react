@@ -14,7 +14,10 @@ const AddNewPostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div className={style.newPost}>
-                <Field component="textarea" name="newPostBody" placeholder="new post..." className={style.news}/>
+                <Field component="textarea"
+                       name="newPostBody"
+                       placeholder="new post..."
+                       className={style.news}/>
                 <button className={style.buttonSend}>Send</button>
             </div>
         </form>
