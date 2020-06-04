@@ -2,20 +2,23 @@ import React from 'react';
 import style from './Profile.module.sass';
 import Description from './Description/Description';
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
-import Preloader from "../../common/preloader/Preloader";
+import Preloader from "../../common/Preloader/Preloader";
 
 
-const Profile = (props) => {
-    if (!props.profile) {
-        return <Preloader/>
-    }
-    console.log("profile")
-    return (
-        <div className={style.wrapperContent}>
-            <Description profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
-            <MyPostsContainer  />
-        </div>
-    )
+const Profile = ({profile, status, updateStatus}) => {
+   if (!profile) {
+      return <Preloader/>
+   }
+   console.log("profile")
+   return (
+      <div className={style.wrapperContent}>
+         <Description profile={profile}
+                      status={status}
+                      updateStatus={updateStatus}
+         />
+         <MyPostsContainer/>
+      </div>
+   )
 }
 
 

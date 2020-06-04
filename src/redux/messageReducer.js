@@ -16,7 +16,7 @@ const messageReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE:
             let newMessage = {
-                id: 2,
+                id: action.messageId + 1,
                 message: action.newMessageBody,
             };
             return {
@@ -28,8 +28,8 @@ const messageReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessageCreator = (newMessageBody) =>
-    ({type: SEND_MESSAGE, newMessageBody})
+export const addMessageCreator = (newMessageBody, messageId) =>
+    ({type: SEND_MESSAGE, newMessageBody, messageId})
 
 
 export default messageReducer;

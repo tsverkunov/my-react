@@ -6,6 +6,7 @@ import './index.sass';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
+import MainJSApp from "./App";
 
 
 // setInterval(() => {
@@ -13,13 +14,7 @@ import {Provider} from "react-redux";
 // }, 1000)
 
 ReactDOM.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <Provider store={store}>
-                <App/>
-            </Provider>
-        </BrowserRouter>
-    </React.StrictMode>,
+    <MainJSApp/>,
     document.getElementById('root')
 );
 

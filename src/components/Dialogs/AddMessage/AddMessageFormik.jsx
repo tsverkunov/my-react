@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import {Form, Formik, useField} from "formik";
 
 
-const CustomTextInput = ({label, ...props}) => {
+const CustomTextarea = ({label, ...props}) => {
    const [feild, meta] = useField(props);
    return (
       <>
@@ -33,13 +33,13 @@ const AddMessageForm = (props) => {
                        props.onSubmit(values)
                        resetForm();
                        setSubmitting(false);
-                    }, 200)
+                    }, 400)
                  }}
          >
             {props => (
                <Form onSubmit={props.handleSubmit}
                      className={style.newPost}>
-                  <CustomTextInput name="message"
+                  <CustomTextarea name="message"
                                    type="text"
                                    placeholder="new message..."
                                    className={style.newMessage}/>
@@ -59,7 +59,7 @@ const AddMessageForm = (props) => {
 const AddMessageFormik = (props) => {
    let onSubmit = (values) => {
       // alert(JSON.stringify(values, null, 2));
-      props.addMessage(values.message);
+      props.addMessage(values.message, props.messageId);
    }
    return (
       <AddMessageForm onSubmit={onSubmit}/>

@@ -11,9 +11,6 @@ const mapStateToProps= (state) => {
     }
 }
 
-// const MyPostsContainer = connect(mapStateToProps, {addPost, postChange, addLike})(MyPosts);
-// export default MyPostsContainer;
-
 export default compose(
     connect(mapStateToProps, {addPost, addLike})
 )(MyPosts);

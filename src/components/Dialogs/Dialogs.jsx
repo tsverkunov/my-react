@@ -9,7 +9,6 @@ import AddMessageFormik from "./AddMessage/AddMessageFormik";
 const Dialogs = (props) => {
     let dialogElements = props.dialogs.map(d => <DialogItem ava={d.ava} name={d.name} id={d.id} key={d.id}/>);
     let chatsElements = props.chats.map(c => <Chat message={c.message} key={c.id}/>);
-
     return (
         <div className={style.wrapperContent}>
             <div className={style.dialogs}>
@@ -17,10 +16,11 @@ const Dialogs = (props) => {
             </div>
             <div className={style.chat}>
                 {chatsElements}
-                <AddMessageFormik addMessage={props.addMessage}/>
+                <AddMessageFormik addMessage={props.addMessage} messageId={props.chats.length}/>
             </div>
         </div>
     );
 }
+
 
 export default Dialogs;

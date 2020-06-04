@@ -15,7 +15,7 @@ export const radioAPI = {
     getTrack(searchResult) {
         return instance.get(`search?q=${searchResult}`)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 return response.data;
             })
             .catch(err => {

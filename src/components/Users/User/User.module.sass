@@ -1,0 +1,54 @@
+
+
+.user
+  padding: 30px
+  width: 200px
+
+  span
+    color: #ffffff
+
+.photo
+  padding: 10px
+
+  img
+    width: 100px
+    height: 100px
+    border-radius: 30px
+
+.name
+  padding: 10px
+  font-size: 20px
+  color: #fdb964
+
+.unSub
+  background: #969696
+  color: lighten(#333333, 15%)
+  border: none
+  box-shadow: 0 2px 8px #000000
+  outline: none
+  cursor: pointer
+  transition: box-shadow, .2s
+
+  &:hover
+    box-shadow: 0 1px 5px #000000
+
+  &:disabled
+    color: lighten(#333333, 60%)
+    box-shadow: 0 1px 5px #000000
+
+.sub
+  background: #c90813
+  border: none
+  box-shadow: 0 2px 8px #000000
+  outline: none
+  cursor: pointer
+  transition: color, .2s
+  color: #ffffff
+
+  &:hover
+    box-shadow: 0 1px 5px #000000
+
+  &:disabled
+    color: lighten(#333333, 50%)
+    box-shadow: 0 1px 5px #000000
+    background: lighten(#c90813, 30%)

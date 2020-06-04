@@ -5,22 +5,22 @@ import AddNewPost from "./AddNewPost/AddNewPost";
 
 
 const MyPosts = React.memo(props => {
-   console.log("RENDER_MYPOST");
    let postElement =
       [...props.post]
          .reverse()
          .map(p => <Post addLike={props.addLike}
-                                message={p.message}
-                                likesCount={p.likesCount}
-                                id={p.id}
-                                key={p.id}/>);
-
+                         message={p.message}
+                         likesCount={p.likesCount}
+                         id={p.id}
+                         key={p.id}/>);
    return (
       <div className={style.posts}>
          <div>
             <h3>My posts</h3>
          </div>
-         <AddNewPost addPost={props.addPost}/>
+         <AddNewPost addPost={props.addPost}
+                     userId={props.post.length}
+         />
          {postElement}
       </div>
    )

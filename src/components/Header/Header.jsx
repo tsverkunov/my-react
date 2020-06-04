@@ -3,7 +3,7 @@ import style from './Header.module.sass';
 import logo from '../../common/img/EXAH-business-black.svg'
 import {NavLink} from "react-router-dom";
 import userIcon from "../../common/img/users_icon.png"
-import PreloaderBall from "../../common/preloaderBall/PreloaderBall";
+import PreloaderBall from "../../common/PreloaderBall/PreloaderBall";
 
 
 const Header = (props) => {
