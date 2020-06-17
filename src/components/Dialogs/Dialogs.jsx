@@ -16,7 +16,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.chat}>
                 {chatsElements}
-                <AddMessageFormik addMessage={props.addMessage} messageId={props.chats.length}/>
+                <AddMessageFormik addMessage={props.addMessage}/>
             </div>
         </div>
     );

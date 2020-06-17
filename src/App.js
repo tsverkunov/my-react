@@ -21,50 +21,50 @@ import store from "./redux/redux-store";
 
 class App extends React.Component {
 
-    componentDidMount() {
-        this.props.initializeApp();
-    }
+   componentDidMount() {
+      this.props.initializeApp();
+   }
 
-    render() {
-        if (!this.props.initialized) {
-            return <PreloaderBall/>
-        }
+   render() {
+      if (!this.props.initialized) {
+         return <PreloaderBall/>
+      }
 
-        return (
-            <div className="app-wrapper">
-                <HeaderContainer/>
-                <Navbar/>
-                <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                <Route path='/login' render={() => <Login/>}/>
-                <Route path='/music' render={() => <MusicContainer/>}/>
-                <Route path='/news' render={() => <News/>}/>
-                <Route path='/users' render={() => <UsersContainer/>}/>
-                <Route path='/setting' render={() => <Setting/>}/>
-                <Footer/>
-            </div>
-        );
-    }
+      return (
+         <div className="app-wrapper">
+            <HeaderContainer/>
+            <Navbar/>
+            <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+            <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+            <Route path='/login' render={() => <Login/>}/>
+            <Route path='/music' render={() => <MusicContainer/>}/>
+            <Route path='/news' render={() => <News/>}/>
+            <Route path='/users' render={() => <UsersContainer/>}/>
+            <Route path='/setting' render={() => <Setting/>}/>
+            <Footer/>
+         </div>
+      );
+   }
 }
 
 const mapStateToProps = (state) => ({
-    initialized: state.appReducer.initialized
+   initialized: state.appReducer.initialized
 })
 
 const AppContainer = compose(
-    withRouter,
-    connect(mapStateToProps, {initializeApp})
+   withRouter,
+   connect(mapStateToProps, {initializeApp})
 )(App);
 
 const MainJSApp = (props) => {
-    return( //<React.StrictMode>
+   return ( //<React.StrictMode>
       <BrowserRouter>
          <Provider store={store}>
             <AppContainer/>
          </Provider>
       </BrowserRouter>
-   // </React.StrictMode>
-    )
+      // </React.StrictMode>
+   )
 };
 
 export default MainJSApp;

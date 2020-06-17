@@ -18,9 +18,7 @@ const MyPosts = React.memo(props => {
          <div>
             <h3>My posts</h3>
          </div>
-         <AddNewPost addPost={props.addPost}
-                     userId={props.post.length}
-         />
+         <AddNewPost addPost={props.addPost}/>
          {postElement}
       </div>
    )

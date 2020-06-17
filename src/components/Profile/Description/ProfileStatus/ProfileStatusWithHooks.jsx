@@ -2,39 +2,39 @@ import React, {useEffect, useState} from "react";
 import style from "./ProfileStatus.module.sass"
 
 
-const ProfileStatusWithHooks = (props) => {
+const ProfileStatusWithHooks = ({isOwner, status, updateStatus}) => {
 
    let [editMode, setEditMode] = useState(false);
-   let [status, setStatus] = useState(props.status);
+   let [localStatus, setLocalStatus] = useState(status);
 
    useEffect(() => {
-      setStatus(props.status)
-   }, [props.status])
+      setLocalStatus(status)
+   }, [status])
 
    const activateEditMode = () => {
       setEditMode(true);
    }
    const deactivateEditMode = () => {
       setEditMode(false);
-      props.updateStatus(status);
+      updateStatus(localStatus);
    }
    const onStatusChange = (e) => {
-      setStatus(e.currentTarget.value);
+      setLocalStatus(e.currentTarget.value);
    }
 
    return (
       <div>
          {!editMode
             ? <div className={style.spanItem}>
-                    <span onDoubleClick={activateEditMode}>
-                        {props.status || '---'}
-                    </span>
+               <p className={style.status} onDoubleClick={isOwner && activateEditMode}>
+                  ({status || '---'})
+               </p>
             </div>
             : <div className={style.inputItem}>
                <input onBlur={deactivateEditMode}
                       onChange={onStatusChange}
                       autoFocus={true}
-                      value={status}
+                      value={localStatus}
                       type="text"
                />
             </div>

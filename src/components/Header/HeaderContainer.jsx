@@ -5,14 +5,15 @@ import {logout} from "../../redux/authReducer";
 
 
 function HeaderContainer(props) {
-    return <Header {...props}/>
+   return <Header {...props}/>
 }
 
 let mapStateToProps = (state) => ({
-        isAuth: state.authReducer.isAuth,
-        login: state.authReducer.login,
-        id: state.authReducer.id,
-        currentAva: state.authReducer.currentAva
+   isAuth: state.authReducer.isAuth,
+   login: state.authReducer.login,
+   id: state.authReducer.id,
+   avatar: state.authReducer.avatar,
+   // profile: state.profileReducer.profile
 })
 
-export default connect(mapStateToProps,{logout})(HeaderContainer);
+export default connect(mapStateToProps, {logout})(HeaderContainer);

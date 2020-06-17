@@ -11,7 +11,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = 'my-react/users/TOGGLE_IS_FOLLOWING_PROGRES
 
 let initialState = {
    users: [],
-   pageSize: 9,
+   pageSize: 15,
    totalUserCount: 0,
    currentPage: 1,
    isFetching: false,
@@ -73,7 +73,7 @@ export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
    let data = await usersAPI.requestUsers(currentPage, pageSize);
    dispatch(toggleIsFetching(false));
    dispatch(setUsers(data.items));
-   dispatch(setTotalUserCount(data.totalCount / 100));
+   dispatch(setTotalUserCount(data.totalCount));
 }
 
 const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {

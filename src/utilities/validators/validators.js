@@ -12,7 +12,7 @@ export const maxLength35 = maxLength(35);
 const minLength = min => value =>
     value && value.length < min ? `Must be ${min} characters or more` : undefined
 export const minLength2 = minLength(2);
-export const minLength8 = minLength(8);
+export const minLength4 = minLength(4);
 
 export const email = value =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)

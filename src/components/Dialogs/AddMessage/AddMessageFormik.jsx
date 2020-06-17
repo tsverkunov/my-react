@@ -59,7 +59,7 @@ const AddMessageForm = (props) => {
 const AddMessageFormik = (props) => {
    let onSubmit = (values) => {
       // alert(JSON.stringify(values, null, 2));
-      props.addMessage(values.message, props.messageId);
+      props.addMessage(values.message);
    }
    return (
       <AddMessageForm onSubmit={onSubmit}/>

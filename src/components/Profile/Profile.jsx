@@ -5,16 +5,22 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import Preloader from "../../common/Preloader/Preloader";
 
 
-const Profile = ({profile, status, updateStatus}) => {
+const Profile = ({
+                    profile, status, updateStatus, updateDataProfile,
+                    isOwner, savePhoto, getAvatar
+                 }) => {
    if (!profile) {
       return <Preloader/>
    }
-   console.log("profile")
    return (
       <div className={style.wrapperContent}>
-         <Description profile={profile}
+         <Description savePhoto={savePhoto}
+                      isOwner={isOwner}
+                      getAvatar={getAvatar}
+                      profile={profile}
                       status={status}
                       updateStatus={updateStatus}
+                      updateDataProfile={updateDataProfile}
          />
          <MyPostsContainer/>
       </div>

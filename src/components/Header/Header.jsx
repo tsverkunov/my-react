@@ -3,34 +3,26 @@ import style from './Header.module.sass';
 import logo from '../../common/img/EXAH-business-black.svg'
 import {NavLink} from "react-router-dom";
 import userIcon from "../../common/img/users_icon.png"
-import PreloaderBall from "../../common/PreloaderBall/PreloaderBall";
 
-
-const Header = (props) => {
-    // if (!props.currentAva) {
-    //     return <PreloaderBall/>
-    // }
-
-    let userPhoto = props.currentAva.small
-    return (
-        <header className={style.header}>
-            <img src={logo}></img>
-            <div className={style.loginItem}>
-                {props.isAuth
-                    ? <div className={style.ava}>
-                        <span>{props.login}</span>
-                        <img src={userPhoto != null ? userPhoto : userIcon}/>
-                        {/*<NavLink to={'/login'} onClick={props.logout}>Log Out</NavLink>*/}
-                        <button onClick={props.logout}>Log Out</button>
-                    </div>
-
-                    : <div>
-                        <NavLink to={'/login'}>Sign In</NavLink>
-                    </div>
-                }
-            </div>
-        </header>
-    )
+const Header = ({avatar, login, logout, isAuth}) => {
+   return (
+      <header className={style.header}>
+         <img alt="" src={logo}/>
+         <div className={style.loginItem}>
+            {isAuth
+               ? <div className={style.ava}>
+                  <span>{login}</span>
+                  <img alt="" src={avatar || userIcon}/>
+                  {/*<NavLink to={'/login'} onClick={props.logout}>Log Out</NavLink>*/}
+                  <button onClick={logout}>Log Out</button>
+               </div>
+               : <div>
+                  <NavLink to={'/login'}>Sign In</NavLink>
+               </div>
+            }
+         </div>
+      </header>
+   )
 }
 
 export default Header;

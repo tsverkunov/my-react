@@ -29,7 +29,7 @@ const AddNewPostReduxForm = reduxForm({form: 'newPostBody'})(AddNewPostForm)
 
 const AddNewPost = (props) => {
     let addNewPost = (values) => {
-        props.addPost(values.newPostBody, props.userId);
+        props.addPost(values.newPostBody);
     }
     return (
         <AddNewPostReduxForm onSubmit={addNewPost}/>
