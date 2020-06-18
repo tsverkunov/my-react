@@ -15,8 +15,8 @@ const MyPosts = React.memo(props => {
                          key={p.id}/>);
    return (
       <div className={style.posts}>
-         <div>
-            <h3>My posts</h3>
+         <div className={style.title}>
+            <p>My posts</p>
          </div>
          <AddNewPost addPost={props.addPost}/>
          {postElement}

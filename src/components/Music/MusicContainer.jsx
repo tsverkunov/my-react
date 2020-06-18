@@ -1,6 +1,6 @@
 import React from "react";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {withAuthRedirect} from "../../HOCs/withAuthRedirect";
 import {connect} from "react-redux";
 import Preloader from "../../common/Preloader/Preloader";
 import {getTracks, searchResult} from "../../redux/musicReducer";
@@ -82,7 +82,6 @@ class MusicContainer extends React.Component {
    }
 
    render() {
-      console.log('RENDER_MUSIC');
       return (
          <>
             {this.props.isFetching

@@ -25,15 +25,16 @@ let Users = ({
          />
          {isFetching
             ? <Preloader/>
-         :<div className={style.wrapperContent}>
-            {users.map(u => <User followingInProgress={followingInProgress}
-                                  follow={follow}
-                                  unfollow={unfollow}
-                                  user={u}
-                                  key={u.id}
-               />
-            )}
-         </div>}
+            : <div className={style.wrapperContent}>
+               {users.map(u =>
+                  <User followingInProgress={followingInProgress}
+                        follow={follow}
+                        unfollow={unfollow}
+                        user={u}
+                        key={u.id}
+                  />
+               )}
+            </div>}
       </div>
    )
 }

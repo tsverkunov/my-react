@@ -60,7 +60,7 @@ class ProductTable extends React.Component {
             />
          );
          lastCategory = product.category;
-         console.log(rows)
+         // console.log(rows)
          // console.log(lastCategory)
          // console.log(product.name.indexOf(filterText) )
          // console.log((inStockOnly && !product.stocked))

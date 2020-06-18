@@ -2,8 +2,13 @@ import style from "./Paginator.module.sass";
 import React, {useState} from "react";
 import next from "../img/next.svg"
 import prev from "../img/back.svg"
+import cn from "classnames"
 
-let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize=10}) => {
+let Paginator = ({
+                    totalItemsCount, pageSize,
+                    currentPage, onPageChanged,
+                    portionSize = 10
+                 }) => {
 
    let pagesCount = Math.ceil(totalItemsCount / pageSize);
    let pages = [];
@@ -11,7 +16,7 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
       pages.push(i);
    }
 
-   let portionCount = Math.ceil(pagesCount/portionSize);
+   let portionCount = Math.ceil(pagesCount / portionSize);
    let [portionNumber, setPortionNumber] = useState(1);
    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
    let rightPortionPageNumber = portionNumber * portionSize;
@@ -21,20 +26,27 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
          {portionNumber > 1 &&
          <img alt=""
               src={prev}
-              onClick={() => {setPortionNumber(portionNumber - 1) }}/>}
+              onClick={() => {
+                 setPortionNumber(portionNumber - 1)
+              }}/>}
          {pages
             .filter(n => n >= leftPortionPageNumber && n <= rightPortionPageNumber)
-            .map((p, index) => {
-            return <span key={index}
-                         className={currentPage === p && style.changePage}
-                         onClick={(e) => {
-                            onPageChanged(p)
-                         }}>{p}</span>
-         })}
+            .map((p) => {
+               return <span key={p}
+                            className={ cn(style.page, {
+                                  [style.changePage]: currentPage === p
+                               })
+                            }
+                            onClick={(e) => {
+                               onPageChanged(p)
+                            }}>{p}</span>
+            })}
          {portionCount > portionNumber &&
          <img alt=""
               src={next}
-              onClick={() => {setPortionNumber(portionNumber + 1) }}/>}
+              onClick={() => {
+                 setPortionNumber(portionNumber + 1)
+              }}/>}
       </div>
    )
 }

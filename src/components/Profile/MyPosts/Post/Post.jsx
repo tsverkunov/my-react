@@ -9,17 +9,13 @@ const Post = (props) => {
 
     return (
         <div>
-
-
-
             <div className={style.post}>
-                <div className={style.circle}></div>
+                <div className={style.circle}>
+                </div>
                 {props.message}
             </div>
-
-
             <div className={style.like}>
-                <img onClick={addLike} src={LikeIcon}></img>
+                <img alt="" onClick={addLike} src={LikeIcon}/>
                 {props.likesCount}
             </div>
         </div>

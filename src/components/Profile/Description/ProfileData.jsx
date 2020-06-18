@@ -8,22 +8,25 @@ import editIcon from "../../../common/img/editing_icon.svg";
 const ProfileData = ({profile, isOwner, activateEditMode}) => {
    return (
       <div className={style.profileDataWrapp}>
-         <p>About me: <b>{profile.aboutMe}</b></p>
-         <p>My professional skills: <b>{profile.lookingForAJobDescription}</b></p>
+         <p>About me: <span>{profile.aboutMe}</span></p>
+         <p>My professional skills: <span>{profile.lookingForAJobDescription}</span></p>
          <div className={style.work}><p>Looking for a job:</p>
             <img alt=''
                  src={profile.lookingForAJob ? yesIcon : noIcon}
             />
          </div>
-         <p>Online:</p>
+         <div className={style.editItem}>
+            <p>Online:</p>
+
+            <div className={style.editIcon}>
+               {isOwner && <img src={editIcon} alt="" onClick={activateEditMode}/>}
+            </div>
+         </div>
          {Object.keys(profile.contacts).map(key => {
             return <div className={style.contact} key={key}>
-               <b><a href={profile.contacts[key]}>{profile.contacts[key]}</a></b>
+               <a href={profile.contacts[key]}>{profile.contacts[key]}</a>
             </div>
          })}
-         <div className={style.editIcon}>
-            {isOwner && <img src={editIcon} alt="" onClick={activateEditMode}/>}
-         </div>
       </div>
    );
 }

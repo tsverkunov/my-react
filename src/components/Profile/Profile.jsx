@@ -6,8 +6,10 @@ import Preloader from "../../common/Preloader/Preloader";
 
 
 const Profile = ({
-                    profile, status, updateStatus, updateDataProfile,
-                    isOwner, savePhoto, getAvatar
+                    profile, status,
+                    updateStatus,
+                    updateDataProfile,
+                    isOwner, savePhoto
                  }) => {
    if (!profile) {
       return <Preloader/>
@@ -16,7 +18,6 @@ const Profile = ({
       <div className={style.wrapperContent}>
          <Description savePhoto={savePhoto}
                       isOwner={isOwner}
-                      getAvatar={getAvatar}
                       profile={profile}
                       status={status}
                       updateStatus={updateStatus}

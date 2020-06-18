@@ -33,7 +33,7 @@ const Description = ({
                         profile={profile}
                         isOwner={isOwner}/>
          <div className={style.userDescription}>
-            <h2>{profile.fullName}</h2>
+            <p className={style.nikName}>{profile.fullName}</p>
             <ProfileStatusWithHooks status={status}
                                     updateStatus={updateStatus}
                                     isOwner={isOwner}
