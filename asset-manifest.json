@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/my-react/static/css/main.9fcf0f61.chunk.css",
-    "main.js": "/my-react/static/js/main.d16e7f31.chunk.js",
-    "main.js.map": "/my-react/static/js/main.d16e7f31.chunk.js.map",
-    "runtime-main.js": "/my-react/static/js/runtime-main.7ed0d96b.js",
-    "runtime-main.js.map": "/my-react/static/js/runtime-main.7ed0d96b.js.map",
-    "static/js/2.47063ac5.chunk.js": "/my-react/static/js/2.47063ac5.chunk.js",
-    "static/js/2.47063ac5.chunk.js.map": "/my-react/static/js/2.47063ac5.chunk.js.map",
+    "main.js": "/my-react/static/js/main.b66df3e2.chunk.js",
+    "main.js.map": "/my-react/static/js/main.b66df3e2.chunk.js.map",
+    "runtime-main.js": "/my-react/static/js/runtime-main.96b41595.js",
+    "runtime-main.js.map": "/my-react/static/js/runtime-main.96b41595.js.map",
+    "static/js/2.43e48a11.chunk.js": "/my-react/static/js/2.43e48a11.chunk.js",
+    "static/js/2.43e48a11.chunk.js.map": "/my-react/static/js/2.43e48a11.chunk.js.map",
     "static/css/3.8816ad8f.chunk.css": "/my-react/static/css/3.8816ad8f.chunk.css",
-    "static/js/3.e15915d0.chunk.js": "/my-react/static/js/3.e15915d0.chunk.js",
-    "static/js/3.e15915d0.chunk.js.map": "/my-react/static/js/3.e15915d0.chunk.js.map",
+    "static/js/3.2d2e8afe.chunk.js": "/my-react/static/js/3.2d2e8afe.chunk.js",
+    "static/js/3.2d2e8afe.chunk.js.map": "/my-react/static/js/3.2d2e8afe.chunk.js.map",
     "static/js/4.cb69b507.chunk.js": "/my-react/static/js/4.cb69b507.chunk.js",
     "static/js/4.cb69b507.chunk.js.map": "/my-react/static/js/4.cb69b507.chunk.js.map",
     "index.html": "/my-react/index.html",
-    "precache-manifest.12e0d505e99796a08041ee080d705904.js": "/my-react/precache-manifest.12e0d505e99796a08041ee080d705904.js",
+    "precache-manifest.899b92242f1e7891ef42b394716c6bdd.js": "/my-react/precache-manifest.899b92242f1e7891ef42b394716c6bdd.js",
     "service-worker.js": "/my-react/service-worker.js",
     "static/css/3.8816ad8f.chunk.css.map": "/my-react/static/css/3.8816ad8f.chunk.css.map",
     "static/css/main.9fcf0f61.chunk.css.map": "/my-react/static/css/main.9fcf0f61.chunk.css.map",
-    "static/js/2.47063ac5.chunk.js.LICENSE.txt": "/my-react/static/js/2.47063ac5.chunk.js.LICENSE.txt",
+    "static/js/2.43e48a11.chunk.js.LICENSE.txt": "/my-react/static/js/2.43e48a11.chunk.js.LICENSE.txt",
     "static/media/EXAH-business-black.svg": "/my-react/static/media/EXAH-business-black.7909d125.svg",
     "static/media/back.svg": "/my-react/static/media/back.45a0ba99.svg",
     "static/media/editing_icon.svg": "/my-react/static/media/editing_icon.3e613d2b.svg",
@@ -30,9 +30,9 @@
     "static/media/yes.png": "/my-react/static/media/yes.c1b74d1e.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.7ed0d96b.js",
-    "static/js/2.47063ac5.chunk.js",
+    "static/js/runtime-main.96b41595.js",
+    "static/js/2.43e48a11.chunk.js",
     "static/css/main.9fcf0f61.chunk.css",
-    "static/js/main.d16e7f31.chunk.js"
+    "static/js/main.b66df3e2.chunk.js"
   ]
 }
