@@ -1,43 +1,43 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6700fcf3a2aaaaa7d382ccb3140d2ae9",
+    "revision": "8468f1fdf685da91c901329fc848dca9",
     "url": "/my-react/index.html"
   },
   {
-    "revision": "7fe89dc323a436055748",
+    "revision": "59c8d029bae1d686dbeb",
     "url": "/my-react/static/css/3.8816ad8f.chunk.css"
   },
   {
-    "revision": "04cbc35713a9645a1b53",
-    "url": "/my-react/static/css/main.9fcf0f61.chunk.css"
+    "revision": "224610faf20eacacecf0",
+    "url": "/my-react/static/css/main.cd0ed61e.chunk.css"
   },
   {
-    "revision": "2dd195b4a635558fdfe0",
-    "url": "/my-react/static/js/2.07cfa7dc.chunk.js"
+    "revision": "98abda919aa58631e64e",
+    "url": "/my-react/static/js/2.a1f552a9.chunk.js"
   },
   {
     "revision": "cacaf3f01dd3bd8237006f7c58951c1c",
-    "url": "/my-react/static/js/2.07cfa7dc.chunk.js.LICENSE.txt"
+    "url": "/my-react/static/js/2.a1f552a9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7fe89dc323a436055748",
-    "url": "/my-react/static/js/3.51a21248.chunk.js"
+    "revision": "59c8d029bae1d686dbeb",
+    "url": "/my-react/static/js/3.d7cb2879.chunk.js"
   },
   {
-    "revision": "4d14c5620b413e6dc117",
-    "url": "/my-react/static/js/4.cb69b507.chunk.js"
+    "revision": "7628cde70308f98447fb",
+    "url": "/my-react/static/js/4.4613117c.chunk.js"
   },
   {
-    "revision": "04cbc35713a9645a1b53",
-    "url": "/my-react/static/js/main.3764b8ee.chunk.js"
+    "revision": "224610faf20eacacecf0",
+    "url": "/my-react/static/js/main.de0288ca.chunk.js"
   },
   {
-    "revision": "cb207f22f5f46ec0eea9",
-    "url": "/my-react/static/js/runtime-main.1d1a1370.js"
+    "revision": "081a42b9aa9cd4b64127",
+    "url": "/my-react/static/js/runtime-main.c03a6dc4.js"
   },
   {
-    "revision": "7909d125889929f378f1d3ed76fdad2f",
-    "url": "/my-react/static/media/EXAH-business-black.7909d125.svg"
+    "revision": "d6a9b0176e4d616825aab0e45421e275",
+    "url": "/my-react/static/media/Social_Network_logo.d6a9b017.svg"
   },
   {
     "revision": "45a0ba998010121c05fe89dea34a71ea",
