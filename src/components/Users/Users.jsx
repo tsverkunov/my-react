@@ -14,7 +14,8 @@ let Users = ({
                 users,
                 follow,
                 unfollow,
-                isFetching
+                isFetching,
+                isOwner
              }) => {
    return (
       <div className={style.wrapper}>
@@ -32,6 +33,7 @@ let Users = ({
                         unfollow={unfollow}
                         user={u}
                         key={u.id}
+                        isOwner={isOwner}
                   />
                )}
             </div>}

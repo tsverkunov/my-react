@@ -5,33 +5,7 @@ import {login} from "../../redux/authReducer";
 import {Redirect} from "react-router-dom";
 import {Form, Formik, useField} from "formik";
 import * as Yup from "yup";
-
-
-const CustomTextInput = ({label, ...props}) => {
-   const [feild, meta] = useField(props);
-   return (
-      <>
-         {/*<label htmlFor={props.id || props.name}>{label}</label>*/}
-         <input className={style.textInput} {...feild} {...props} />
-         {meta.touched && meta.error ? (
-            <div><span className={style.error}>{meta.error}</span></div>
-
-         ) : null}
-      </>
-   )
-}
-const CustomCheckbox = ({children, ...props}) => {
-   const [feild, meta] = useField(props, 'checkbox');
-   return (
-      <>
-         <input type="checkbox" {...feild} {...props} />
-         {children}
-         {meta.touched && meta.error ? (
-            <div className={style.error}>{meta.error}</div>
-         ) : null}
-      </>
-   )
-}
+import {CustomCheckbox, CustomTextInput} from "../../common/FormsControls/FormsControlsFormik";
 
 const LoginForm = (props) => {
    return (
@@ -64,16 +38,29 @@ const LoginForm = (props) => {
             {props => (
                <Form>
                   <div>
-                     <CustomTextInput placeholder="email" name="email" type="email"/>
+                     <CustomTextInput placeholder="email"
+                                      name="email"
+                                      type="email"
+                     />
                   </div>
                   <div>
-                     <CustomTextInput placeholder="password" name="password" type="password"/>
+                     <CustomTextInput placeholder="password"
+                                      name="password"
+                                      type="password"
+                     />
                   </div>
                   <div className={style.checkboxItem}>
                      <CustomCheckbox name="rememberMe">
                         Remember Me
                      </CustomCheckbox>
                   </div>
+                  {/*{*/}
+                  {/*   props.error && <div className={style.formCommonError}>*/}
+                  {/*      <span>*/}
+                  {/*         {props.error}*/}
+                  {/*      </span>*/}
+                  {/*   </div>*/}
+                  {/*}*/}
                   <div className={style.buttonItem}>
                      <button type="submit"
                              disabled={props.isSubmitting}

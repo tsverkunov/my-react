@@ -25,7 +25,7 @@ const AddMessageForm = (props) => {
          }}
                  validationSchema={Yup.object({
                     message: Yup.string()
-                       .max(150, 'Must be 150 characters or less'),
+                       .max(300, 'Must be 300 characters or less'),
                  })
                  }
                  onSubmit={(values, {setSubmitting, resetForm}) => {

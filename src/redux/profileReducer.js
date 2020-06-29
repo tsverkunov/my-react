@@ -48,9 +48,13 @@ const profileReducer = (state = initialState, action) => {
       case SET_USER_PROFILE:
          return {...state, profile: action.profile};
       case SAVE_PHOTO_SUCCESS:
-         return {...state,
-            profile: {...state.profile,
-               photos: action.photos}};
+         return {
+            ...state,
+            profile: {
+               ...state.profile,
+               photos: action.photos
+            }
+         };
       case SET_STATUS:
          return {...state, status: action.status};
       default:
@@ -65,7 +69,7 @@ export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 export const deletePost = (postsId) => ({type: DELETE_POST, postsId})
 
- //Thunks
+//Thunks
 export const getProfile = (userId) => async (dispatch) => {
    const data = await profileAPI.getProfile(userId);
    dispatch(setUserProfile(data));
@@ -74,23 +78,26 @@ export const getStatus = (userId) => async (dispatch) => {
    const data = await profileAPI.getStatus(userId);
    dispatch(setStatus(data));
 }
-export const updateStatus = (status) => (dispatch) => {
-   profileAPI.updateStatus(status).then(response => {
+export const updateStatus = (status) => async (dispatch) => {
+   try {
+      const response = await profileAPI.updateStatus(status);
       if (response.data.resultCode === 0) {
          dispatch(setStatus(status));
       }
-   });
+   } catch (error) {
+      alert(error);
+   }
 }
 export const updateDataProfile = (formData) => async (dispatch, getState) => {
    const userId = getState().authReducer.id;
    const response = await profileAPI.updateDataProfile(formData);
    if (response.data.resultCode === 0) {
       dispatch(getProfile(userId));
-   }else {
+   } else {
       let message = response.data.messages.length > 0
          ? response.data.messages[0]
          : "Some error";
-      dispatch(stopSubmit('profileForm', {"contacts": {"facebook": message} }));
+      dispatch(stopSubmit('profileForm', {"contacts": {"facebook": message}}));
       return Promise.reject(message);
    }
 }

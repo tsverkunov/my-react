@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Header.module.sass';
-import logo from '../../common/img/EXAH-business-black.svg'
+import logo from '../../common/img/Social_Network_logo.svg'
 import {NavLink} from "react-router-dom";
 import userIcon from "../../common/img/users_icon.png"
 

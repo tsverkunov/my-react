@@ -1,12 +1,15 @@
 import React from "react";
 import style from './News.module.sass';
 import FilterableProductTable from "./LearnTask";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../HOCs/withAuthRedirect";
 
 
 const News = (props) => {
     return (
         <>
-           <FilterableProductTable products={PRODUCTS} />,
+           News
+           {/*<FilterableProductTable products={PRODUCTS} />,*/}
         </>
     )
 }
@@ -20,6 +23,6 @@ const PRODUCTS = [
    {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
 ];
 
-export default News;
+export default compose(withAuthRedirect)(News);
 
 

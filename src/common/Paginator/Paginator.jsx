@@ -52,3 +52,5 @@ let Paginator = ({
 }
 
 export default Paginator;
+
+

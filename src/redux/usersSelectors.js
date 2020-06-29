@@ -26,3 +26,6 @@ export const getIsFetching = (state) => {
 export const getFollowingInProgress = (state) => {
     return state.usersReducer.followingInProgress
 }
+export const getAuthorizedUserId = (state) => {
+    return state.authReducer.id
+}

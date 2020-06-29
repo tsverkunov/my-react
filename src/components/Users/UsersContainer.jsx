@@ -4,6 +4,7 @@ import {follow, unfollow, requestUsers} from "../../redux/usersReducer";
 import Users from "./Users";
 import {compose} from "redux";
 import {
+   getAuthorizedUserId,
    getCurrentPage,
    getFollowingInProgress,
    getIsFetching,
@@ -12,22 +13,24 @@ import {
    getUsers
 } from "../../redux/usersSelectors";
 
-
 class UsersContainer extends React.Component {
+
    componentDidMount() {
-       const {currentPage, pageSize} = this.props;
+      const {currentPage, pageSize} = this.props;
       this.props.requestUsers(currentPage, pageSize);
    }
 
    onPageChanged = (pageNumber) => {
-       const {pageSize} = this.props;
+      const {pageSize} = this.props;
       this.props.requestUsers(pageNumber, pageSize);
    }
 
    render() {
       return <>
-          <Users {...this.props}
-                     onPageChanged={this.onPageChanged}/>
+         <Users {...this.props}
+                onPageChanged={this.onPageChanged}
+                isOwner={this.props.authorizedUserId}
+         />
       </>
    }
 }
@@ -39,17 +42,16 @@ const mapStateToProps = (state) => {
       totalUserCount: getTotalUserCount(state),
       currentPage: getCurrentPage(state),
       isFetching: getIsFetching(state),
-      followingInProgress: getFollowingInProgress(state)
+      followingInProgress: getFollowingInProgress(state),
+      authorizedUserId: getAuthorizedUserId(state)
    }
 }
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         onSubscribe: (userId) => {
-//             dispatch(onSubscribeAC(userId));
-//         }
-//     }
-// }
 
 export default compose(
-   connect(mapStateToProps, {follow, unfollow, requestUsers}),
+   connect(mapStateToProps,
+      {
+         follow,
+         unfollow,
+         requestUsers
+      })
 )(UsersContainer);

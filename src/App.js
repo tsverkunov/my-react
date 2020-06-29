@@ -15,17 +15,25 @@ import PreloaderBall from "./common/PreloaderBall/PreloaderBall";
 import MusicContainer from "./components/Music/MusicContainer";
 import store from "./redux/redux-store";
 import Preloader from "./common/Preloader/Preloader";
+import LoginFormik from "./components/Login/LoginFormik";
 
 //Lazy-Loading
-// import DialogsContainer from "./components/Dialogs/DialogsContainer";
-// import Login from "./components/Login/Login";
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
 const Login = React.lazy(() => import("./components/Login/Login"));
 
 class App extends React.Component {
 
+   catchAllUnhandledErrors = (promiseRejectionEvent) => {
+      console.log("Some common error!");
+   }
+
    componentDidMount() {
       this.props.initializeApp();
+      window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+   }
+
+   componentWillUnmount() {
+      window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
    }
 
    render() {
@@ -56,7 +64,6 @@ class App extends React.Component {
    }
 }
 
-
 const mapStateToProps = (state) => ({
    initialized: state.appReducer.initialized
 })
@@ -68,6 +75,7 @@ const AppContainer = compose(
 
 const MainJSApp = (props) => {
    return ( //<React.StrictMode>
+      // <BrowserRouter basename={process.env.PUBLIC_URL} >
       <BrowserRouter>
          <Provider store={store}>
             <AppContainer/>

@@ -4,38 +4,36 @@ import usersIcon from "../../../common/img/users_icon.png";
 import {NavLink} from "react-router-dom";
 
 
-let User = ({followingInProgress, follow, unfollow, user}) => {
+const User = ({
+                 followingInProgress,
+                 follow,
+                 unfollow,
+                 user,
+                 isOwner
+              }) => {
    return (
       <div className={style.user}>
          <div className={style.photo}>
             <NavLink to={'/profile/' + user.id}>
                <img alt=""
                     src={user.photos.small || usersIcon}
-                    // src={user.photos.small != null
-                    //    ? user.photos.small
-                    //    : usersIcon}
                />
             </NavLink>
          </div>
          <div>
             {user.followed
-               ? <button disabled={followingInProgress.some(id => id === user.id)}
-                         onClick={() => {
-                            unfollow(user.id)
-                         }}
-                         className={style.unSub}
-               >
-                  SUBSCRIBED
-               </button>
-
-               : <button disabled={followingInProgress.some(id => id === user.id)}
-                         onClick={() => {
-                            follow(user.id)
-                         }}
-                         className={style.sub}
-               >
-                  SUBSCRIBE
-               </button>
+               ? isOwner && <button disabled={followingInProgress.some(id => id === user.id)}
+                                    onClick={() => {unfollow(user.id)}}
+                                    className={style.unSub}
+            >
+               SUBSCRIBED
+            </button>
+               : isOwner && <button disabled={followingInProgress.some(id => id === user.id)}
+                                    onClick={() => {follow(user.id)}}
+                                    className={style.sub}
+            >
+               SUBSCRIBE
+            </button>
             }
          </div>
          <div className={style.name}>
