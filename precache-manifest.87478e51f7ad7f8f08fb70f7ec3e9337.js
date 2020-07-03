@@ -1,47 +1,47 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7234dc140d1460cd40452700ba27ddf0",
+    "revision": "14424abf92600f005894d98af91f645c",
     "url": "/my-react/index.html"
   },
   {
-    "revision": "653f3f253d1614dce76e",
+    "revision": "68a5e8efb2033fe28737",
     "url": "/my-react/static/css/3.8816ad8f.chunk.css"
   },
   {
-    "revision": "135550a086e7e179341d",
-    "url": "/my-react/static/css/main.3d2ab42e.chunk.css"
+    "revision": "40fb17a8edf77477ddaf",
+    "url": "/my-react/static/css/main.e7608d1a.chunk.css"
   },
   {
-    "revision": "9a1fc1911e10f52f8831",
-    "url": "/my-react/static/js/2.36bac2e6.chunk.js"
+    "revision": "cc1e96a56d9a3effacd9",
+    "url": "/my-react/static/js/2.93243d8d.chunk.js"
   },
   {
     "revision": "cacaf3f01dd3bd8237006f7c58951c1c",
-    "url": "/my-react/static/js/2.36bac2e6.chunk.js.LICENSE.txt"
+    "url": "/my-react/static/js/2.93243d8d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "653f3f253d1614dce76e",
-    "url": "/my-react/static/js/3.434050b4.chunk.js"
+    "revision": "68a5e8efb2033fe28737",
+    "url": "/my-react/static/js/3.f2e317bc.chunk.js"
   },
   {
-    "revision": "8fa51b9984115ff42720",
-    "url": "/my-react/static/js/4.5d20a82c.chunk.js"
+    "revision": "e490f384166dad850b46",
+    "url": "/my-react/static/js/4.61c369d5.chunk.js"
   },
   {
-    "revision": "135550a086e7e179341d",
-    "url": "/my-react/static/js/main.bc6d514d.chunk.js"
+    "revision": "40fb17a8edf77477ddaf",
+    "url": "/my-react/static/js/main.ac0d8be6.chunk.js"
   },
   {
-    "revision": "2f76faf6719913e06664",
-    "url": "/my-react/static/js/runtime-main.2a15f078.js"
+    "revision": "13fd6c2c3ba697aad6dd",
+    "url": "/my-react/static/js/runtime-main.af41a28f.js"
   },
   {
     "revision": "d6a9b0176e4d616825aab0e45421e275",
     "url": "/my-react/static/media/Social_Network_logo.d6a9b017.svg"
   },
   {
-    "revision": "45a0ba998010121c05fe89dea34a71ea",
-    "url": "/my-react/static/media/back.45a0ba99.svg"
+    "revision": "274cbcc8ab5a5d7cc62a906a62113c55",
+    "url": "/my-react/static/media/back.274cbcc8.svg"
   },
   {
     "revision": "3e613d2b539a02ea0687fc1aacbc0092",
@@ -52,8 +52,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/my-react/static/media/like_icon.1f6e9cb7.svg"
   },
   {
-    "revision": "98f23b89a8610f62dc16efcd27da7b5b",
-    "url": "/my-react/static/media/next.98f23b89.svg"
+    "revision": "9c7821e0e23c4d7b12478fad3d3a1281",
+    "url": "/my-react/static/media/next.9c7821e0.svg"
   },
   {
     "revision": "b9a5a2c3f709285e86529e63fb6fb245",
