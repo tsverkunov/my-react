@@ -23,7 +23,7 @@ const Profile = ({
                       updateStatus={updateStatus}
                       updateDataProfile={updateDataProfile}
          />
-         <MyPostsContainer/>
+         {isOwner && <MyPostsContainer/>}
       </div>
    )
 }

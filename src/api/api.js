@@ -17,6 +17,12 @@ export const usersAPI = {
             return response.data;
          });
    },
+   requestFriends(currentPage = 1, pageSize = 6, friend = true) {
+      return instance.get(`users?page=${currentPage}&count=${pageSize}&friend=${friend}`)
+         .then(response => {
+            return response.data;
+         });
+   },
    follow(id) {
       return instance.post(`follow/${id}`)
          .then(response => {
