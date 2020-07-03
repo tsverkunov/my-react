@@ -9,7 +9,6 @@ const FriendsContainer = (props) => {
    useEffect(() => {
       props.requestFriends(props.currentPage, props.pageSize)
    }, [props.users, props.isAuth, props.currentPage]);
-debugger
    const isOwner = props.isAuth
    return (
       isOwner && <Friends {...props}/>

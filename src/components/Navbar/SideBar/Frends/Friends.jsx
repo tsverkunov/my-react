@@ -41,8 +41,7 @@ const Friends = ({
                  src={arrowUp}
                  onClick={() => {
                     setPortionNumber(portionNumber - 1);
-                    // setCurrentPage (currentPage - 1);
-                    setFriendsCurrentPage(currentPage => currentPage - 1);
+                    setFriendsCurrentPage(portionNumber - 1);
                  }}/>
          </div>}
 
@@ -56,8 +55,7 @@ const Friends = ({
                  src={arrowDown}
                  onClick={() => {
                     setPortionNumber(portionNumber + 1);
-                    // setCurrentPage (currentPage + 1);
-                    setFriendsCurrentPage(currentPage => currentPage + 1);
+                    setFriendsCurrentPage(portionNumber + 1);
                  }}/>
          </div>}
 
