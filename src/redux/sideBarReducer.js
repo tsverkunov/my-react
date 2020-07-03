@@ -2,15 +2,17 @@ import {usersAPI} from "../api/api";
 import {setCurrentPage, setTotalUserCount, setUsers, toggleIsFetching} from "./usersReducer";
 
 const SET_FRIENDS = "my-react/sideBar/SET_FRIENDS";
-const SET_TOTAL_COUNT ="my-react/sideBar/SET_TOTAL_COUNT"
-const SET_CURRENT_PAGE ="my-react/sideBar/SET_CURRENT_PAGE"
+const SET_TOTAL_COUNT ="my-react/sideBar/SET_TOTAL_COUNT";
+const SET_CURRENT_PAGE ="my-react/sideBar/SET_CURRENT_PAGE";
+const TOGGLE_IS_FETCHING = 'my-react/sideBar/TOGGLE_IS_FETCHING';
 
 
 let initialState = {
    friends: [],
    pageSize: 6,
    totalFriendsCount: 0,
-   currentPage: 1,
+   isFetching: false,
+   // currentPage: 1,
 };
 
 const sideBarReducer = (state = initialState, action) => {
@@ -19,8 +21,10 @@ const sideBarReducer = (state = initialState, action) => {
          return {...state, friends: action.friend}
       case SET_TOTAL_COUNT:
          return {...state, totalFriendsCount: action.count};
-      case SET_CURRENT_PAGE:
-         return {...state, currentPage: action.currentPage};
+      case TOGGLE_IS_FETCHING:
+         return {...state, isFetching: action.isFetching};
+      // case SET_CURRENT_PAGE:
+      //    return {...state, currentPage: action.currentPage};
       default:
          return state;
    }
@@ -30,12 +34,13 @@ const sideBarReducer = (state = initialState, action) => {
 export const setFriends = (friend) => ({type: SET_FRIENDS, friend})
 export const setTotalFriendsCount = (count) => ({type: SET_TOTAL_COUNT, count})
 export const setFriendsCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
+export const toggleIsFetchingFriends = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
 export const requestFriends = (currentPage, pageSize, friend) => async (dispatch) => {
-   dispatch(setFriendsCurrentPage(currentPage));
-   // dispatch(toggleIsFetching(true));
+   // dispatch(setFriendsCurrentPage(currentPage));
+   dispatch(toggleIsFetchingFriends(true));
    let data = await usersAPI.requestFriends(currentPage, pageSize, friend);
-   // dispatch(toggleIsFetching(false));
+   dispatch(toggleIsFetchingFriends(false));
    dispatch(setFriends(data.items));
    dispatch(setTotalFriendsCount(data.totalCount));
 }

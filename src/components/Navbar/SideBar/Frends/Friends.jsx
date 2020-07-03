@@ -8,14 +8,13 @@ import arrowUp from "../../../../common/img/arrow_up.png"
 
 const Friends = ({friends, totalFriendsCount, pageSize, requestFriends, ...props}) => {
 
-
    let portionCount = Math.ceil(totalFriendsCount / pageSize);
    let [portionNumber, setPortionNumber] = useState(1);
    let [currentPage, setCurrentPage] = useState(1);
 
    useEffect(() =>{
       requestFriends(currentPage, pageSize)
-   },[currentPage, pageSize])
+   },[currentPage])
 
    const FriendsItem = friends.map(f =>
       (<FriendItem ava={f.photos.small || usersIcon}
@@ -50,6 +49,7 @@ const Friends = ({friends, totalFriendsCount, pageSize, requestFriends, ...props
                     setCurrentPage (currentPage + 1);
                  }}/>
          </div>}
+
       </div>
    )
 }
