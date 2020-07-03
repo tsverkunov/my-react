@@ -7,11 +7,12 @@ import {compose} from "redux";
 const FriendsContainer = (props) => {
 
    useEffect(() => {
-      props.requestFriends()
-   }, [props.users]);
+      props.requestFriends( props.currentPage, props.pageSize)
+   }, [props.users, props.isAuth]);
 
+   const isOwner = props.isAuth
    return (
-      <Friends {...props}/>
+      isOwner && <Friends {...props}/>
    )
 }
 
@@ -19,7 +20,11 @@ const FriendsContainer = (props) => {
 const mapStateToProps = (state) => {
    return {
       friends: state.sideBarReducer.friends,
-      users: state.usersReducer.users
+      users: state.usersReducer.users,
+      isAuth: state.authReducer.isAuth,
+      totalFriendsCount: state.sideBarReducer.totalFriendsCount,
+      pageSize: state.sideBarReducer.pageSize,
+      currentPage: state.sideBarReducer.currentPage
    }
 }
 

@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 
 const FriendItem = (props) => {
-    let path = "/dialogs/" + props.id
+    let path = "/profile/" + props.id
     return (
         <div>
             <div className={style.ava}>
