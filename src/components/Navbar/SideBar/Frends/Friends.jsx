@@ -4,17 +4,26 @@ import FriendItem from "./FriendItem/FriendItem";
 import usersIcon from "../../../../common/img/users_icon.png"
 import arrowDown from "../../../../common/img/arrow_down.png"
 import arrowUp from "../../../../common/img/arrow_up.png"
+import {setCurrentPage} from "../../../../redux/usersReducer";
 
 
-const Friends = ({friends, totalFriendsCount, pageSize, requestFriends, ...props}) => {
+const Friends = ({
+                    friends,
+                    totalFriendsCount,
+                    pageSize,
+                    requestFriends,
+                    currentPage,
+                    setFriendsCurrentPage,
+                    ...props
+                 }) => {
 
    let portionCount = Math.ceil(totalFriendsCount / pageSize);
    let [portionNumber, setPortionNumber] = useState(1);
-   let [currentPage, setCurrentPage] = useState(1);
+   // let [currentPage, setCurrentPage] = useState(1);
 
-   useEffect(() =>{
-      requestFriends(currentPage, pageSize)
-   },[currentPage])
+   // useEffect(() =>{
+   //    requestFriends(currentPage, pageSize)
+   // },[currentPage])
 
    const FriendsItem = friends.map(f =>
       (<FriendItem ava={f.photos.small || usersIcon}
@@ -32,7 +41,8 @@ const Friends = ({friends, totalFriendsCount, pageSize, requestFriends, ...props
                  src={arrowUp}
                  onClick={() => {
                     setPortionNumber(portionNumber - 1);
-                    setCurrentPage (currentPage - 1);
+                    // setCurrentPage (currentPage - 1);
+                    setFriendsCurrentPage(currentPage => currentPage - 1);
                  }}/>
          </div>}
 
@@ -46,7 +56,8 @@ const Friends = ({friends, totalFriendsCount, pageSize, requestFriends, ...props
                  src={arrowDown}
                  onClick={() => {
                     setPortionNumber(portionNumber + 1);
-                    setCurrentPage (currentPage + 1);
+                    // setCurrentPage (currentPage + 1);
+                    setFriendsCurrentPage(currentPage => currentPage + 1);
                  }}/>
          </div>}
 
@@ -55,3 +66,7 @@ const Friends = ({friends, totalFriendsCount, pageSize, requestFriends, ...props
 }
 
 export default Friends;
+
+// setPortionNumber(current => current + 1)
+//
+// Ещё можно кружочкам добавить в css  object-fit: cover, тогда они будут по центру выравниваться

@@ -12,7 +12,7 @@ let initialState = {
    pageSize: 6,
    totalFriendsCount: 0,
    isFetching: false,
-   // currentPage: 1,
+   currentPage: 1,
 };
 
 const sideBarReducer = (state = initialState, action) => {
@@ -23,8 +23,8 @@ const sideBarReducer = (state = initialState, action) => {
          return {...state, totalFriendsCount: action.count};
       case TOGGLE_IS_FETCHING:
          return {...state, isFetching: action.isFetching};
-      // case SET_CURRENT_PAGE:
-      //    return {...state, currentPage: action.currentPage};
+      case SET_CURRENT_PAGE:
+         return {...state, currentPage: action.currentPage};
       default:
          return state;
    }

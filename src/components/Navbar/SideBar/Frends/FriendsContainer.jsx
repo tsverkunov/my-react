@@ -1,24 +1,24 @@
 import React, {useEffect} from 'react';
 import Friends from "./Friends";
 import {connect} from "react-redux";
-import {requestFriends} from "../../../../redux/sideBarReducer";
+import {requestFriends, setFriendsCurrentPage} from "../../../../redux/sideBarReducer";
 import {compose} from "redux";
 import PreloaderBull from "../../../../common/PreloaderBall/PreloaderBall";
 
 const FriendsContainer = (props) => {
-
    useEffect(() => {
       props.requestFriends(props.currentPage, props.pageSize)
-   }, [props.users, props.isAuth]);
-
+   }, [props.users, props.isAuth, props.currentPage]);
+debugger
    const isOwner = props.isAuth
    return (
-      <div>
-         {!props.isFetching
-            ? <PreloaderBull/>
-            : isOwner && <Friends {...props}/>
-         }
-      </div>
+      isOwner && <Friends {...props}/>
+      // <div>
+      //    {props.isFetching
+      //       ? <PreloaderBull/>
+      //       : isOwner && <Friends {...props}/>
+      //    }
+      // </div>
    )
 }
 
@@ -39,6 +39,7 @@ const mapStateToProps = (state) => {
 export default compose(
    connect(mapStateToProps,
       {
-         requestFriends
+         requestFriends,
+         setFriendsCurrentPage
       })
 )(FriendsContainer);
