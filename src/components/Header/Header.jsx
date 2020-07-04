@@ -14,10 +14,10 @@ const Header = ({avatar, login, logout, isAuth}) => {
                   <NavLink to="/profile" >{login}</NavLink>
                   <img alt="" src={avatar || userIcon}/>
                   {/*<NavLink to={'/login'} onClick={props.logout}>Log Out</NavLink>*/}
-                  <button onClick={logout}>Log Out</button>
+                  <button onClick={logout} className={style.signIn}>Log Out</button>
                </div>
-               : <div>
-                  <NavLink to={'/login'} className={style.signIn}>Sign In</NavLink>
+               : <div className={style.signIn}>
+                  <NavLink to={'/login'} >Sign In</NavLink>
                </div>
             }
          </div>

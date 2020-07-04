@@ -1,5 +1,4 @@
 import {usersAPI} from "../api/api";
-import {setCurrentPage, setTotalUserCount, setUsers, toggleIsFetching} from "./usersReducer";
 
 const SET_FRIENDS = "my-react/sideBar/SET_FRIENDS";
 const SET_TOTAL_COUNT ="my-react/sideBar/SET_TOTAL_COUNT";
@@ -9,7 +8,7 @@ const TOGGLE_IS_FETCHING = 'my-react/sideBar/TOGGLE_IS_FETCHING';
 
 let initialState = {
    friends: [],
-   pageSize: 6,
+   pageSize: 10,
    totalFriendsCount: 0,
    isFetching: false,
    currentPage: 1,
@@ -36,10 +35,10 @@ export const setTotalFriendsCount = (count) => ({type: SET_TOTAL_COUNT, count})
 export const setFriendsCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 export const toggleIsFetchingFriends = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
-export const requestFriends = (currentPage, pageSize, friend) => async (dispatch) => {
+export const requestFriends = (currentPage, pageSize) => async (dispatch) => {
    // dispatch(setFriendsCurrentPage(currentPage));
    dispatch(toggleIsFetchingFriends(true));
-   let data = await usersAPI.requestFriends(currentPage, pageSize, friend);
+   let data = await usersAPI.requestFriends(currentPage, pageSize);
    dispatch(toggleIsFetchingFriends(false));
    dispatch(setFriends(data.items));
    dispatch(setTotalFriendsCount(data.totalCount));
