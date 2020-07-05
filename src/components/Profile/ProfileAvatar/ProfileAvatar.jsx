@@ -1,16 +1,20 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import style from '../Description/Description.module.sass';
 import userIcon from "../../../common/img/users_icon.png";
 import plusIcon from "../../../common/img/plus_icon.png"
 import minusIcon from "../../../common/img/minus_icon.png"
+import Preloader from "../../../common/Preloader/Preloader";
 
 
 const ProfileAvatar = ({
                           profile, isOwner,
-                          onMainPhotoSelected
+                          onMainPhotoSelected, friends,
+                          followingInProgress, follow, unfollow,
+                          followed
                        }) => {
    let [editMode, setEditMode] = useState(true);
-
+   // let friend = friends.find(f => f.id == profile.userId);
+   let button;
    const toggleEditMode = () => {
       setEditMode(!editMode);
    }
@@ -18,12 +22,34 @@ const ProfileAvatar = ({
       setEditMode(true);
       onMainPhotoSelected(e);
    }
+
+   console.log(followed);
+
+   if (followed) {
+      button = <button disabled={followingInProgress.some(id => id === profile.userId)}
+                       className={style.unSub}
+                       onClick={() => {
+                          unfollow(profile.userId)
+                       }}>SUBSCRIBED</button>
+   } else {
+      button = <button disabled={followingInProgress.some(id => id === profile.userId)}
+                       className={style.sub}
+                       onClick={() => {
+                          follow(profile.userId)
+                       }}>SUBSCRIBE</button>
+   }
+
    return (
       <div className={style.avatarItem}>
          <img alt=''
               className={style.avatar}
               src={profile.photos.large || userIcon}
          />
+         {!isOwner && button}
+         {/*{!isOwner && <button disabled={followingInProgress.some(id => id === profile.userId)}*/}
+         {/*        onClick={1 ? unfollow : follow}>*/}
+         {/*   {1 ? "SUBSCRIBED" : "SUBSCRIBE"}*/}
+         {/*</button>}*/}
          {
             isOwner && (editMode
                ? <img className={style.plusIcon}

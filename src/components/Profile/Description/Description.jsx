@@ -10,6 +10,8 @@ import ProfileAvatar from "../ProfileAvatar/ProfileAvatar";
 const Description = ({
                         profile, status, updateStatus,
                         updateDataProfile, isOwner, savePhoto,
+                        friends, followingInProgress, follow, unfollow,
+                        followed
                      }) => {
    let [editMode, setEditMode] = useState(true);
 
@@ -31,7 +33,14 @@ const Description = ({
       <div className={style.wrap}>
          <ProfileAvatar onMainPhotoSelected={onMainPhotoSelected}
                         profile={profile}
-                        isOwner={isOwner}/>
+                        isOwner={isOwner}
+                        friends={friends}
+                        followingInProgress={followingInProgress}
+                        follow={follow}
+                        unfollow={unfollow}
+                        followed={followed}
+
+         />
          <div className={style.userDescription}>
             <p className={style.nikName}>{profile.fullName}</p>
             <ProfileStatusWithHooks status={status}

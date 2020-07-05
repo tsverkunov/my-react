@@ -34,7 +34,13 @@ export const usersAPI = {
          .then(response => {
             return response.data;
          });
-   }
+   },
+   requestFollowed(id) {
+      return instance.get(`follow/${id}`)
+         .then(response => {
+            return response.data;
+         });
+   },
 }
 
 export const profileAPI = {

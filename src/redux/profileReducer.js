@@ -1,4 +1,4 @@
-import {profileAPI} from "../api/api";
+import {profileAPI, usersAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {getAvatar} from "./authReducer";
 
@@ -8,6 +8,7 @@ const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
 const SET_STATUS = 'profile/SET_STATUS';
 const DELETE_POST = 'profile/DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'profile/SAVE_PHOTO-SUCCESS';
+const SET_SUBSCRIBED = 'profile/SET_SUBSCRIBED';
 
 
 let initialState = {
@@ -16,6 +17,7 @@ let initialState = {
    ],
    profile: null,
    status: '',
+   followed: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -57,6 +59,8 @@ const profileReducer = (state = initialState, action) => {
          };
       case SET_STATUS:
          return {...state, status: action.status};
+      case SET_SUBSCRIBED:
+         return {...state, followed: action.followed};
       default:
          return state;
    }
@@ -67,16 +71,22 @@ export const addLike = (postId) => ({type: ADD_LIKE, postId})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 export const setStatus = (status) => ({type: SET_STATUS, status})
+export const setSubscribed = (followed) => ({type: SET_SUBSCRIBED, followed})
 export const deletePost = (postsId) => ({type: DELETE_POST, postsId})
 
 //Thunks
 export const getProfile = (userId) => async (dispatch) => {
    const data = await profileAPI.getProfile(userId);
    dispatch(setUserProfile(data));
+   dispatch(requestFollowed(userId));
 }
 export const getStatus = (userId) => async (dispatch) => {
    const data = await profileAPI.getStatus(userId);
    dispatch(setStatus(data));
+}
+export const requestFollowed = (userId) => async (dispatch) => {
+   const data = await usersAPI.requestFollowed(userId);
+   dispatch(setSubscribed(data));
 }
 export const updateStatus = (status) => async (dispatch) => {
    try {

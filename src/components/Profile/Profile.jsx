@@ -9,7 +9,9 @@ const Profile = ({
                     profile, status,
                     updateStatus,
                     updateDataProfile,
-                    isOwner, savePhoto
+                    isOwner, savePhoto,
+   friends, follow, unfollow, followingInProgress,
+   followed
                  }) => {
    if (!profile) {
       return <Preloader/>
@@ -22,6 +24,11 @@ const Profile = ({
                       status={status}
                       updateStatus={updateStatus}
                       updateDataProfile={updateDataProfile}
+                      friends={friends}
+                      followingInProgress={followingInProgress}
+                      follow={follow}
+                      unfollow={unfollow}
+                      followed={followed}
          />
          {isOwner && <MyPostsContainer/>}
       </div>

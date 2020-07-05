@@ -1,5 +1,6 @@
 import {usersAPI} from "../api/api";
 import {updateObjectInArray} from "../utilities/object-helper";
+import {requestFollowed} from "./profileReducer";
 
 const SUBSCRIBE = 'my-react/users/SUBSCRIBE';
 const UNSUBSCRIBE = 'my-react/users/UNSUBSCRIBE';
@@ -81,10 +82,12 @@ const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) =>
       dispatch(actionCreator(userId));
    }
    dispatch(toggleFollowingProgress(false, userId));
+   dispatch( requestFollowed (userId));
 }
 
 export const follow = (userId) => async (dispatch) => {
    followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess)
+
 }
 
 export const unfollow = (userId) => async (dispatch) => {

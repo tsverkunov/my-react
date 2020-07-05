@@ -1,13 +1,22 @@
 import React from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getProfile, getStatus, savePhoto, updateDataProfile, updateStatus} from "../../redux/profileReducer";
+import {
+   getProfile,
+   getStatus,
+   requestFollowed,
+   savePhoto,
+   updateDataProfile,
+   updateStatus
+} from "../../redux/profileReducer";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../HOCs/withAuthRedirect";
+import {getFollowingInProgress} from "../../redux/usersSelectors";
+import {follow, unfollow} from "../../redux/usersReducer";
 
 
-class ProfileContainer extends React.Component {
+class ProfileContainer extends React.PureComponent {
    profileRefresh() {
       let userId = this.props.match.params.userId;
       if (!userId) {
@@ -17,7 +26,8 @@ class ProfileContainer extends React.Component {
          }
       }
       this.props.getProfile(userId);
-      this.props.getStatus(userId)
+      this.props.getStatus(userId);
+      this.props.requestFollowed(userId);
    }
 
    componentDidMount() {
@@ -49,6 +59,9 @@ let mapStateToProps = (state) => {
       profile: state.profileReducer.profile,
       status: state.profileReducer.status,
       authorizedUserId: state.authReducer.id,
+      friends: state.sideBarReducer.friends,
+      followingInProgress: getFollowingInProgress(state),
+      followed: state.profileReducer.followed
    })
 }
 
@@ -57,7 +70,8 @@ export default compose(
       {
          getProfile, getStatus,
          updateStatus, updateDataProfile,
-         savePhoto
+         savePhoto, follow, unfollow,
+         requestFollowed
       }),
    withRouter,
    withAuthRedirect
