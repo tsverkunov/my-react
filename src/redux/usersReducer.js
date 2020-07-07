@@ -1,6 +1,6 @@
 import {usersAPI} from "../api/api";
 import {updateObjectInArray} from "../utilities/object-helper";
-import {requestFollowed} from "./profileReducer";
+import {requestFollowed, setSubscribed} from "./profileReducer";
 
 const SUBSCRIBE = 'my-react/users/SUBSCRIBE';
 const UNSUBSCRIBE = 'my-react/users/UNSUBSCRIBE';
@@ -70,28 +70,28 @@ export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
    dispatch(setCurrentPage(currentPage));
    dispatch(toggleIsFetching(true));
    let data = await usersAPI.requestUsers(currentPage, pageSize);
-   dispatch(toggleIsFetching(false));
    dispatch(setUsers(data.items));
+   dispatch(toggleIsFetching(false));
    dispatch(setTotalUserCount(data.totalCount));
 }
 
-const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
+const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator, isSubscribed) => {
    dispatch(toggleFollowingProgress(true, userId));
    let data = await apiMethod(userId);
    if (data.resultCode === 0) {
       dispatch(actionCreator(userId));
+      dispatch(setSubscribed(isSubscribed));
    }
+   // dispatch(requestFollowed (userId));
    dispatch(toggleFollowingProgress(false, userId));
-   dispatch( requestFollowed (userId));
 }
 
 export const follow = (userId) => async (dispatch) => {
-   followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess)
-
+   followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess, true)
 }
 
 export const unfollow = (userId) => async (dispatch) => {
-   followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess)
+   followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess, false)
 }
 
 

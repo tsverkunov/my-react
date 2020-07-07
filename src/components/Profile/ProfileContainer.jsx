@@ -27,7 +27,6 @@ class ProfileContainer extends React.PureComponent {
       }
       this.props.getProfile(userId);
       this.props.getStatus(userId);
-      this.props.requestFollowed(userId);
    }
 
    componentDidMount() {

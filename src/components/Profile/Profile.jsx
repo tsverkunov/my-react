@@ -10,8 +10,9 @@ const Profile = ({
                     updateStatus,
                     updateDataProfile,
                     isOwner, savePhoto,
-   friends, follow, unfollow, followingInProgress,
-   followed
+                    friends, follow,
+                    unfollow, followingInProgress,
+                    followed
                  }) => {
    if (!profile) {
       return <Preloader/>

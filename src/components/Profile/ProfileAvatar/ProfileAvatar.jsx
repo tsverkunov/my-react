@@ -22,9 +22,6 @@ const ProfileAvatar = ({
       setEditMode(true);
       onMainPhotoSelected(e);
    }
-
-   console.log(followed);
-
    if (followed) {
       button = <button disabled={followingInProgress.some(id => id === profile.userId)}
                        className={style.unSub}

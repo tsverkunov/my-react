@@ -27,7 +27,9 @@ const Friends = ({
       />));
    return (
       <div className={style.friends}>
-
+         <div className={style.title}>
+            <h3>Friends</h3>
+         </div>
          {portionNumber > 1 &&
          <div className={style.arrow}>
             <img alt=""

@@ -1,6 +1,6 @@
 import React from "react";
 import style from './Clip.module.sass';
-import clip from "./Rock Balance - 42470.mp4"
+import clip from "./video_2.mp4"
 
 const Clip = (props) => {
    return (

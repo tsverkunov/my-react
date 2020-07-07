@@ -77,8 +77,8 @@ export const deletePost = (postsId) => ({type: DELETE_POST, postsId})
 //Thunks
 export const getProfile = (userId) => async (dispatch) => {
    const data = await profileAPI.getProfile(userId);
-   dispatch(setUserProfile(data));
    dispatch(requestFollowed(userId));
+   dispatch(setUserProfile(data));
 }
 export const getStatus = (userId) => async (dispatch) => {
    const data = await profileAPI.getStatus(userId);
