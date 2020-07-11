@@ -1,9 +1,11 @@
 import {authAPI, profileAPI, securityAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 
-const SET_USER_DATA = 'SET_USER_DATA';
-const SET_CAPTCHA_URL_SUCCESS = 'SET_CAPTCHA_URL_SUCCESS';
-const SET_AVATAR = 'SET_AVATAR';
+const SET_USER_DATA = 'my-react/auth/SET_USER_DATA';
+const SET_CAPTCHA_URL_SUCCESS = 'my-react/auth/SET_CAPTCHA_URL_SUCCESS';
+const SET_AVATAR = 'my-react/auth/SET_AVATAR';
+const SET_ERROR_MESSAGE = 'my-react/auth/SET_ERROR_MESSAGE';
+const RESET_ERROR_MESSAGE = 'my-react/auth/RESET_ERROR_MESSAGE';
 
 
 let initialState = {
@@ -12,7 +14,8 @@ let initialState = {
    login: null,
    isAuth: false,
    avatar: null,
-   captchaUrl: null
+   captchaUrl: null,
+   errorMessage: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -20,10 +23,17 @@ const authReducer = (state = initialState, action) => {
       case SET_USER_DATA:
       case SET_CAPTCHA_URL_SUCCESS:
       case SET_AVATAR:
+      case SET_ERROR_MESSAGE:
          return {
             ...state,
             ...action.payload
          };
+      case RESET_ERROR_MESSAGE:
+         return {
+            ...state,
+            captchaUrl: null,
+            errorMessage: null,
+         }
       default:
          return state;
    }
@@ -33,6 +43,8 @@ const authReducer = (state = initialState, action) => {
 export const setUserData = (id, email, login, isAuth) => ({type: SET_USER_DATA, payload: {id, email, login, isAuth}})
 export const setCaptchaUrl = (captchaUrl) => ({type: SET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl}})
 export const setAvatar = (avatar) => ({type: SET_AVATAR, payload: {avatar}})
+export const setError = (errorMessage) => ({type: SET_ERROR_MESSAGE, payload: {errorMessage}})
+export const resetError = () => ({type: RESET_ERROR_MESSAGE})
 
 export const getAuthUserData = () => (dispatch) => {
    return authAPI.setData().then(data => {
@@ -47,13 +59,18 @@ export const login = (email, password, rememberMe, captcha) => (dispatch) => {
    authAPI.login(email, password, rememberMe, captcha).then(data => {
       if (data.resultCode === 0) {
          dispatch(getAuthUserData());
-
+         // dispatch(resetError());
       } else {
+         let message = data.messages.length > 0 ? data.messages[0] : "Some error";
          if (data.resultCode === 10) {
             dispatch(getCaptchaUrl());
          }
-         let message = data.messages.length > 0 ? data.messages[0] : "Some error";
-         dispatch(stopSubmit('login', {_error: message}));
+         // else if (data.resultCode === 1) {
+            // alert(message);
+            // dispatch(setError(message));
+         // }
+         // dispatch(stopSubmit('login', {_error: message}));
+         dispatch(setError(message));
       }
    });
 }

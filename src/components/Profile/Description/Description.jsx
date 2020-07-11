@@ -3,7 +3,7 @@ import style from './Description.module.sass';
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 import ProfileForm from "./ProfileForm/ProfileForm";
-import ProfileReduxForm from "./ProfileForm/Profile-Form";
+import ProfileReduxForm from "./ProfileForm/ProfileReduxForm";
 import ProfileData from "./ProfileData";
 import ProfileAvatar from "../ProfileAvatar/ProfileAvatar";
 

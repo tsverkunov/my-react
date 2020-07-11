@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import style from '../Description/Description.module.sass';
 import userIcon from "../../../common/img/users_icon.png";
 import plusIcon from "../../../common/img/plus_icon.png"
 import minusIcon from "../../../common/img/minus_icon.png"
-import Preloader from "../../../common/Preloader/Preloader";
 
 
 const ProfileAvatar = ({

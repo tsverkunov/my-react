@@ -82,7 +82,6 @@ const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator, is
       dispatch(actionCreator(userId));
       dispatch(setSubscribed(isSubscribed));
    }
-   // dispatch(requestFollowed (userId));
    dispatch(toggleFollowingProgress(false, userId));
 }
 

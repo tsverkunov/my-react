@@ -2,13 +2,13 @@ import {profileAPI, usersAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {getAvatar} from "./authReducer";
 
-const ADD_POST = 'profile/ADD-POST';
-const ADD_LIKE = 'profile/ADD_LIKE';
-const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
-const SET_STATUS = 'profile/SET_STATUS';
-const DELETE_POST = 'profile/DELETE_POST';
-const SAVE_PHOTO_SUCCESS = 'profile/SAVE_PHOTO-SUCCESS';
-const SET_SUBSCRIBED = 'profile/SET_SUBSCRIBED';
+const ADD_POST = 'my-react/profile/ADD-POST';
+const ADD_LIKE = 'my-react/profile/ADD_LIKE';
+const SET_USER_PROFILE = 'my-react/profile/SET_USER_PROFILE';
+const SET_STATUS = 'my-react/profile/SET_STATUS';
+// const DELETE_POST = 'my-react/profile/DELETE_POST';
+const SAVE_PHOTO_SUCCESS = 'my-react/profile/SAVE_PHOTO-SUCCESS';
+const SET_SUBSCRIBED = 'my-react/profile/SET_SUBSCRIBED';
 
 
 let initialState = {
@@ -32,11 +32,11 @@ const profileReducer = (state = initialState, action) => {
             ...state,
             post: [...state.post, newPost]
          };
-      case DELETE_POST:
-         return {
-            ...state,
-            post: state.post.filter(p => p.id != action.postsId)
-         };
+      // case DELETE_POST:
+      //    return {
+      //       ...state,
+      //       post: state.post.filter(p => p.id != action.postsId)
+      //    };
       case ADD_LIKE:
          return {
             ...state,
@@ -66,13 +66,13 @@ const profileReducer = (state = initialState, action) => {
    }
 }
 //Dispatches
-export const addPost = (newPostBody, postId) => ({type: ADD_POST, newPostBody, postId})
+export const addPost = (newPostBody) => ({type: ADD_POST, newPostBody})
 export const addLike = (postId) => ({type: ADD_LIKE, postId})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 export const setSubscribed = (followed) => ({type: SET_SUBSCRIBED, followed})
-export const deletePost = (postsId) => ({type: DELETE_POST, postsId})
+// export const deletePost = (postsId) => ({type: DELETE_POST, postsId})
 
 //Thunks
 export const getProfile = (userId) => async (dispatch) => {
@@ -103,11 +103,18 @@ export const updateDataProfile = (formData) => async (dispatch, getState) => {
    const response = await profileAPI.updateDataProfile(formData);
    if (response.data.resultCode === 0) {
       dispatch(getProfile(userId));
+
+   }
+   else if (response.data.resultCode === 1) {
+dispatch()
    } else {
       let message = response.data.messages.length > 0
          ? response.data.messages[0]
          : "Some error";
-      dispatch(stopSubmit('profileForm', {"contacts": {"facebook": message}}));
+
+      let regExp = /(?<=\>)\w+(?=\))/g;
+      let errorTitle = String(message.match(regExp)).toLowerCase();
+      dispatch(stopSubmit('profileForm', {"contacts": {[errorTitle]: "Invalid URL"}}));
       return Promise.reject(message);
    }
 }

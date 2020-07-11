@@ -1,9 +1,9 @@
 
 //to Form-Redux======================================
-export const required = value => {
-    if (value) return undefined;
-    return "Field is required";
-}
+// export const required = value => {
+//     if (value) return undefined;
+//     return "Field is required";
+// }
 
 const maxLength = max => value =>
     value && value.length > max ? `Must be ${max} characters or less` : undefined;
@@ -48,3 +48,15 @@ const validate = (min, max) => value => {
 
 export const validate28 = validate(2, 8);
 export const validate835 = validate(8, 35);
+
+
+
+// new to Formik
+
+export const required = value => {
+    // let error;
+    if (!value) {
+        return 'Required';
+    }
+    // return error;
+}

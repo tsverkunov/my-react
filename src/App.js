@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import './App.sass';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {HashRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -49,7 +49,7 @@ class App extends React.Component {
                <Switch>
                   <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                   <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                  <Route path='/login' render={() => <Login/>}/>
+                  <Route path='/login' render={() => <LoginFormik/>}/>
                   <Route path='/music' render={() => <MusicContainer/>}/>
                   <Route path='/news' render={() => <News/>}/>
                   <Route path='/users' render={() => <UsersContainer/>}/>
@@ -77,11 +77,11 @@ const MainJSApp = (props) => {
    return (
       //<React.StrictMode>
       // <BrowserRouter basename={process.env.PUBLIC_URL} >
-      <BrowserRouter>
+      <HashRouter>
          <Provider store={store}>
             <AppContainer/>
          </Provider>
-      </BrowserRouter>
+      </HashRouter>
       // </React.StrictMode>
    )
 };

@@ -47,7 +47,8 @@ const ProfileFormmm = ({profile, ...props}) => {
          <div>
             <p>Contacts:</p>
             {Object.keys(profile.contacts).map(key => {
-               return <div className={style.contact} key={key}><span>{key} :</span>
+               return <div className={style.contact} key={key}>
+                  <span>{key} :</span>
                   <Field type="text"
                          name={"contacts." + key}
                          component={Input}

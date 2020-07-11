@@ -34,17 +34,23 @@ export const CustomTextInput = ({label, ...props}) => {
       </div>
    )
 }
-export const CustomCheckbox = ({children, ...props}) => {
-   const [feild, meta] = useField(props, 'checkbox');
-   return (
-      <>
-         <input type="checkbox" {...feild} {...props} />
-         {children}
-         {meta.touched && meta.error ? (
-            <div className={style.error}>
-               {meta.error}
-            </div>
-         ) : null}
-      </>
-   )
-}
+// export const CustomCheckbox = ({children, ...props}) => {
+//    const [feild, meta] = useField(props, 'checkbox');
+//    return (
+//       <>
+//          <input type="checkbox" {...feild} {...props} />
+//          {children}
+//          {meta.touched && meta.error ? (
+//             <div className={style.error}>
+//                {meta.error}
+//             </div>
+//          ) : null}
+//       </>
+//    )
+// }
+
+
+// new field to Formik
+
+
+

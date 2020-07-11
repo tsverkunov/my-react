@@ -1,94 +1,131 @@
-import React from "react";
+import React, {useEffect} from "react";
 import style from "./Login.module.sass";
 import {connect} from "react-redux";
-import {login} from "../../redux/authReducer";
+import {login, resetError} from "../../redux/authReducer";
 import {Redirect} from "react-router-dom";
-import {Form, Formik, useField} from "formik";
+import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
-import {CustomCheckbox, CustomTextInput} from "../../common/FormsControls/FormsControlsFormik";
+import {required} from "../../utilities/validators/validators";
+import {CustomCheckbox, CustomInput} from "../../common/FormsControls/FormsControls";
 
-const LoginForm = (props) => {
-   return (
-      <div className={style.login}>
-         <Formik initialValues={{
+
+const LoginForm = ({captchaUrl, onSubmit, errorMessage, ...props}) => (
+
+   <div className={style.login}>
+      <Formik
+         initialValues={{
             email: '',
             password: '',
             rememberMe: false,
+            captcha: ''
          }}
-                 validationSchema={Yup.object({
-                    email: Yup.string()
-                       .email('Invalid email address')
-                       .required('Required'),
-                    password: Yup.string()
-                       .required('Required')
-                       .min(8, 'Must be at least 8 characters'),
-                    // rememberMe: Yup.boolean()
-                    //    .oneOf([true], 'You must Checked')
-                 })
-                 }
-                 onSubmit={(values, {setSubmitting, resetForm}) => {
-                    setTimeout(() => {
-                       // alert(JSON.stringify(values, null, 2));
-                       props.onSubmit(values)
-                       resetForm();
-                       setSubmitting(false);
-                    }, 1000)
-                 }}
-         >
-            {props => (
+         onSubmit={(values, {setSubmitting, resetForm}) => {
+            setTimeout(() => {
+               onSubmit(values)
+               // alert(JSON.stringify(values, null, 2));
+               resetForm();
+               // setSubmitting(false);
+            }, 300)
+         }}
+         validationSchema={Yup.object().shape({
+            email: Yup.string()
+               .email('Invalid email address')
+               .required('Required'),
+            password: Yup.string()
+               .required('Required')
+               .min(3, 'Must be at least 3 characters'),
+            // rememberMe: Yup.boolean()
+            //    .oneOf([true], 'You must Checked')
+         })}
+      >
+         {(props) => {
+            const {isSubmitting} = props;
+            console.log(props)
+            return (
                <Form>
                   <div>
-                     <CustomTextInput placeholder="email"
-                                      name="email"
-                                      type="email"
+                     <Field
+                        name="email"
+                        placeholder="email"
+                        component={CustomInput}
                      />
                   </div>
+
                   <div>
-                     <CustomTextInput placeholder="password"
-                                      name="password"
-                                      type="password"
+                     <Field
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                        component={CustomInput}
                      />
                   </div>
+
                   <div className={style.checkboxItem}>
                      <CustomCheckbox name="rememberMe">
                         Remember Me
                      </CustomCheckbox>
                   </div>
-                  {/*{*/}
-                  {/*   props.error && <div className={style.formCommonError}>*/}
-                  {/*      <span>*/}
-                  {/*         {props.error}*/}
-                  {/*      </span>*/}
-                  {/*   </div>*/}
-                  {/*}*/}
+
+                  {captchaUrl && <img src={captchaUrl} alt=""/>}
+
+                  {captchaUrl && <div>
+                     <Field
+                        validate={required}
+                        name="captcha"
+                        placeholder="Captcha"
+                        component={CustomInput}
+                     />
+                  </div>}
+
+                  {
+                     errorMessage && <div className={style.formCommonError}>
+                        <span>{errorMessage}</span>
+                     </div>
+                  }
+
                   <div className={style.buttonItem}>
                      <button type="submit"
-                             disabled={props.isSubmitting}
+                             disabled={isSubmitting}
                      >
-                        {props.isSubmitting ? 'Loading...' : 'Log In'}
+                        {isSubmitting ? 'Loading...' : 'Log In'}
                      </button>
                   </div>
                </Form>
-            )}
-         </Formik>
-      </div>
-   );
-}
+            )
+         }}
+      </Formik>
+   </div>
+)
 
-const Login = (props) => {
+
+const Login = ({login, isAuth, captchaUrl, errorMessage, resetError, ...props}) => {
+
+   useEffect(() => {
+      resetError();
+   }, [isAuth])
+
    const onSubmit = (values) => {
-      props.login(values.email, values.password, values.rememberMe)
+      login(
+         values.email,
+         values.password,
+         values.rememberMe,
+         values.captcha
+      )
    }
 
-   if (props.isAuth) {
+   if (isAuth) {
       return <Redirect to={"/profile"}/>
    }
    return <div className={style.login}>
-      <LoginForm onSubmit={onSubmit}/>
+      <LoginForm onSubmit={onSubmit} captchaUrl={captchaUrl} errorMessage={errorMessage}/>
    </div>
 }
 
 const mapStateToProps = (state) => ({
-   isAuth: state.authReducer.isAuth
+   isAuth: state.authReducer.isAuth,
+   captchaUrl: state.authReducer.captchaUrl,
+   errorMessage: state.authReducer.errorMessage,
 })
-export default connect(mapStateToProps, {login})(Login);
+
+
+export default connect(mapStateToProps, {login, resetError})(Login);
