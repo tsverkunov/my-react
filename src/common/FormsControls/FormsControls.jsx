@@ -60,6 +60,20 @@ export const CustomCheckbox = ({children, ...props}) => {
    )
 }
 
+export const CustomTextarea = ({label, ...props}) => {
+   const [feild, meta] = useField(props);
+   return (
+      <>
+         {/*<label htmlFor={props.id || props.name}>{label}</label>*/}
+         <textarea {...feild} {...props}  />
+         {meta.touched && meta.error ? (
+            <div className={style.error}>{meta.error}</div>
+         ) : null}
+      </>
+   )
+}
+
+
 export const CustomTextInput = ({label, ...props}) => {
    const [feild, meta] = useField(props.name);
    const hasError = meta.touched && meta.error

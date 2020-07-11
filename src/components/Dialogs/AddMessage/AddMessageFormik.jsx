@@ -1,21 +1,9 @@
 import React from "react";
 import style from "./AddMessage.module.sass";
 import * as Yup from "yup";
-import {Form, Formik, useField} from "formik";
+import {Form, Formik} from "formik";
+import {CustomTextarea} from "../../../common/FormsControls/FormsControls";
 
-
-const CustomTextarea = ({label, ...props}) => {
-   const [feild, meta] = useField(props);
-   return (
-      <>
-         {/*<label htmlFor={props.id || props.name}>{label}</label>*/}
-         <textarea {...feild} {...props}  />
-         {meta.touched && meta.error ? (
-            <div className={style.error}>{meta.error}</div>
-         ) : null}
-      </>
-   )
-}
 
 const AddMessageForm = (props) => {
    return (
@@ -32,17 +20,16 @@ const AddMessageForm = (props) => {
                     setTimeout(() => {
                        props.onSubmit(values)
                        resetForm();
-                       setSubmitting(false);
-                    }, 400)
+                       // setSubmitting(false);
+                    }, 300)
                  }}
          >
             {props => (
-               <Form onSubmit={props.handleSubmit}
-                     className={style.newPost}>
+               <Form className={style.newPost}>
                   <CustomTextarea name="message"
-                                   type="text"
-                                   placeholder="new message..."
-                                   className={style.newMessage}/>
+                                  placeholder="new message..."
+                                  className={style.newMessage}
+                  />
                   <button type="submit"
                           disabled={props.isSubmitting}
                           className={style.buttonSend}

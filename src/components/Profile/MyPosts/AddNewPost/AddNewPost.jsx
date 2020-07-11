@@ -1,39 +1,54 @@
 import React from "react";
 import style from "./AddNewPost.module.sass";
-import {Field, reduxForm} from "redux-form";
+import {Form, Formik} from "formik";
+import * as Yup from "yup";
+import {CustomTextarea} from "../../../../common/FormsControls/FormsControls";
 
 
-const AddNewPostForm = (props) => {
-    // let onAddPost = () => {
-    //     props.addPost();
-    // }
-    // let onPostChange = (e) => {
-    //     let text = e.currentTarget.value;
-    //     props.postChange(text);
-    // }
-    return (
-        <form onSubmit={props.handleSubmit}>
-            <div className={style.newPost}>
-                <Field component="textarea"
-                       name="newPostBody"
-                       placeholder="new post..."
-                       className={style.news}
-                />
-                <button className={style.buttonSend}>Send</button>
-            </div>
-        </form>
-    )
-}
+const AddNewPostForm = (props) => (
+   <>
+      <Formik initialValues={{
+         post: ''
+      }}
+              validationSchema={Yup.object({
+                 post: Yup.string()
+                    .max(150, 'Must be 150 characters or less'),
+              })
+              }
+              onSubmit={(values, {setSubmitting, resetForm}) => {
+                 setTimeout(() => {
+                    props.onSubmit(values)
+                    resetForm();
+                    // setSubmitting(false);
+                 }, 300)
+              }}
+      >
+         {props => (
+            <Form className={style.newPost}>
+               <CustomTextarea name="post"
+                               placeholder="new post..."
+                               className={style.news}
+               />
+               <button type="submit"
+                       disabled={props.isSubmitting}
+                       className={style.buttonSend}
+               >
+                  {props.isSubmitting ? 'Sending...' : 'Send'}
+               </button>
+            </Form>
+         )}
+      </Formik>
+   </>
+)
 
-const AddNewPostReduxForm = reduxForm({form: 'newPostBody'})(AddNewPostForm)
 
 const AddNewPost = (props) => {
-    let addNewPost = (values) => {
-        props.addPost(values.newPostBody);
-    }
-    return (
-        <AddNewPostReduxForm onSubmit={addNewPost}/>
-    )
+   let addNewPost = (values) => {
+      props.addPost(values.post);
+   }
+   return (
+      <AddNewPostForm onSubmit={addNewPost}/>
+   )
 }
 
 export default AddNewPost;
