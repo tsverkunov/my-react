@@ -50,39 +50,33 @@ const LoginForm = ({captchaUrl, onSubmit, errorMessage, ...props}) => (
                         component={CustomInput}
                      />
                   </div>
-
                   <div>
                      <Field
-                        type="password"
                         name="password"
                         placeholder="password"
                         component={CustomInput}
+                        type="password"
                      />
                   </div>
-
                   <div className={style.checkboxItem}>
                      <CustomCheckbox name="rememberMe">
                         Remember Me
                      </CustomCheckbox>
                   </div>
-
                   {captchaUrl && <img src={captchaUrl} alt=""/>}
-
                   {captchaUrl && <div>
                      <Field
-                        validate={required}
                         name="captcha"
                         placeholder="Captcha"
                         component={CustomInput}
+                        validate={required}
                      />
                   </div>}
-
                   {
                      errorMessage && <div className={style.formCommonError}>
                         <span>{errorMessage}</span>
                      </div>
                   }
-
                   <div className={style.buttonItem}>
                      <button type="submit"
                              disabled={isSubmitting}

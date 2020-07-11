@@ -9,7 +9,8 @@ import {compose} from "redux";
 const mapStateToProps = (state) => {
    return {
       dialogs: state.messageReducer.dialogs,
-      chats: state.messageReducer.chats
+      chats: state.messageReducer.chats,
+      avatar: state.authReducer.avatar,
    }
 }
 const mapDispatchToProps = (dispatch) => {

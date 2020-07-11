@@ -16,6 +16,7 @@ const Dialogs = (props) => {
     let chatsElements = props.chats.map(c =>
        <Chat message={c.message}
              key={c.id}
+             avatar={props.avatar}
        />);
     return (
         <div className={style.wrapperContent}>

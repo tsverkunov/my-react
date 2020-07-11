@@ -3,7 +3,6 @@ import style from './Header.module.sass';
 import logo from '../../common/img/Social_Network_logo.svg'
 import {NavLink} from "react-router-dom";
 import userIcon from "../../common/img/users_icon.png"
-import {Button} from "../Setting/Setting";
 
 const Header = ({avatar, login, logout, isAuth}) => {
    return (
