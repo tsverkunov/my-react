@@ -75,14 +75,14 @@ const AppContainer = compose(
 
 const MainJSApp = (props) => {
    return (
-      // <React.StrictMode>
-      //  <BrowserRouter basename={process.env.PUBLIC_URL} >
-      <BrowserRouter>
-         <Provider store={store}>
-            <AppContainer/>
-         </Provider>
-      </BrowserRouter>
-      // </React.StrictMode>
+      <React.StrictMode>
+         {/*<BrowserRouter basename={process.env.PUBLIC_URL} >*/}
+         <BrowserRouter>
+            <Provider store={store}>
+               <AppContainer/>
+            </Provider>
+         </BrowserRouter>a
+      </React.StrictMode>
    )
 };
 
