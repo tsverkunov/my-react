@@ -1,5 +1,4 @@
 import {authAPI, profileAPI, securityAPI} from "../api/api";
-import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'my-react/auth/SET_USER_DATA';
 const SET_CAPTCHA_URL_SUCCESS = 'my-react/auth/SET_CAPTCHA_URL_SUCCESS';

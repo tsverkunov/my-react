@@ -15,11 +15,10 @@ import PreloaderBall from "./common/PreloaderBall/PreloaderBall";
 import MusicContainer from "./components/Music/MusicContainer";
 import store from "./redux/redux-store";
 import Preloader from "./common/Preloader/Preloader";
-import LoginFormik from "./components/Login/LoginFormik";
 
 //Lazy-Loading
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
-const Login = React.lazy(() => import("./components/Login/Login"));
+const LoginFormik = React.lazy(() => import("./components/Login/Login"));
 
 class App extends React.Component {
 

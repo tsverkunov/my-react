@@ -3,13 +3,20 @@ import Friends from "./Friends";
 import {connect} from "react-redux";
 import {requestFriends, setFriendsCurrentPage} from "../../../../redux/sideBarReducer";
 import {compose} from "redux";
-import PreloaderBull from "../../../../common/PreloaderBall/PreloaderBall";
 
-const FriendsContainer = (props) => {
+const FriendsContainer = ({
+                             requestFriends,
+                             currentPage,
+                             pageSize,
+                             users,
+                             isAuth,
+                             ...props
+}) => {
    useEffect(() => {
-      props.requestFriends(props.currentPage, props.pageSize)
-   }, [props.users, props.isAuth, props.currentPage]);
-   const isOwner = props.isAuth
+      requestFriends(currentPage, pageSize)
+   }, [users, isAuth, currentPage]);
+
+   const isOwner = isAuth
    return (
       isOwner && <Friends {...props}/>
       // <div>

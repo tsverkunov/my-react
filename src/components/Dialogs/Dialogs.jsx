@@ -2,7 +2,6 @@ import React from "react";
 import style from "./Dialogs.module.sass";
 import DialogItem from "./Dialogitem/DialogItem";
 import Chat from "./Chat/Chat";
-import AddMessage from "./AddMessage/AddMessage";
 import AddMessageFormik from "./AddMessage/AddMessageFormik";
 
 

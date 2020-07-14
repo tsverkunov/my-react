@@ -1,6 +1,5 @@
 import React from "react";
 import {Form, Formik, useField} from "formik";
-import * as Yup from "yup";
 
 
 const CustomTextInput = ({label, ...props}) => {
