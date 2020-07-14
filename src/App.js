@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import './App.sass';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {HashRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -72,15 +72,15 @@ const AppContainer = compose(
    connect(mapStateToProps, {initializeApp})
 )(App);
 
-const MainJSApp = (props) => {
+const MainJSApp = () => {
    return (
       // <React.StrictMode>
       //    <BrowserRouter basename={process.env.PUBLIC_URL} >
-         <BrowserRouter>
+         <HashRouter>
             <Provider store={store}>
                <AppContainer/>
             </Provider>
-         </BrowserRouter>
+         </HashRouter>
       // </React.StrictMode>
    )
 };
