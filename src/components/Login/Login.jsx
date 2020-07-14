@@ -6,7 +6,6 @@ import {email, maxLength35, minLength2, minLength4, required} from "../../utilit
 import {connect} from "react-redux";
 import {login} from "../../redux/authReducer";
 import {Redirect} from "react-router-dom";
-import {Button} from "../Setting/Setting";
 
 
 const LoginForm = ({captchaUrl, handleSubmit, error, submitting}) => {

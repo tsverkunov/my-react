@@ -14,11 +14,11 @@ const FriendsContainer = ({
 }) => {
    useEffect(() => {
       requestFriends(currentPage, pageSize)
-   }, [users, isAuth, currentPage]);
+   }, [users, isAuth, currentPage, pageSize, requestFriends]);
 
-   const isOwner = isAuth
+   // const isOwner = isAuth
    return (
-      isOwner && <Friends {...props}/>
+      isAuth && <Friends {...props}/>
       // <div>
       //    {props.isFetching
       //       ? <PreloaderBull/>
