@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import './App.sass';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import {HashRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -76,11 +76,11 @@ const MainJSApp = () => {
    return (
       // <React.StrictMode>
       //    <BrowserRouter basename={process.env.PUBLIC_URL} >
-         <HashRouter>
+         <BrowserRouter>
             <Provider store={store}>
                <AppContainer/>
             </Provider>
-         </HashRouter>
+         </BrowserRouter>
       // </React.StrictMode>
    )
 };
