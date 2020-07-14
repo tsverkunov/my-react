@@ -12,10 +12,12 @@
   font-weight: 500
   margin-bottom: 0
   color: #bebebe
+
 .work
   //position: relative
   display: flex
   align-items: center
+
   img
     //position: absolute
     //left: 130px
@@ -28,6 +30,8 @@
 .avatarItem
   display: flex
   flex-direction: column
+  position: relative
+
 
 .avatar
   justify-self: center
@@ -37,7 +41,21 @@
   margin: 30px 30px 5px 30px
   border-radius: 10%
 
+.wrappIcon
+  display: none
+  width: 25px
+  height: 25px
+  border-radius: 50%
+  background: #4e4e4e
+  position: absolute
+  top: 35px
+  left: 35px
+
 .plusIcon
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
   width: 20px
   align-self: center
   cursor: pointer
@@ -48,11 +66,14 @@
 .profileDataWrapp
   display: flex
   flex-direction: column
+
   p
     color: #9b9b9b
+
   span
     font-size: 18px
     color: #ffffff
+
 .editItem
   display: flex
 
@@ -60,8 +81,10 @@
   a
     transition: all .2s
     color: #969696
+
   & a:hover
     color: #ffffff
+
 .editIcon
   margin: 20px 10px 0 auto
 

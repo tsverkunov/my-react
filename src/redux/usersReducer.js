@@ -1,6 +1,6 @@
 import {usersAPI} from "../api/api";
 import {updateObjectInArray} from "../utilities/object-helper";
-import {requestFollowed, setSubscribed} from "./profileReducer";
+import {setSubscribed} from "./profileReducer";
 
 const SUBSCRIBE = 'my-react/users/SUBSCRIBE';
 const UNSUBSCRIBE = 'my-react/users/UNSUBSCRIBE';
@@ -12,7 +12,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = 'my-react/users/TOGGLE_IS_FOLLOWING_PROGRES
 
 let initialState = {
    users: [],
-   pageSize: 15,
+   pageSize: 12,
    totalUserCount: 0,
    currentPage: 1,
    isFetching: false,

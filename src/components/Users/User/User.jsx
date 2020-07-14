@@ -24,14 +24,12 @@ const User = ({
             {user.followed
                ? isOwner && <button disabled={followingInProgress.some(id => id === user.id)}
                                     onClick={() => {unfollow(user.id)}}
-                                    className={style.unSub}
-            >
+                                    className={style.unSub}>
                SUBSCRIBED
             </button>
                : isOwner && <button disabled={followingInProgress.some(id => id === user.id)}
                                     onClick={() => {follow(user.id)}}
-                                    className={style.sub}
-            >
+                                    className={style.sub}>
                SUBSCRIBE
             </button>
             }

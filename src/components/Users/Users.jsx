@@ -31,9 +31,9 @@ let Users = ({
                   <User followingInProgress={followingInProgress}
                         follow={follow}
                         unfollow={unfollow}
+                        isOwner={isOwner}
                         user={u}
                         key={u.id}
-                        isOwner={isOwner}
                   />
                )}
             </div>}

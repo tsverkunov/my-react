@@ -40,7 +40,7 @@ const authReducer = (state = initialState, action) => {
 }
 
 
-export const setUserData = (id, email, login, isAuth) => ({type: SET_USER_DATA, payload: {id, email, login, isAuth}})
+export const setUserData = (id, email, login, isAuth, avatar) => ({type: SET_USER_DATA, payload: {id, email, login, isAuth, avatar}})
 export const setCaptchaUrl = (captchaUrl) => ({type: SET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl}})
 export const setAvatar = (avatar) => ({type: SET_AVATAR, payload: {avatar}})
 export const setError = (errorMessage) => ({type: SET_ERROR_MESSAGE, payload: {errorMessage}})
@@ -59,7 +59,6 @@ export const login = (email, password, rememberMe, captcha) => (dispatch) => {
    authAPI.login(email, password, rememberMe, captcha).then(data => {
       if (data.resultCode === 0) {
          dispatch(getAuthUserData());
-         // dispatch(resetError());
       } else {
          let message = data.messages.length > 0 ? data.messages[0] : "Some error";
          if (data.resultCode === 10) {
@@ -77,7 +76,7 @@ export const login = (email, password, rememberMe, captcha) => (dispatch) => {
 export const logout = () => (dispatch) => {
    authAPI.logout().then(data => {
       if (data.resultCode === 0) {
-         dispatch(setUserData(null, null, null, false));
+         dispatch(setUserData(null, null, null, false, null));
       }
    });
 }

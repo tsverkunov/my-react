@@ -7,12 +7,21 @@ import minusIcon from "../../../common/img/minus_icon.png"
 
 const ProfileAvatar = ({
                           profile, isOwner,
-                          onMainPhotoSelected, friends,
-                          followingInProgress, follow, unfollow,
-                          followed
+                          onMainPhotoSelected,
+                          followingInProgress,
+                          follow, unfollow, followed
                        }) => {
    let [editMode, setEditMode] = useState(true);
-   // let friend = friends.find(f => f.id == profile.userId);
+   let [editDisplay, setEditDisplay] = useState('none');
+
+   const editDisplayBlock = () => {
+      setEditDisplay('block');
+   }
+   const editDisplayNone = () => {
+      setEditDisplay('none');
+   }
+
+
    let button;
    const toggleEditMode = () => {
       setEditMode(!editMode);
@@ -39,6 +48,9 @@ const ProfileAvatar = ({
       <div className={style.avatarItem}>
          <img alt=''
               className={style.avatar}
+              onMouseEnter={editDisplayBlock}
+              onMouseLeave={editDisplayNone}
+              onDoubleClick={toggleEditMode}
               src={profile.photos.large || userIcon}
          />
          {!isOwner && button}
@@ -48,16 +60,20 @@ const ProfileAvatar = ({
          {/*</button>}*/}
          {
             isOwner && (editMode
-               ? <img className={style.plusIcon}
-                      src={plusIcon}
-                      onClick={toggleEditMode}
-                      alt=""
-               />
+               ? <div className={style.wrappIcon} style={{display: editDisplay}}>
+                  <img className={style.plusIcon}
+                       src={plusIcon}
+                       onClick={toggleEditMode}
+                       onMouseEnter={editDisplayBlock}
+                       alt=""
+                  />
+               </div>
                : <div className={style.minusIcon}>
-                  <div>
+                  <div className={style.wrappIcon} style={{display: editDisplay}}>
                      <img className={style.plusIcon}
                           src={minusIcon}
                           onClick={toggleEditMode}
+                          onMouseEnter={editDisplayBlock}
                           alt=""
                      />
                   </div>

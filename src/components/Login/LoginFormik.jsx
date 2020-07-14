@@ -19,12 +19,11 @@ const LoginForm = ({captchaUrl, onSubmit, errorMessage, ...props}) => (
             rememberMe: false,
             captcha: ''
          }}
-         onSubmit={(values, {setSubmitting, resetForm}) => {
+         onSubmit={(values, {resetForm}) => {
             setTimeout(() => {
                onSubmit(values)
                // alert(JSON.stringify(values, null, 2));
                resetForm();
-               // setSubmitting(false);
             }, 300)
          }}
          validationSchema={Yup.object().shape({
@@ -40,7 +39,6 @@ const LoginForm = ({captchaUrl, onSubmit, errorMessage, ...props}) => (
       >
          {(props) => {
             const {isSubmitting} = props;
-            console.log(props)
             return (
                <Form>
                   <div>
