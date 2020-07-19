@@ -26,7 +26,7 @@ const ProfileStatusWithHooks = ({isOwner, status, updateStatus}) => {
       <div>
          {!editMode
             ? <div className={style.spanItem}>
-               <span onDoubleClick={isOwner && activateEditMode}>
+               <span onDoubleClick={isOwner ? activateEditMode : null}>
                   {status || 'status'}
                </span>
             </div>

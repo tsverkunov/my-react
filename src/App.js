@@ -18,7 +18,7 @@ import Preloader from "./common/Preloader/Preloader";
 
 //Lazy-Loading
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
-const LoginFormik = React.lazy(() => import("./components/Login/Login"));
+const LoginFormik = React.lazy(() => import("./components/Login/LoginFormik"));
 
 class App extends React.Component {
 

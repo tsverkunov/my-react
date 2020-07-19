@@ -6,7 +6,7 @@ const ADD_POST = 'my-react/profile/ADD-POST';
 const ADD_LIKE = 'my-react/profile/ADD_LIKE';
 const SET_USER_PROFILE = 'my-react/profile/SET_USER_PROFILE';
 const SET_STATUS = 'my-react/profile/SET_STATUS';
-// const DELETE_POST = 'my-react/profile/DELETE_POST';
+const DELETE_POST = 'my-react/profile/DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'my-react/profile/SAVE_PHOTO-SUCCESS';
 const SET_SUBSCRIBED = 'my-react/profile/SET_SUBSCRIBED';
 
@@ -32,11 +32,11 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         post: [...state.post, newPost]
       };
-     // case DELETE_POST:
-     //    return {
-     //       ...state,
-     //       post: state.post.filter(p => p.id != action.postsId)
-     //    };
+     case DELETE_POST:
+        return {
+           ...state,
+           post: state.post.filter(p => p.id != action.postsId)
+        };
     case ADD_LIKE:
       return {
         ...state,
@@ -72,7 +72,7 @@ export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 export const setSubscribed = (followed) => ({type: SET_SUBSCRIBED, followed})
-// export const deletePost = (postsId) => ({type: DELETE_POST, postsId})
+export const deletePost = (postsId) => ({type: DELETE_POST, postsId})
 
 //Thunks
 export const getProfile = (userId) => async (dispatch) => {

@@ -10,8 +10,6 @@ const Friends = ({
                     friends,
                     totalFriendsCount,
                     pageSize,
-                    requestFriends,
-                    currentPage,
                     setFriendsCurrentPage,
                     ...props
                  }) => {

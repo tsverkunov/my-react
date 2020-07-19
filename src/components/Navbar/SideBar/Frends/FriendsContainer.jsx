@@ -16,13 +16,12 @@ const FriendsContainer = ({
       requestFriends(currentPage, pageSize)
    }, [users, isAuth, currentPage, pageSize, requestFriends]);
 
-   // const isOwner = isAuth
    return (
-      isAuth && <Friends {...props}/>
+      isAuth && <Friends pageSize={pageSize} {...props}/>
       // <div>
       //    {props.isFetching
       //       ? <PreloaderBull/>
-      //       : isOwner && <Friends {...props}/>
+      //       : isAuth && <Friends pageSize={pageSize} {...props}/>
       //    }
       // </div>
    )
