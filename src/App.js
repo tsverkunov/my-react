@@ -3,8 +3,6 @@ import './App.sass';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import {HashRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
-import News from "./components/News/News";
-import Setting from "./components/Setting/Setting";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -15,10 +13,15 @@ import PreloaderBall from "./common/PreloaderBall/PreloaderBall";
 import MusicContainer from "./components/Music/MusicContainer";
 import store from "./redux/redux-store";
 import Preloader from "./common/Preloader/Preloader";
+import Setting from "./components/Setting/Setting";
+import News from "./components/News/News";
 
 //Lazy-Loading
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
 const LoginFormik = React.lazy(() => import("./components/Login/LoginFormik"));
+// const News = React.lazy(() => import("./components/News/News"));
+// const Setting = React.lazy(() => import("./components/Setting/Setting"));
+// const MusicContainer = React.lazy(() => import("./components/Music/MusicContainer"));
 
 class App extends React.Component {
 

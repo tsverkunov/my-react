@@ -27,8 +27,7 @@ const messageReducer = (state = initialState, action) => {
    }
 }
 
-export const addMessageCreator = (newMessageBody) =>
-   ({type: SEND_MESSAGE, newMessageBody})
+export const addMessageCreator = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody})
 
 
 export default messageReducer;

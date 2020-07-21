@@ -35,7 +35,7 @@ const profileReducer = (state = initialState, action) => {
      case DELETE_POST:
         return {
            ...state,
-           post: state.post.filter(p => p.id != action.postsId)
+           post: state.post.filter(p => p.id !== action.postsId)
         };
     case ADD_LIKE:
       return {
