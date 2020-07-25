@@ -21,7 +21,6 @@ const ProfileAvatar = ({
       setEditDisplay('none');
    }
 
-
    let button;
    const toggleEditMode = () => {
       setEditMode(!editMode);

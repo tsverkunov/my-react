@@ -8,8 +8,8 @@ import Article from "./Article/Article";
 import {addNewsThunk} from "../../redux/newsReducer";
 
 
-// const getPageSize = createSelector(
-//    state => state.usersReducer.pageSize
+// const getArticles = createSelector(
+//    state => state.newsReducer.articles
 // )
 
 const News = () => {
