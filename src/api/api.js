@@ -72,9 +72,6 @@ export const profileAPI = {
 export const authAPI = {
    setData() {
       return instance.get(`auth/me`)
-         .then(response => {
-            return response.data;
-         });
    },
    login(email, password, rememberMe = false, captcha ) {
       return instance.post(`auth/login`,
@@ -84,15 +81,9 @@ export const authAPI = {
             rememberMe,
             captcha
          })
-         .then(response => {
-            return response.data;
-         });
    },
    logout() {
       return instance.delete(`auth/login`)
-         .then(response => {
-            return response.data;
-         });
    }
 }
 

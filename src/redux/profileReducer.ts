@@ -1,6 +1,7 @@
 import {profileAPI, usersAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {getAvatar} from "./authReducer";
+import {PhotosType, PostType, ProfileType} from "../types/types";
 
 const ADD_POST = 'my-react/profile/ADD-POST';
 const ADD_LIKE = 'my-react/profile/ADD_LIKE';
@@ -14,13 +15,15 @@ const SET_SUBSCRIBED = 'my-react/profile/SET_SUBSCRIBED';
 let initialState = {
   post: [
     {id: 1, message: 'My React JS.', likesCount: 777},
-  ],
-  profile: null,
+  ] as Array<PostType>,
+  profile: null as ProfileType | null,
   status: '',
   followed: null
 };
 
-const profileReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState;
+
+const profileReducer = (state = initialState, action:any): InitialStateType => {
   switch (action.type) {
     case ADD_POST:
       let newPost = {
@@ -55,7 +58,7 @@ const profileReducer = (state = initialState, action) => {
         profile: {
           ...state.profile,
           photos: action.photos
-        }
+        } as ProfileType
       };
     case SET_STATUS:
       return {...state, status: action.status};
@@ -66,29 +69,57 @@ const profileReducer = (state = initialState, action) => {
   }
 }
 //Dispatches
-export const addPost = (newPostBody) => ({type: ADD_POST, newPostBody})
-export const addLike = (postId) => ({type: ADD_LIKE, postId})
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
-export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
-export const setStatus = (status) => ({type: SET_STATUS, status})
-export const setSubscribed = (followed) => ({type: SET_SUBSCRIBED, followed})
-export const deletePost = (postsId) => ({type: DELETE_POST, postsId})
+type AddPostActionType = {
+  type: typeof ADD_POST
+  newPostBody: string
+}
+export const addPost = (newPostBody: string): AddPostActionType => ({type: ADD_POST, newPostBody})
+type AddLikeActionType = {
+  type: typeof ADD_LIKE
+  postId: number
+}
+export const addLike = (postId: number): AddLikeActionType => ({type: ADD_LIKE, postId})
+type SetUserProfileActionType = {
+  type: typeof SET_USER_PROFILE
+  profile: ProfileType
+}
+export const setUserProfile = (profile: ProfileType): SetUserProfileActionType => ({type: SET_USER_PROFILE, profile})
+type SavePhotoSuccessActionType = {
+  type: typeof SAVE_PHOTO_SUCCESS
+  photos: PhotosType
+}
+export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessActionType => ({type: SAVE_PHOTO_SUCCESS, photos})
+type SetStatusActionType = {
+  type: typeof SET_STATUS
+  status: string
+}
+export const setStatus = (status: string): SetStatusActionType => ({type: SET_STATUS, status})
+type SetSubscribedActionType = {
+  type: typeof SET_SUBSCRIBED
+  followed: boolean
+}
+export const setSubscribed = (followed: boolean ): SetSubscribedActionType => ({type: SET_SUBSCRIBED, followed})
+type DeletePostActionType = {
+  type: typeof DELETE_POST
+  postsId: number
+}
+export const deletePost = (postsId: number): DeletePostActionType => ({type: DELETE_POST, postsId})
 
 //Thunks
-export const getProfile = (userId) => async (dispatch) => {
+export const getProfile = (userId: number) => async (dispatch: any) => {
   const data = await profileAPI.getProfile(userId);
   dispatch(requestFollowed(userId));
   dispatch(setUserProfile(data));
 }
-export const getStatus = (userId) => async (dispatch) => {
+export const getStatus = (userId: number) => async (dispatch: any) => {
   const data = await profileAPI.getStatus(userId);
   dispatch(setStatus(data));
 }
-export const requestFollowed = (userId) => async (dispatch) => {
+export const requestFollowed = (userId: number) => async (dispatch: any) => {
   const data = await usersAPI.requestFollowed(userId);
   dispatch(setSubscribed(data));
 }
-export const updateStatus = (status) => async (dispatch) => {
+export const updateStatus = (status: string) => async (dispatch: any) => {
   try {
     const response = await profileAPI.updateStatus(status);
     if (response.data.resultCode === 0) {
@@ -98,7 +129,7 @@ export const updateStatus = (status) => async (dispatch) => {
     alert(error);
   }
 }
-export const updateDataProfile = (formData) => async (dispatch, getState) => {
+export const updateDataProfile = (formData: any) => async (dispatch: any, getState: any) => {
   const userId = getState().authReducer.id;
   const response = await profileAPI.updateDataProfile(formData);
   if (response.data.resultCode === 0) {
@@ -117,7 +148,7 @@ export const updateDataProfile = (formData) => async (dispatch, getState) => {
     return Promise.reject(message);
   }
 }
-export const savePhoto = (file) => async (dispatch) => {
+export const savePhoto = (file: any) => async (dispatch: any) => {
   let response = await profileAPI.savePhoto(file);
   if (response.data.resultCode === 0) {
     dispatch(savePhotoSuccess(response.data.data.photos));

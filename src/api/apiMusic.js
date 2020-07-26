@@ -14,10 +14,10 @@ const instance = axios.create({
 export const radioAPI = {
     getTrack(searchResult) {
         return instance.get(`search?q=${searchResult}`)
-            .then(response => {
-                // console.log(response);
-                return response.data;
-            })
+            // .then(response => {
+            //     // console.log(response);
+            //     return response.data;
+            // })
             .catch(err => {
                 console.log(err);
             });
