@@ -3,11 +3,11 @@ import {Form, Formik, useField} from "formik";
 
 
 const CustomTextInput = ({label, ...props}) => {
-   const [feild, meta] = useField(props);
+   const [field, meta] = useField(props);
    return (
       <>
          {/*<label htmlFor={props.id || props.name}>{label}</label>*/}
-         <input  {...feild} {...props} />
+         <input  {...field} {...props} />
          {meta.touched && meta.error ? (
             <div><span >{meta.error}</span></div>
 
@@ -16,10 +16,10 @@ const CustomTextInput = ({label, ...props}) => {
    )
 }
 const CustomCheckbox = ({children, ...props}) => {
-   const [feild, meta] = useField(props, 'checkbox');
+   const [field, meta] = useField(props, 'checkbox');
    return (
       <>
-         <input type="checkbox" {...feild} {...props} />
+         <input type="checkbox" {...field} {...props} />
          {children}
          {meta.touched && meta.error ? (
             <div >{meta.error}</div>

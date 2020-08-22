@@ -8,7 +8,7 @@ export const Input = ({
                         input,
                         label,
                         type,
-                        meta: {touched, error, warning},
+                        meta: {touched, error},
                         ...props
                       }) => {
   const hasError = touched && error;
@@ -44,10 +44,10 @@ export const CustomInput = ({
 )
 
 export const CustomCheckbox = ({label, ...props}) => {
-  const [feild, meta] = useField(props.name);
+  const [field, meta] = useField(props.name);
   return (
      <>
-       <input type="checkbox"  {...feild} {...props} />
+       <input type="checkbox"  {...field} {...props} />
        {/*{children}*/}
        <label htmlFor={props.id}>{label}</label>
        {meta.touched && meta.error
@@ -59,12 +59,12 @@ export const CustomCheckbox = ({label, ...props}) => {
   )
 }
 
-export const CustomTextarea = ({label, ...props}) => {
-  const [feild, meta] = useField(props);
+export const CustomTextarea = ({...props}) => {
+  const [field, meta] = useField(props);
   return (
      <>
        {/*<label htmlFor={props.id || props.name}>{label}</label>*/}
-       <textarea {...feild} {...props}  />
+       <textarea {...field} {...props}  />
        {meta.touched && meta.error ? (
           <div className={style.error}>{meta.error}</div>
        ) : null}
@@ -74,12 +74,12 @@ export const CustomTextarea = ({label, ...props}) => {
 
 
 export const CustomTextInput = ({label, ...props}) => {
-  const [feild, meta] = useField(props.name);
+  const [field, meta] = useField(props.name);
   const hasError = meta.touched && meta.error
   return (
      <div className={style.formControl + ' ' + (hasError ? style.error : '')}>
        {/*<label htmlFor={props.id || props.name}>{label}</label>*/}
-       <input className={style.textInput} {...feild} {...props} />
+       <input className={style.textInput} {...field} {...props} />
        {hasError && <div>
             <span className={style.error}>
               {meta.error}
