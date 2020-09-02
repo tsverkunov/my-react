@@ -25,7 +25,7 @@ const AddNewPostForm: FC<FormPropsTypes> = ({onSubmit}) => {
               onSubmit={(values, {resetForm}) => {
                 setTimeout(() => {
                   onSubmit(values)
-                  resetForm();
+                  resetForm()
                   // setSubmitting(false);
                 }, 300)
               }}

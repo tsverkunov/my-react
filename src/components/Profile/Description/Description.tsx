@@ -4,7 +4,7 @@ import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 import ProfileData from "./ProfileData";
 import ProfileAvatar from "../ProfileAvatar/ProfileAvatar";
 import {ProfileType, UserType} from "../../../types/types";
-import ProfileForm from "./ProfileForm/ProfileForm";
+import ProfileReduxForm from "./ProfileForm/ProfileReduxForm";
 
 type PropsType = {
   profile: ProfileType
@@ -64,11 +64,11 @@ const Description: FC<PropsType> = ({
                          profile={profile}
                          isOwner={isOwner}
           />
-          : <ProfileForm onSubmit={deActivateEditMode}/>
-          // : <ProfileReduxForm profile={profile}
-          //                     initialValues={profile}
-          //                     onSubmit={deActivateEditMode}
-          // />
+          // : <ProfileForm onSubmit={deActivateEditMode}/>
+          : <ProfileReduxForm profile={profile}
+                              initialValues={profile}
+                              onSubmit={deActivateEditMode as any}
+          />
         }
       </div>
     </div>

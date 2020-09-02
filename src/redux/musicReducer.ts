@@ -7,7 +7,7 @@ const SET_SEARCH_RESULT = 'music/SET_SEARCH_RESULT';
 
 
 
-let initialState = {
+const initialState = {
    radioChannel: [],
    isFetching: false,
    searchResult: null
@@ -31,11 +31,13 @@ type ToggleIsFetchingActionType = {
    isFetching: boolean,
 }
 export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingActionType => ({type: TOGGLE_IS_FETCHING, isFetching})
+
 type SetRadioActionType = {
    type: typeof SET_RADIO_CHANNEL
    radioChannel: string
 }
 export const setRadio = (radioChannel: string): SetRadioActionType => ({type: SET_RADIO_CHANNEL, radioChannel})
+
 type SetSearchResultActionType = {
    type: typeof SET_SEARCH_RESULT
    searchResult: string | null
@@ -47,9 +49,10 @@ export const getTracks = () => async (dispatch:any) => {
    dispatch(toggleIsFetching(true));
    let data = await radioAPI.getTrack();
    dispatch(setRadio(data.data));
-    dispatch(toggleIsFetching(false));
+   dispatch(toggleIsFetching(false));
     // dispatch(setSearchResult());
 }
+
 export const searchResult = (searchResult: null | string ) => (dispatch:any) => {
    dispatch(toggleIsFetching(true));
    dispatch(setSearchResult(searchResult));
@@ -57,6 +60,7 @@ export const searchResult = (searchResult: null | string ) => (dispatch:any) => 
      .then((data:any) => {
       dispatch(setRadio(data.data));
       dispatch(toggleIsFetching(false));
+        console.log(data.data)
    });
 }
 

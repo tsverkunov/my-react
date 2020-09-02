@@ -35,8 +35,8 @@ const ProfileData: FC<PropsType> = ({profile, isOwner, activateEditMode}) => {
             </div>
          })}
       </div>
-   );
+   )
 }
 
 
-export default ProfileData;
+export default ProfileData

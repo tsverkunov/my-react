@@ -8,9 +8,9 @@ import userIcon from "../../common/img/users_icon.png"
 type PropsType = {
   isAuth: boolean
   login: string | null
+  logout: () => void
   id: number | null
   avatar: string | null
-  logout: () => void
 }
 const Header: FC<PropsType> = ({avatar, login, logout, isAuth}) => {
    return (

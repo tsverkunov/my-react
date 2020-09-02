@@ -3,6 +3,7 @@ import {UserType} from "../types/types";
 import {BaseThunkType, InferActionsTypes} from "./redux-store";
 import {Dispatch} from "react";
 import {usersAPI} from "../api/users-api";
+import actionsProfile from "../redux/profileReducer"
 
 
 let initialState = {
@@ -76,12 +77,13 @@ const _followUnfollowFlow = async (dispatch: Dispatch<ActionsTypes>,
                                    userId: number,
                                    apiMethod: any,
                                    actionCreator: (userId: number) => ActionsTypes,
+                                   // setSubscribed: (followed: boolean) => void,
                                    isSubscribed: boolean) => {
   dispatch(actions.toggleFollowingProgress(true, userId));
   let data = await apiMethod(userId);
   if (data.resultCode === 0) {
-    dispatch(actionCreator(userId));
-    // dispatch(setSubscribed(isSubscribed));
+    dispatch(actionCreator(userId))
+    // dispatch(actionsProfile.setSubscribed(isSubscribed));
   }
   dispatch(actions.toggleFollowingProgress(false, userId));
 }

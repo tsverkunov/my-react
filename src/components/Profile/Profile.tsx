@@ -30,7 +30,6 @@ const Profile: FC<PropsType> = ({
                                   friends, follow,
                                   unfollow, followingInProgress,
                                   followed,
-                                  addLike, addPost, posts
                                 }) => {
   if (!profile) {
     return <Preloader/>
@@ -49,9 +48,7 @@ const Profile: FC<PropsType> = ({
                    unfollow={unfollow}
                    followed={followed}
       />
-      {isOwner && <MyPostsContainer
-         // addPost={addPost} addLike={addLike} posts={posts}
-      /> as any}
+      {isOwner && <MyPostsContainer/>}
     </div>
   )
 }

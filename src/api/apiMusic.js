@@ -6,7 +6,7 @@ const instance = axios.create({
     baseURL: 'https://deezerdevs-deezer.p.rapidapi.com/',
     headers: {
         "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-        "x-rapidapi-key": "2538d3fed1mshc98063e5aecf172p1c2f99jsn3eb2d546677e"
+        "x-rapidapi-key": "a665f6016dmsh72edd70fb812d92p110515jsnaa7905e42e05"
     }
 })
 

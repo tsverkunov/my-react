@@ -43,7 +43,9 @@ const User: FC<PropsType> = ({
             }
          </div>
          <div className={style.name}>
-            {user.name}
+           <NavLink to={'/profile/' + user.id}>
+             {user.name}
+           </NavLink>
          </div>
          <div>
             {user.status}

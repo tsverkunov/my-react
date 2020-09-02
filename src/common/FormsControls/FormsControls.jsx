@@ -3,7 +3,6 @@ import style from "./FormsControls.module.sass"
 import cn from "classnames";
 import {useField} from "formik";
 
-
 export const Input = ({
                         input,
                         label,
