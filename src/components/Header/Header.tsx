@@ -15,7 +15,7 @@ type PropsType = {
 const Header: FC<PropsType> = ({avatar, login, logout, isAuth}) => {
    return (
       <header className={style.header}>
-         <img alt="" src={logo}/>
+        <NavLink to="/profile"><img alt="" src={logo}/></NavLink>
          <div className={style.loginItem}>
             {isAuth
                ? <div className={style.ava}>

@@ -18,7 +18,8 @@ const musicReducer = (state = initialState, action:any): InitialStateType => {
       case TOGGLE_IS_FETCHING:
          return {...state, isFetching: action.isFetching};
       case SET_RADIO_CHANNEL:
-         return {...state, radioChannel: action.radioChannel};
+         return {...state,
+            radioChannel: action.radioChannel};
       case SET_SEARCH_RESULT:
          return {...state, searchResult: action.searchResult};
       default:
@@ -34,9 +35,9 @@ export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingActionTyp
 
 type SetRadioActionType = {
    type: typeof SET_RADIO_CHANNEL
-   radioChannel: string
+   radioChannel: any
 }
-export const setRadio = (radioChannel: string): SetRadioActionType => ({type: SET_RADIO_CHANNEL, radioChannel})
+export const setRadio = (radioChannel: any): SetRadioActionType => ({type: SET_RADIO_CHANNEL, radioChannel})
 
 type SetSearchResultActionType = {
    type: typeof SET_SEARCH_RESULT
@@ -48,7 +49,7 @@ export const setSearchResult = (searchResult: string | null): SetSearchResultAct
 export const getTracks = () => async (dispatch:any) => {
    dispatch(toggleIsFetching(true));
    let data = await radioAPI.getTrack();
-   dispatch(setRadio(data.data));
+   dispatch(setRadio(data.data.data));
    dispatch(toggleIsFetching(false));
     // dispatch(setSearchResult());
 }
@@ -56,14 +57,19 @@ export const getTracks = () => async (dispatch:any) => {
 export const searchResult = (searchResult: null | string ) => (dispatch:any) => {
    dispatch(toggleIsFetching(true));
    dispatch(setSearchResult(searchResult));
-   radioAPI.getTrack(searchResult)
-     .then((data:any) => {
-      dispatch(setRadio(data.data));
+   radioAPI.getTrack(searchResult).then((data:any) => {
+      dispatch(setRadio(data.data.data));
       dispatch(toggleIsFetching(false));
-        console.log(data.data)
    });
 }
 
-
+// export const searchResult = (searchResult) => (dispatch) => {
+//    dispatch(toggleIsFetching(true));
+//    dispatch(setSearchResult());
+//    radioAPI.getTrack(searchResult).then(data => {
+//       dispatch(setRadio(data.data));
+//       dispatch(toggleIsFetching(false));
+//    });
+// }
 export default musicReducer;
 

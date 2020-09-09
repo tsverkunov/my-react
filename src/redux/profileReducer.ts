@@ -57,6 +57,7 @@ const profileReducer = (state = initialState, action: ActionTypes): InitialState
       return {...state, status: action.status};
     case "my-react/profile/SET_SUBSCRIBED":
       return {...state, followed: action.followed};
+
     default:
       return state;
   }
@@ -110,7 +111,7 @@ export const updateDataProfile = (profile: ProfileType): ThunkType => {
     if (data.resultCode === ResultCodesEnum.Success) {
       if (userId != null) {
         await dispatch(getProfile(userId))
-      }else {
+      } else {
         throw new Error("userId can't be null")
       }
 
@@ -130,7 +131,7 @@ export const updateDataProfile = (profile: ProfileType): ThunkType => {
   }
 }
 export const savePhoto = (file: File): ThunkType => {
-  return async (dispatch ) => {
+  return async (dispatch) => {
     let data = await profileAPI.savePhoto(file)
     if (data.resultCode === ResultCodesEnum.Success) {
       dispatch(actionsProfile.savePhotoSuccess(data.data.photos))

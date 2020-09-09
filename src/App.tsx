@@ -2,7 +2,7 @@ import React, {ComponentType, FC, Suspense} from 'react';
 import './App.sass';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import {HashRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect, Provider} from "react-redux";
@@ -86,11 +86,11 @@ const MainJSApp: FC = () => {
    return (
       // <React.StrictMode>
       //    <BrowserRouter basename={process.env.PUBLIC_URL} >
-         <HashRouter>
+         <BrowserRouter>
             <Provider store={store}>
                <AppContainer/>
             </Provider>
-         </HashRouter>
+         </BrowserRouter>
       // </React.StrictMode>
    )
 };

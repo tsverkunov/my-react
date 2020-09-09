@@ -92,13 +92,12 @@ class MusicContainer extends React.Component {
                            <div>
                               <a href={r.link}>PLAY</a>
                            </div>
-                           <div><img src={r.data.artist.picture} alt=""/></div>
+                           <div><img src={r.artist.picture} alt=""/></div>
                            <div>
                               <a href={r.preview}>PREV</a>
                            </div>
-                           <div>{r.data.artist.name}</div>
+                           <div>{r.artist.name}</div>
                            <div>{r.title}</div>
-                           {console.log(r.title)}
                         </div>)}
                   </div>
                </div>}
