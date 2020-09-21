@@ -1,7 +1,7 @@
 import profileReducer, {actionsProfile} from "./profileReducer";
 
 let state = {
-    post: [
+    posts: [
         {id: 1, message: 'Hi, how are you?', likesCount: 912},
         {id: 2, message: 'My React.', likesCount: 777},
         {id: 3, message: 'It\'s my first experience!', likesCount: 7}
@@ -12,7 +12,7 @@ let state = {
 };
 
 
-test('length of posts should be incremented', () => {
+test('length of postss should be incremented', () => {
     // 1. test data
     let action = actionsProfile.addPost("E-PARK");
 
@@ -20,10 +20,10 @@ test('length of posts should be incremented', () => {
     let newState = profileReducer(state, action);
 
     // 3. expectation
-    expect(newState.post.length).toBe(4);
+    expect(newState.posts.length).toBe(4);
 });
 
-test('message of new post should be correct', () => {
+test('message of new posts should be correct', () => {
     // 1. test data
     let action = actionsProfile.addPost("E-PARK");
 
@@ -32,7 +32,7 @@ test('message of new post should be correct', () => {
     let newState = profileReducer(state, action);
 
     // 3. expectation
-    expect(newState.post[3].message).toBe("E-PARK");
+    expect(newState.posts[3].message).toBe("E-PARK");
 });
 
 test('after deleting length of message should be decrement', () => {
@@ -44,7 +44,7 @@ test('after deleting length of message should be decrement', () => {
     let newState = profileReducer(state, action);
 
     // 3. expectation
-    expect(newState.post.length).toBe(2);
+    expect(newState.posts.length).toBe(2);
 });
 
 test(`after deleting length shouldn't be decrement if id is incorrect`, () => {
@@ -56,6 +56,6 @@ test(`after deleting length shouldn't be decrement if id is incorrect`, () => {
     let newState = profileReducer(state, action);
 
     // 3. expectation
-    expect(newState.post.length).toBe(3);
+    expect(newState.posts.length).toBe(3);
 });
 

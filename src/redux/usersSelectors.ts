@@ -33,3 +33,6 @@ export const getAuthorizedUserId = (state: AppStateType) => {
 export const getPosts = (state: AppStateType) => {
     return state.profileReducer.posts
 }
+export const getUsersFilter = (state: AppStateType) => {
+    return state.usersReducer.filter
+}

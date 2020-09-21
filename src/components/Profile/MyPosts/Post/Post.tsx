@@ -16,8 +16,6 @@ const Post: FC<PropsType> = (props) => {
     return (
         <div>
             <div className={style.post}>
-                <div className={style.circle}>
-                </div>
                 {props.message}
             </div>
             <div className={style.like}>
