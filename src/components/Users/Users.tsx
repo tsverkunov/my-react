@@ -1,44 +1,58 @@
-import React, {FC} from 'react'
+import React, {FC, useEffect} from 'react'
 import style from './Users.module.sass'
 import Paginator from '../../common/Paginator/Paginator'
 import User from './User/User'
 import Preloader from '../../common/Preloader/Preloader'
-import {UserType} from '../../types/types'
 import {UserSearchForm} from './UsersSearchForm'
-import {FilterType} from '../../redux/usersReducer'
+import {FilterType, requestUsers} from '../../redux/usersReducer'
+import {useDispatch, useSelector} from 'react-redux'
+import {
+  getAuthorizedUserId,
+  getCurrentPage,
+  getFollowingInProgress,
+  getIsFetching,
+  getPageSize,
+  getTotalUserCount,
+  getUsers,
+  getUsersFilter
+} from '../../redux/usersSelectors'
+
+type PropsType = {}
+
+export const Users: FC<PropsType> = React.memo((props) => {
+
+  const users = useSelector(getUsers)
+  const totalUserCount = useSelector(getTotalUserCount)
+  const pageSize = useSelector(getPageSize)
+  const currentPage = useSelector(getCurrentPage)
+  const followingInProgress = useSelector(getFollowingInProgress)
+  const filter = useSelector(getUsersFilter)
+  const isOwner = useSelector(getAuthorizedUserId)
+  const isFetching = useSelector(getIsFetching)
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(requestUsers(currentPage, pageSize, filter))
+  }, [])
+
+  const onPageChanged = (pageNumber: number) => {
+    dispatch(requestUsers(pageNumber, pageSize, filter))
+  }
+  const onFilterChanged = (filter: FilterType) => {
+    dispatch(requestUsers(1, pageSize, filter))
+  }
+  const follow = (userId: number) => {
+    dispatch(follow(userId))
+  }
+  const unfollow = (userId: number) => {
+    dispatch(unfollow(userId))
+  }
 
 
-type PropsType = {
-  totalUserCount: number
-  pageSize: number
-  currentPage: number
-  onPageChanged: (pageNumber: number) => void
-  onFilterChanged: (filter: FilterType) => void
-  followingInProgress: Array<number>
-  users: Array<UserType>
-  follow: (userId: number) => void
-  unfollow: (userId: number) => void
-  isFetching: boolean
-  isOwner: number | null
-}
-
-let Users: FC<PropsType> = React.memo(({
-                                         totalUserCount,
-                                         pageSize,
-                                         currentPage,
-                                         onPageChanged,
-                                         followingInProgress,
-                                         users,
-                                         follow,
-                                         unfollow,
-                                         isFetching,
-                                         isOwner,
-                                         ...props
-                                       }) => {
   return (
     <div className={style.wrapper}>
       <div>
-        <UserSearchForm onFilterChanged={props.onFilterChanged}/>
+        <UserSearchForm onFilterChanged={onFilterChanged}/>
       </div>
       <Paginator totalItemsCount={totalUserCount}
                  pageSize={pageSize}
@@ -61,5 +75,3 @@ let Users: FC<PropsType> = React.memo(({
     </div>
   )
 })
-
-export default Users

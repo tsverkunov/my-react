@@ -3,7 +3,6 @@ import './App.sass';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
-import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
@@ -15,10 +14,12 @@ import Preloader from "./common/Preloader/Preloader";
 import Setting from "./components/Setting/Setting";
 import News from "./components/News/News";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import { UsersPage } from './components/Users/UsersContainer';
+import {LoginPage} from "./components/Login/LoginPage"
 
 //Lazy-Loading
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
-const LoginFormik = React.lazy(() => import("./components/Login/LoginFormik"));
+// const Login = React.lazy(() => import("./components/Login/LoginFormik"));
 // const News = React.lazy(() => import("./components/News/News"));
 // const Setting = React.lazy(() => import("./components/Setting/Setting"));
 // const MusicContainer = React.lazy(() => import("./components/Music/MusicContainer"));
@@ -58,10 +59,10 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                <Switch>
                   <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                   <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                  <Route path='/login' render={() => <LoginFormik/>}/>
+                  <Route path='/login' render={() => <LoginPage/>}/>
                   <Route path='/music' render={() => <MusicContainer/>}/>
                   <Route path='/news' render={() => <News/>}/>
-                  <Route path='/users' render={() => <UsersContainer/>}/>
+                  <Route path='/users' render={() => <UsersPage/>}/>
                   <Route path='/setting' render={() => <Setting/>}/>
                   <Redirect from="/" to="/profile"/>
                   {/*<Route path='*' render={() => <h3>404 - Not found</h3>}/>*/}
