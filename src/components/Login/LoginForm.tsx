@@ -16,7 +16,7 @@ type FormPropsTypes = {
   onSubmit: (values: LoginFormValues) => void
   errorMessage: string | null
 }
-export const LoginForm: FC<FormPropsTypes> = ({captchaUrl, onSubmit, errorMessage}) => {
+export const LoginForm: FC<FormPropsTypes> = React.memo (({captchaUrl, onSubmit, errorMessage}) => {
   const initialValues: LoginFormValues = {
     email: '',
     password: '',
@@ -98,4 +98,4 @@ export const LoginForm: FC<FormPropsTypes> = ({captchaUrl, onSubmit, errorMessag
       </Formik>
     </div>
   )
-}
+})

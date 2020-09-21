@@ -7,7 +7,7 @@ import {actions, login} from '../../redux/authReducer'
 import {LoginForm, LoginFormValues} from './LoginForm'
 
 
-export const LoginPage: FC = () => {
+export const LoginPage: FC = React.memo(() => {
 
   const isAuth = useSelector((state: AppStateType) => state.authReducer.isAuth)
   const captchaUrl = useSelector((state: AppStateType) => state.authReducer.captchaUrl)
@@ -16,7 +16,8 @@ export const LoginPage: FC = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(actions.resetError());
+    dispatch(actions.resetError())
+    // eslint-disable-next-line
   }, [actions.resetError, isAuth])
 
   const onSubmit = (values: LoginFormValues) => {
@@ -34,4 +35,4 @@ export const LoginPage: FC = () => {
   return <div className={style.login}>
     <LoginForm onSubmit={onSubmit} captchaUrl={captchaUrl} errorMessage={errorMessage}/>
   </div>
-}
+})

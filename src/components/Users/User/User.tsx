@@ -12,7 +12,7 @@ type PropsType = {
   isOwner: number | null
 }
 
-const User: FC<PropsType> = ({
+export const User: FC<PropsType> = ({
                  followingInProgress,
                  follow,
                  unfollow,
@@ -53,5 +53,3 @@ const User: FC<PropsType> = ({
       </div>
    )
 }
-
-export default User;

@@ -1,10 +1,9 @@
 import React, {FC, useEffect} from 'react'
 import style from './Users.module.sass'
 import Paginator from '../../common/Paginator/Paginator'
-import User from './User/User'
 import Preloader from '../../common/Preloader/Preloader'
 import {UserSearchForm} from './UsersSearchForm'
-import {FilterType, requestUsers} from '../../redux/usersReducer'
+import {FilterType, follow, requestUsers, unfollow} from '../../redux/usersReducer'
 import {useDispatch, useSelector} from 'react-redux'
 import {
   getAuthorizedUserId,
@@ -16,10 +15,11 @@ import {
   getUsers,
   getUsersFilter
 } from '../../redux/usersSelectors'
+import {User} from './User/User'
 
 type PropsType = {}
 
-export const Users: FC<PropsType> = React.memo((props) => {
+export const Users: FC<PropsType> = React.memo(() => {
 
   const users = useSelector(getUsers)
   const totalUserCount = useSelector(getTotalUserCount)
@@ -31,8 +31,10 @@ export const Users: FC<PropsType> = React.memo((props) => {
   const isFetching = useSelector(getIsFetching)
 
   const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(requestUsers(currentPage, pageSize, filter))
+    // eslint-disable-next-line
   }, [])
 
   const onPageChanged = (pageNumber: number) => {
@@ -41,13 +43,12 @@ export const Users: FC<PropsType> = React.memo((props) => {
   const onFilterChanged = (filter: FilterType) => {
     dispatch(requestUsers(1, pageSize, filter))
   }
-  const follow = (userId: number) => {
+  const followUsers = (userId: number) => {
     dispatch(follow(userId))
   }
-  const unfollow = (userId: number) => {
+  const unfollowUsers = (userId: number) => {
     dispatch(unfollow(userId))
   }
-
 
   return (
     <div className={style.wrapper}>
@@ -64,8 +65,8 @@ export const Users: FC<PropsType> = React.memo((props) => {
         : <div className={style.wrapperContent}>
           {users.map(u =>
             <User followingInProgress={followingInProgress}
-                  follow={follow}
-                  unfollow={unfollow}
+                  follow={followUsers}
+                  unfollow={unfollowUsers}
                   isOwner={isOwner}
                   user={u}
                   key={u.id}
