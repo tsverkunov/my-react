@@ -1,6 +1,6 @@
-import React from 'react';
-import Profile from "./Profile";
-import {connect} from "react-redux";
+import React from 'react'
+import Profile from './Profile'
+import {connect} from 'react-redux'
 import {
   actionsProfile,
   getProfile,
@@ -9,16 +9,16 @@ import {
   savePhoto,
   updateDataProfile,
   updateStatus
-} from "../../redux/profileReducer";
-import {withRouter} from "react-router-dom";
-import {compose} from "redux";
-import {withAuthRedirect} from "../../HOCs/withAuthRedirect";
-import {getFollowingInProgress} from "../../redux/usersSelectors";
-import {follow, unfollow} from "../../redux/usersReducer";
-import {AppStateType} from "../../redux/redux-store";
-import {RouteComponentProps} from "react-router";
-import {ProfileType} from "../../types/types";
-import Preloader from "../../common/Preloader/Preloader";
+} from '../../redux/profileReducer'
+import {withRouter} from 'react-router-dom'
+import {compose} from 'redux'
+import {withAuthRedirect} from '../../HOCs/withAuthRedirect'
+import {getFollowingInProgress} from '../../redux/usersSelectors'
+import {follow, unfollow} from '../../redux/usersReducer'
+import {AppStateType} from '../../redux/redux-store'
+import {RouteComponentProps} from 'react-router'
+import {ProfileType} from '../../types/types'
+import Preloader from '../../common/Preloader/Preloader'
 
 
 type StatePropsType = ReturnType<typeof mapStateToProps>
@@ -44,18 +44,18 @@ type PropsType = StatePropsType & StateDispatchType & RouteComponentProps<PathPa
 
 class ProfileContainer extends React.PureComponent<PropsType> {
   profileRefresh() {
-    let userId: number | null = +this.props.match.params.userId;
+    let userId: number | null = +this.props.match.params.userId
     // console.log(userId)
 
     if (!userId) {
-      userId = this.props.authorizedUserId;
+      userId = this.props.authorizedUserId
       if (!userId) {
-        this.props.history.push("/login");
+        this.props.history.push('/login')
       }
     }
 
     if (!userId) {
-      console.error("ID should exists in URI params or in state('authorizedUserId')")
+      console.error('ID should exists in URI params or in state(\'authorizedUserId\')')
     } else {
       this.props.getProfile(userId)
       this.props.getStatus(userId)
@@ -79,7 +79,7 @@ class ProfileContainer extends React.PureComponent<PropsType> {
     }
     if (!this.props.profile) {
       return <Preloader/>
-    }else if (this.props.profile.userId !== userIdPath) {
+    } else if (this.props.profile.userId !== userIdPath) {
       return <Preloader/>
     }
 

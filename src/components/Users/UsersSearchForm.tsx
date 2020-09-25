@@ -2,20 +2,29 @@ import {Field, Form, Formik} from 'formik'
 import React, {FC} from 'react'
 import {FilterType} from '../../redux/usersReducer'
 import style from './Users.module.sass'
+import {useSelector} from 'react-redux'
+import {getUsersFilter} from '../../redux/usersSelectors'
 
 type FormType = {
   term: string
-  friend: 'true' | 'false' | 'null'
+  friend: FriendFormType
 }
+
+type FriendFormType = 'true' | 'false' | 'null'
 
 type PropsType = {
   onFilterChanged: (filter: FilterType) => void
 }
-// debugger
+
 export const UserSearchForm: FC<PropsType> = React.memo((props) => {
+
+  const filter = useSelector(getUsersFilter)
+
+
   return <div>
     <Formik
-      initialValues={{term: '', friend: 'null'}}
+      enableReinitialize
+      initialValues={{term: filter.term, friend: String(filter.friend) as FriendFormType}}
       validate={values => {
         const errors = {}
         return errors
