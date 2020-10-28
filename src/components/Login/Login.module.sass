@@ -4,20 +4,17 @@
   align-items: center
   justify-content: center
   background: #535353
-  color: #ffffff
+  color: #06A4FF
   text-align: center
-  form
-    box-shadow: #303030 15px 15px 60px
-    padding: 50px 30px
-    //border-radius: 10%
+  box-shadow: #303030 15px 15px 60px
+  padding: 50px 30px
+  h1
+    text-transform: uppercase
+    font-size: 18px
 
   span
     margin: 20px
     font-size: 11px
-
-  label
-    margin: 20px
-
 
   input
     border: none
@@ -28,6 +25,7 @@
     outline: none
     background: #535353
     color: #ffffff
+
 //&::placeholder
 //  color: #5cd1f5
 
@@ -45,13 +43,15 @@
     padding: 5px 20px
     border: none
     outline: none
+    font-size: 13px
     border-radius: 3px
     background: #06A4FF
     color: #ffffff
     cursor: pointer
     transition: all .2s
-
-    &:hover
+    //&:focus
+    //  background: #0080d0
+    &:hover, &:focus
       background: darken(#06A4FF, 10%)
 
   button:disabled

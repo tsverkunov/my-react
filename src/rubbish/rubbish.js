@@ -33,3 +33,5 @@ let users= [
                 }
             }
 ]
+
+// "homepage": "https://tsverkunov.github.io/my-react"

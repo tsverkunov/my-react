@@ -13,7 +13,9 @@
   img
     height: 60px
     margin: 0 0 0 20px
-
+  svg
+    g
+      fill: #06a4ff
 
 .loginItem
   margin: 0 40px 0 0
@@ -21,17 +23,30 @@
     color: #06A4FF
     cursor: pointer
     text-decoration: none
-.signIn
-  a
+.signIn, .ava
+  button
+    margin: 0 0 0 20px
+    border: none
+    outline: none
     color: #ffffff
-    text-decoration: none
     font-size: 13px
+    cursor: pointer
     background: #06A4FF
-    padding: 3px 10px
+    padding: 5px 10px
     border-radius: 3px
-    transition: background .2s
+    transition: all .2s
     &:hover
       background: darken(#06A4FF, 10%)
+  //a
+  //  color: #ffffff
+  //  text-decoration: none
+  //  font-size: 13px
+  //  background: #06A4FF
+  //  padding: 3px 10px
+  //  border-radius: 3px
+  //  transition: background .2s
+  //  &:hover
+  //    background: darken(#06A4FF, 10%)
 
 .ava
   display: flex
@@ -40,17 +55,4 @@
     height: 30px
     width: 30px
     border-radius: 25%
-  button
-    margin: 0 0 0 20px
-    border: none
-    outline: none
-    //background: #333333
-    color: #ffffff
-    font-size: 12px
-    cursor: pointer
-    background: #06A4FF
-    padding: 5px 10px
-    border-radius: 3px
-    transition: all .2s
-    &:hover
-      background: darken(#06A4FF, 10%)
+

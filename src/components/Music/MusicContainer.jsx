@@ -6,9 +6,6 @@ import Preloader from "../../common/Preloader/Preloader";
 import {getTracks, searchResult} from "../../redux/musicReducer";
 import s from "./Music.module.sass";
 import {Field, reduxForm} from "redux-form";
-import {Form, Formik, useField} from "formik";
-import * as Yup from "yup";
-import style from "../Dialogs/AddMessage/AddMessage.module.sass";
 
 const SearchReduxForm = (props) => {
    return (
@@ -80,7 +77,6 @@ class MusicContainer extends React.Component {
    onSubmit = (values) => {
       this.props.searchResult(values.search)
    }
-
    render() {
       return (
          <>

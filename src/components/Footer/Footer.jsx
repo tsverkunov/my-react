@@ -1,5 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import style from './Footer.module.sass'
+
+
 
 const Footer = () => {
     return (
