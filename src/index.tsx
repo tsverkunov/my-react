@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.sass';
 import {MainJSApp} from './App'
-import {TestComponent} from './testComp'
 
 
 // setInterval(() => {
@@ -11,7 +10,6 @@ import {TestComponent} from './testComp'
 // }, 1000)
 
 ReactDOM.render(
-  // <TestComponent/>,
     <MainJSApp/>,
     document.getElementById('root')
 );
