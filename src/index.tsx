@@ -2,7 +2,8 @@ import * as serviceWorker from './serviceWorker';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.sass';
-import MainJSApp from "./App";
+import {MainJSApp} from './App'
+import {TestComponent} from './testComp'
 
 
 // setInterval(() => {
@@ -10,6 +11,7 @@ import MainJSApp from "./App";
 // }, 1000)
 
 ReactDOM.render(
+  // <TestComponent/>,
     <MainJSApp/>,
     document.getElementById('root')
 );

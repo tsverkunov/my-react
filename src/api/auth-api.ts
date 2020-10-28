@@ -15,7 +15,7 @@ export const authAPI = {
     return instance.get<APIResponseType<MeResponseDataType>>(`auth/me`)
       .then(response => response.data)
   },
-  login(email: string, password: string, rememberMe = false, captcha: null | string = null) {
+  logIn(email: string, password: string, rememberMe = false, captcha: null | string = null) {
     return instance.post<APIResponseType<LoginResponseDataType, ResultCodesEnum | ResultCodeForCaptchaEnum>>(`auth/login`, {
       email,
       password,

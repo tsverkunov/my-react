@@ -1,12 +1,22 @@
-import React, {FC, useEffect} from 'react';
-import Friends from "./Friends";
-import {connect} from "react-redux";
-import {actions, requestFriends} from "../../../../redux/sideBarReducer";
-import {compose} from "redux";
-import {AppStateType} from "../../../../redux/redux-store";
+import React, {FC, useEffect} from 'react'
+import Friends from './Friends'
+import {connect} from 'react-redux'
+import {actions, requestFriends} from '../../../../redux/sideBarReducer'
+import {compose} from 'redux'
+import {AppStateType} from '../../../../redux/redux-store'
+import {UserType} from '../../../../types/types'
 
 
-type StatePropsType = ReturnType<typeof mapStateToProps>
+// type StatePropsType = ReturnType<typeof mapStateToProps>
+
+type StatePropsType = {
+  totalFriendsCount: number;
+  currentPage: number;
+  pageSize: number;
+  users: Array<UserType>;
+  isAuth: any;
+  friends: Array<UserType>;
+}
 type StateDispatchType = {
   requestFriends: (currentPage: number, pageSize: number) => void
   setFriendsCurrentPage: (portionNumber: number) => void
@@ -15,8 +25,7 @@ type OwnPropsType = {}
 
 type PropsType = StatePropsType & StateDispatchType
 
-//todo look problem with TypeScript in const FriendsContainer
-const FriendsContainer: ({totalFriendsCount, currentPage, pageSize, users, isAuth, friends, requestFriends, setFriendsCurrentPage}: { totalFriendsCount: any; currentPage: any; pageSize: any; users: any; isAuth: any; friends: any; requestFriends: any; setFriendsCurrentPage: any }) => any | JSX.Element = ({
+const FriendsContainer: FC<PropsType> = ({
                                            totalFriendsCount,
                                            currentPage,
                                            pageSize,
@@ -63,4 +72,4 @@ export default compose(
       requestFriends,
       setFriendsCurrentPage: actions.setFriendsCurrentPage
     })
-)(FriendsContainer);
+)(FriendsContainer)

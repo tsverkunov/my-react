@@ -35,10 +35,9 @@ export const Users: FC<PropsType> = React.memo(() => {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  type QueryParamsType = {term?: string; page?: string; friend?: string}
+  type QueryParamsType = { term?: string; page?: string; friend?: string }
 
   useEffect(() => {
-
     const parsed = queryString.parse(history.location.search.substr(1)) as QueryParamsType
 
     let actualPage = currentPage
@@ -67,7 +66,7 @@ export const Users: FC<PropsType> = React.memo(() => {
   useEffect(() => {
     const query: QueryParamsType = {}
     if (!!filter.term) query.term = filter.term
-    if (filter.friend !== null ) query.friend = String(filter.friend)
+    if (filter.friend !== null) query.friend = String(filter.friend)
     if (currentPage !== 1) query.page = String(currentPage)
 
     history.push({

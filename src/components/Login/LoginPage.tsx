@@ -3,7 +3,7 @@ import style from './Login.module.sass'
 import {useDispatch, useSelector} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {AppStateType} from '../../redux/redux-store'
-import {actions, login} from '../../redux/authReducer'
+import {actions, logIn, } from '../../redux/authReducer'
 import {LoginForm, LoginFormValues} from './LoginForm'
 
 
@@ -21,7 +21,7 @@ export const LoginPage: FC = React.memo(() => {
   }, [actions.resetError, isAuth])
 
   const onSubmit = (values: LoginFormValues) => {
-    dispatch(login(
+    dispatch(logIn(
        values.email,
        values.password,
        values.rememberMe,

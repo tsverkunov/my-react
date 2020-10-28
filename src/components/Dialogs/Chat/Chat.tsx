@@ -8,7 +8,7 @@ type OwnProps = {
 }
 type PropsType = OwnProps & ChatsType
 
-const Chat: FC<PropsType> = (props) => {
+export const Chat: FC<PropsType> = (props) => {
    return (
       <div>
          <div className={style.chatBlock}>
@@ -24,6 +24,3 @@ const Chat: FC<PropsType> = (props) => {
       </div>
    )
 }
-
-
-export default Chat;

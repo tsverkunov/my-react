@@ -1,5 +1,4 @@
 import React from 'react'
-import Profile from './Profile'
 import {connect} from 'react-redux'
 import {
   actionsProfile,
@@ -19,6 +18,7 @@ import {AppStateType} from '../../redux/redux-store'
 import {RouteComponentProps} from 'react-router'
 import {ProfileType} from '../../types/types'
 import Preloader from '../../common/Preloader/Preloader'
+import {Profile} from './Profile'
 
 
 type StatePropsType = ReturnType<typeof mapStateToProps>
@@ -77,29 +77,31 @@ class ProfileContainer extends React.PureComponent<PropsType> {
     if (!userIdPath) {
       userIdPath = this.props.authorizedUserId
     }
-    if (!this.props.profile) {
-      return <Preloader/>
-    } else if (this.props.profile.userId !== userIdPath) {
-      return <Preloader/>
-    }
 
     return (
-      <Profile
-        savePhoto={this.props.savePhoto}
-        follow={this.props.follow}
-        unfollow={this.props.unfollow}
-        isOwner={!this.props.match.params.userId}
-        profile={this.props.profile}
-        status={this.props.status}
-        friends={this.props.friends}
-        posts={this.props.posts}
-        followed={this.props.followed}
-        followingInProgress={this.props.followingInProgress}
-        updateStatus={this.props.updateStatus}
-        updateDataProfile={this.props.updateDataProfile}
-        addPost={this.props.addPost}
-        addLike={this.props.addLike}
-      />
+      <>
+        {!this.props.profile || this.props.profile.userId !== userIdPath
+          ?
+          <Preloader/>
+          :
+          <Profile
+            savePhoto={this.props.savePhoto}
+            follow={this.props.follow}
+            unfollow={this.props.unfollow}
+            isOwner={!this.props.match.params.userId}
+            profile={this.props.profile}
+            status={this.props.status}
+            friends={this.props.friends}
+            posts={this.props.posts}
+            followed={this.props.followed}
+            followingInProgress={this.props.followingInProgress}
+            updateStatus={this.props.updateStatus}
+            updateDataProfile={this.props.updateDataProfile}
+            addPost={this.props.addPost}
+            addLike={this.props.addLike}
+          />
+        }
+      </>
     )
   }
 }
