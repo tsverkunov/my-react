@@ -2,7 +2,7 @@
 
 Social Network
 
-account for testing
+account for testing: 
 
 Email: free@samuraijs.com
 
