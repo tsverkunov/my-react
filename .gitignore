@@ -4,10 +4,14 @@
 /node_modules
 /.pnp
 .pnp.js
-.idea
-/.firebaserc
-.firebase
 
+# User-specific stuff
+/.firebase
+.firebase
+.firebaserc
+
+# IntellijIdea files
+.idea
 # testing
 /coverage
 
