@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from 'react'
-import Friends from './Friends'
+import {Friends} from './Friends'
 import {connect} from 'react-redux'
 import {actions, requestFriends} from '../../../../redux/sideBarReducer'
 import {compose} from 'redux'

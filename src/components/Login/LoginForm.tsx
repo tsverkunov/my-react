@@ -89,7 +89,7 @@ export const LoginForm: FC<FormPropsTypes> = React.memo (({captchaUrl, onSubmit,
                 <button type="submit"
                         disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Loading...' : 'Log In'}
+                  {isSubmitting ? 'Loading...' : 'Login'}
                 </button>
               </div>
             </Form>

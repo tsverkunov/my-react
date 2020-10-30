@@ -12,6 +12,7 @@
 
 # IntellijIdea files
 .idea
+
 # testing
 /coverage
 

@@ -10,7 +10,7 @@
 
 .friendsItem
   display: grid
-  grid-template-columns: repeat(2, 150px)
+  grid-template-columns: repeat(1, 150px)
   grid-row-gap: 25px
   justify-content: center
   img
@@ -18,10 +18,18 @@
 
 
 .arrow
-  img
+  svg
     width: 25px
     margin: 20px
     cursor: pointer
+    fill: #888888
+    transition: fill .2s
+  svg:hover
+    fill: #06a4ff
+
+    //svg
+    //  fill: #06a4ff
+
     //object-fit: cover
 
 

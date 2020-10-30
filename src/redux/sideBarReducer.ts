@@ -5,7 +5,7 @@ import {usersAPI} from "../api/users-api";
 
 let initialState = {
   friends: [] as Array<UserType>,
-  pageSize: 10,
+  pageSize: 5,
   totalFriendsCount: 0,
   isFetching: false,
   currentPage: 1,

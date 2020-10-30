@@ -1,37 +1,60 @@
-import React, {FC} from 'react';
-import style from './Navbar.module.sass';
-import {NavLink} from "react-router-dom";
-import SideBar from "./SideBar/SideBar";
+import React, {FC} from 'react'
+import style from './Navbar.module.sass'
+import {NavLink} from 'react-router-dom'
+import SideBar from './SideBar/SideBar'
+import {SettingImg} from '../../common/SVGComponents/SettingImg'
+import {UserImg} from '../../common/SVGComponents/UserImg'
+import {MessagesImg} from '../../common/SVGComponents/MessagesImg'
+import {UsersImg} from '../../common/SVGComponents/UsersImg'
+import {MyMusicImg} from '../../common/SVGComponents/MyMusicImg'
+import {NewsImg} from '../../common/SVGComponents/NewsImg'
 
 
-type PropsType = {
+type PropsType = {}
 
+const Navbar: FC<PropsType> = () => {
+  return (
+    <nav className={style.nav}>
+      <div className={style.item}>
+        <NavLink to="/profile" className={style.link} activeClassName={style.active}>
+          <UserImg/>
+          Profile
+        </NavLink>
+      </div>
+      <div className={style.item}>
+        <NavLink to="/dialogs" className={style.link} activeClassName={style.active}>
+          <MessagesImg/>
+          Messages
+        </NavLink>
+      </div>
+      <div className={style.item}>
+        <NavLink to="/music" className={style.link} activeClassName={style.active}>
+          <MyMusicImg/>
+          My Music
+        </NavLink>
+      </div>
+      <div className={style.item}>
+        <NavLink to="/news" className={style.link} activeClassName={style.active}>
+          <NewsImg/>
+          News
+        </NavLink>
+      </div>
+      <div className={style.item}>
+        <NavLink to="/users" className={style.link} activeClassName={style.active}>
+          <UsersImg/>
+            Developers
+        </NavLink>
+      </div>
+      <div className={style.item}>
+        <NavLink to="/setting" className={style.link} activeClassName={style.active}>
+          <SettingImg/>
+          Settings
+        </NavLink>
+      </div>
+      <SideBar/>
+    </nav>
+  )
 }
 
-const Navbar: FC<PropsType> = (props) => {
-    return (
-        <nav className={style.nav}>
-            <div className={style.item}>
-                <NavLink to="/profile" activeClassName={style.active}>Profile</NavLink>
-            </div>
-            <div className={style.item}>
-                <NavLink to="/dialogs" activeClassName={style.active}>Messages</NavLink>
-            </div>
-            <div className={style.item}>
-                <NavLink to="/music" activeClassName={style.active}>My Music</NavLink>
-            </div>
-            <div className={style.item}>
-                <NavLink to="/news" activeClassName={style.active}>News</NavLink>
-            </div>
-            <div className={style.item}>
-                <NavLink to="/users" activeClassName={style.active}>Developers</NavLink>
-            </div>
-            <div className={style.item}>
-                <NavLink to="/setting" activeClassName={style.active}>Settings</NavLink>
-            </div>
-            <SideBar />
-        </nav>
-    )
-}
 
 export default Navbar
