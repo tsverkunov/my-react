@@ -4,6 +4,7 @@ import {FilterType} from '../../redux/usersReducer'
 import style from './Users.module.sass'
 import {useSelector} from 'react-redux'
 import {getUsersFilter} from '../../redux/usersSelectors'
+import {Button} from '@material-ui/core'
 
 type FormType = {
   term: string
@@ -46,6 +47,11 @@ export const UserSearchForm: FC<PropsType> = React.memo((props) => {
             <option value="true">Only subscribe</option>
             <option value="false">Only unsubscribe</option>
           </Field>
+
+          <Button  variant="contained" color="primary" >
+            Find
+          </Button>
+
           <button type="submit" disabled={isSubmitting}>
             Search
           </button>

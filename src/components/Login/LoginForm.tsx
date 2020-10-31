@@ -4,6 +4,7 @@ import {Field, Form, Formik} from 'formik'
 import * as Yup from 'yup'
 import {CustomCheckbox, CustomInput} from '../../common/FormsControls/FormsControls'
 import {required} from '../../utilities/validators/validators'
+import {Button} from '@material-ui/core'
 
 export type LoginFormValues = {
   email: string
@@ -16,7 +17,7 @@ type FormPropsTypes = {
   onSubmit: (values: LoginFormValues) => void
   errorMessage: string | null
 }
-export const LoginForm: FC<FormPropsTypes> = React.memo (({captchaUrl, onSubmit, errorMessage}) => {
+export const LoginForm: FC<FormPropsTypes> = React.memo(({captchaUrl, onSubmit, errorMessage}) => {
   const initialValues: LoginFormValues = {
     email: '',
     password: '',
@@ -86,11 +87,20 @@ export const LoginForm: FC<FormPropsTypes> = React.memo (({captchaUrl, onSubmit,
                 </div>
               }
               <div className={style.buttonItem}>
-                <button type="submit"
-                        disabled={isSubmitting}
-                >
+
+                <Button color="primary"
+                        variant="contained"
+                        type="submit"
+                        disabled={isSubmitting}>
                   {isSubmitting ? 'Loading...' : 'Login'}
-                </button>
+                </Button>
+
+
+                {/*<button type="submit"*/}
+                {/*        disabled={isSubmitting}*/}
+                {/*>*/}
+                {/*  {isSubmitting ? 'Loading...' : 'Login'}*/}
+                {/*</button>*/}
               </div>
             </Form>
           )

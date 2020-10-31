@@ -1,9 +1,10 @@
-import React, {FC} from "react";
-import style from './Description.module.sass';
-import yesIcon from "../../../common/img/yes.png";
-import noIcon from "../../../common/img/no.png";
-import editIcon from "../../../common/img/editing_icon.svg";
-import {ContactsType, ProfileType} from "../../../types/types";
+import React, {FC} from 'react'
+import style from './Description.module.sass'
+import yesIcon from '../../../common/img/yes.png'
+import noIcon from '../../../common/img/no.png'
+import editIcon from '../../../common/img/editing_icon.svg'
+import {ContactsType, ProfileType} from '../../../types/types'
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 
 type PropsType = {
   profile: ProfileType
@@ -24,7 +25,12 @@ const ProfileData: FC<PropsType> = ({profile, isOwner, activateEditMode}) => {
             <p>Online:</p>
 
             <div className={style.editIcon}>
-               {isOwner && <img src={editIcon} alt="" onClick={activateEditMode}/>}
+               {isOwner &&
+               <EditOutlinedIcon
+                  fontSize="default"
+                  color='action'
+                  onClick={activateEditMode}/>}
+                {/*<img src={editIcon} alt="" onClick={activateEditMode}/>}*/}
             </div>
          </div>
          {Object

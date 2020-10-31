@@ -6,6 +6,7 @@ import userIcon from '../../common/img/users_icon.png'
 import {useDispatch, useSelector} from 'react-redux'
 import {AppStateType} from '../../redux/redux-store'
 import {logout} from '../../redux/authReducer'
+import {Button} from '@material-ui/core'
 
 
 export const Header: FC = () => {
@@ -24,11 +25,13 @@ export const Header: FC = () => {
           ? <div className={style.ava}>
             <NavLink to="/profile">{login}</NavLink>
             <img alt="" src={avatar || userIcon}/>
-            <button onClick={() => dispatch(logout())} className={style.signIn}>Log Out</button>
+            <Button onClick={() => dispatch(logout())}>Log Out</Button>
+            {/*<button onClick={() => dispatch(logout())} className={style.signIn}>Log Out</button>*/}
           </div>
           : <div className={style.signIn}>
             <NavLink to={'/login'}>
-              <button className={style.signIn}>Sign In</button>
+              <Button>Sign IN</Button>
+              {/*<button className={style.signIn}>Sign In</button>*/}
             </NavLink>
           </div>
         }

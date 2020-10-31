@@ -17,6 +17,7 @@ import ProfileContainer from './components/Profile/ProfileContainer'
 import {LoginPage} from './components/Login/LoginPage'
 import {UsersPage} from './components/Users/UsersContainer'
 import {Dialogs} from './components/Dialogs/Dialogs'
+// import 'antd/dist/antd.css'
 
 //Lazy-Loading
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))

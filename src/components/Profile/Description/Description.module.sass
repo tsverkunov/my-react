@@ -92,9 +92,14 @@
 .editIcon
   margin: 20px 10px 0 auto
 
-  img
-    width: 20px
+  svg
+    //width: 20px
     cursor: pointer
+    fill: #3e3e3e
+    transition: all .2s
+  svg:hover
+    transform: translateY(-2px) scale(1.1)
+    fill: #06a4ff
 
 //buttons
 .unSub

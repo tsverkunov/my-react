@@ -3,6 +3,8 @@ import style from './AddMessage.module.sass'
 import * as Yup from 'yup'
 import {Form, Formik} from 'formik'
 import {CustomTextarea} from '../../../common/FormsControls/FormsControls'
+import {Button} from '@material-ui/core'
+import SendIcon from '@material-ui/icons/Send'
 
 type LoginFormValues = {
   message: string
@@ -36,12 +38,24 @@ const AddMessageForm: FC<FormPropsTypes> = ({onSubmit}) => {
                             placeholder="new message..."
                             className={style.newMessage}
             />
-            <button type="submit"
-                    disabled={props.isSubmitting}
-                    className={style.buttonSend}
+
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={style.buttonSend}
+              endIcon={<SendIcon/>}
+              disabled={props.isSubmitting}
             >
               {props.isSubmitting ? 'Sending...' : 'Send'}
-            </button>
+            </Button>
+
+            {/*<button type="submit"*/}
+            {/*        disabled={props.isSubmitting}*/}
+            {/*        className={style.buttonSend}*/}
+            {/*>*/}
+            {/*  {props.isSubmitting ? 'Sending...' : 'Send'}*/}
+            {/*</button>*/}
           </Form>
         )}
       </Formik>
