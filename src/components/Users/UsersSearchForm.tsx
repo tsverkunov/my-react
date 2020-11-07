@@ -47,11 +47,6 @@ export const UserSearchForm: FC<PropsType> = React.memo((props) => {
             <option value="true">Only subscribe</option>
             <option value="false">Only unsubscribe</option>
           </Field>
-
-          <Button  variant="contained" color="primary" >
-            Find
-          </Button>
-
           <button type="submit" disabled={isSubmitting}>
             Search
           </button>

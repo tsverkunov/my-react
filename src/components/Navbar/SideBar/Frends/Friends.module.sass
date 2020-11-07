@@ -18,15 +18,23 @@
     //object-fit: cover
 
 
-.arrow
+.arrowDown, .arrowUp
   svg
     width: 25px
     margin: 20px
     cursor: pointer
     fill: #888888
-    transition: fill .2s
+    transition: all .3s
   svg:hover
     fill: #06a4ff
+
+.arrowDown
+  svg:hover
+    transform: translateY(4px)
+.arrowUp
+  svg:hover
+    transform: translateY(-4px)
+
 
     //svg
     //  fill: #06a4ff

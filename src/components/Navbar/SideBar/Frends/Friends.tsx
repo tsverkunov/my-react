@@ -35,7 +35,7 @@ export const Friends: FC<PropsType> = ({
         <h3>Friends</h3>
       </div>
       {portionNumber > 1 &&
-      <div className={style.arrow}>
+      <div className={style.arrowUp}>
 
         <ArrowUpwardIcon fontSize="large" onClick={() => {
           setPortionNumber(portionNumber - 1)
@@ -69,7 +69,7 @@ export const Friends: FC<PropsType> = ({
       </div>
 
       {portionCount > portionNumber &&
-      <div className={style.arrow}>
+      <div className={style.arrowDown}>
         <ArrowDownwardIcon fontSize="large" onClick={() => {
           setPortionNumber(portionNumber + 1)
           setFriendsCurrentPage(portionNumber + 1)

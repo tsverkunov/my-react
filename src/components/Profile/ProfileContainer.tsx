@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {ComponentType} from 'react'
 import {connect} from 'react-redux'
 import {
   actionsProfile,
@@ -45,7 +45,6 @@ type PropsType = StatePropsType & StateDispatchType & RouteComponentProps<PathPa
 class ProfileContainer extends React.PureComponent<PropsType> {
   profileRefresh() {
     let userId: number | null = +this.props.match.params.userId
-    // console.log(userId)
 
     if (!userId) {
       userId = this.props.authorizedUserId
@@ -119,7 +118,7 @@ let mapStateToProps = (state: AppStateType) => {
   })
 }
 
-export default compose<React.ComponentType>(
+export default compose<ComponentType>(
   connect(mapStateToProps,
     {
       getProfile,

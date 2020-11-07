@@ -18,37 +18,37 @@ const Navbar: FC<PropsType> = () => {
       <div className={style.item}>
         <NavLink to="/profile" className={style.link} activeClassName={style.active}>
           <UserImg/>
-          Profile
+          <span>Profile</span>
         </NavLink>
       </div>
       <div className={style.item}>
         <NavLink to="/dialogs" className={style.link} activeClassName={style.active}>
           <MessagesImg/>
-          Messages
+          <span>Messages</span>
         </NavLink>
       </div>
       <div className={style.item}>
         <NavLink to="/music" className={style.link} activeClassName={style.active}>
           <MyMusicImg/>
-          My Music
+          <span>My Music</span>
         </NavLink>
       </div>
       <div className={style.item}>
         <NavLink to="/news" className={style.link} activeClassName={style.active}>
           <NewsImg/>
-          News
+          <span>News</span>
         </NavLink>
       </div>
       <div className={style.item}>
         <NavLink to="/users" className={style.link} activeClassName={style.active}>
           <UsersImg/>
-            Developers
+          <span>Developers</span>
         </NavLink>
       </div>
       <div className={style.item}>
         <NavLink to="/setting" className={style.link} activeClassName={style.active}>
           <SettingImg/>
-          Settings
+          <span>Settings</span>
         </NavLink>
       </div>
       <SideBar/>

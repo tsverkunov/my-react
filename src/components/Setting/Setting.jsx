@@ -20,14 +20,15 @@ export const Button = styled.button`
 
 
 const Setting = () => {
-   return (
-      <div className={style.wrapperContent}>
-         <Clip/>
-         <h3>Sorry! Page in development.</h3>
-         <Button primary>Styled Component</Button>
-      </div>
+  return (
+     <div className={style.wrapperContent}>
+       <Clip/>
+       <h3>Sorry! Page in development.</h3>
+       <Button primary>Styled Component</Button>
+       <button>✖</button>
+     </div>
 
-   )
+  )
 }
 
 export default Setting;

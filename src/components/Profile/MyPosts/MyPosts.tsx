@@ -1,8 +1,8 @@
-import React, {FC} from "react";
-import style from "./MyPosts.module.sass";
-import Post from "./Post/Post";
-import AddNewPost from "./AddNewPost/AddNewPost";
-import {PostType} from "../../../types/types";
+import React, {FC} from 'react'
+import style from './MyPosts.module.sass'
+import Post from './Post/Post'
+import AddNewPost from './AddNewPost/AddNewPost'
+import {PostType} from '../../../types/types'
 
 export type PropsType = {
   posts: Array<PostType>
@@ -20,7 +20,7 @@ const MyPosts: FC<PropsType & DispatchPropsType> = ({addLike, addPost, posts}) =
                       message={p.message}
                       likesCount={p.likesCount}
                       id={p.id}
-                      key={p.id}/>);
+                      key={p.id}/>)
   return (
     <div className={style.posts}>
       <div className={style.title}>
