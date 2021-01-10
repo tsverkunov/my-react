@@ -1,10 +1,10 @@
-import React, {FC} from "react";
-import style from "./AddNewPost.module.sass";
-import {Form, Formik} from "formik";
-import * as Yup from "yup";
-import {CustomTextarea} from "../../../../common/FormsControls/FormsControls";
-import {Button, Icon} from '@material-ui/core'
-import SendIcon from '@material-ui/icons/Send';
+import React, {FC} from 'react'
+import style from './AddNewPost.module.sass'
+import {Form, Formik} from 'formik'
+import * as Yup from 'yup'
+import {CustomTextarea} from '../../../../common/FormsControls/FormsControls'
+import {Button} from '@material-ui/core'
+import SendIcon from '@material-ui/icons/Send'
 
 type LoginFormValues = {
   post: string
@@ -12,6 +12,14 @@ type LoginFormValues = {
 type FormPropsTypes = {
   onSubmit: (values: LoginFormValues) => void
 }
+
+const pressEnter = (e: any) => {
+  if (e.keyCode == 13) {
+
+  }
+  return true
+}
+
 const AddNewPostForm: FC<FormPropsTypes> = ({onSubmit}) => {
   const initialValues: LoginFormValues = {
     post: ''
@@ -37,6 +45,7 @@ const AddNewPostForm: FC<FormPropsTypes> = ({onSubmit}) => {
             <CustomTextarea name="post"
                             placeholder="new post..."
                             className={style.news}
+
             />
 
             <Button
@@ -67,12 +76,12 @@ type PropsType = {
   addPost: (message: string) => void
 }
 const AddNewPost: FC<PropsType> = ({addPost}) => {
-   let addNewPost = (values: LoginFormValues) => {
-      addPost(values.post);
-   }
-   return (
-      <AddNewPostForm onSubmit={addNewPost}/>
-   )
+  let addNewPost = (values: LoginFormValues) => {
+    addPost(values.post)
+  }
+  return (
+    <AddNewPostForm onSubmit={addNewPost}/>
+  )
 }
 
 export default AddNewPost

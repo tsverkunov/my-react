@@ -19,7 +19,9 @@ export const Header: FC = () => {
 
   return (
     <header className={style.header}>
-      <NavLink to="/profile"><img alt="" src={logo}/></NavLink>
+      <NavLink to="/profile">
+        <img alt="" src={logo}/>
+      </NavLink>
       <div className={style.loginItem}>
         {isAuth
           ? <div className={style.ava}>

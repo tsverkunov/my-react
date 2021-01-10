@@ -23,14 +23,10 @@
   color: #bebebe
 
 .work
-  //position: relative
   display: flex
   align-items: center
 
   img
-    //position: absolute
-    //left: 130px
-    //top: 0
     height: 25px
     width: 25px
     margin-left: 30px
@@ -39,7 +35,6 @@
 .avatarItem
   display: flex
   flex-direction: column
-  //position: relative
 
 
 .avatar
@@ -48,7 +43,6 @@
   width: 150px
   height: 150px
   background-color: #303030
-  //margin: 30px 30px 5px 30px
   border: 1.5px #797979 solid
   border-radius: 50%
   position: absolute
@@ -89,9 +83,6 @@
     padding-left: 10px
 
 
-//.editItem
-//  display: flex
-
 .contact
   a
     transition: all .2s
@@ -100,13 +91,13 @@
   & a:hover
     color: #ffffff
 
+// edit button
 .editIcon
   text-align: right
   padding: 20px 20px 0 0
   position: absolute
   right: 0
   svg
-    //width: 20px
     cursor: pointer
     fill: #808080
     transition: all .2s
@@ -114,10 +105,9 @@
     transform: translateY(-2px) scale(1.1)
     fill: #ffffff
 
-//buttons
-.unSub
-  background: #969696
-  color: lighten(#333333, 15%)
+
+//buttons "Subscribe/Subscribed"
+.unSub, .sub
   border: none
   margin: 30px 30px
   box-shadow: 0 2px 8px #000000
@@ -127,34 +117,29 @@
   position: absolute
   right: 0
   padding: 10px
-
+  border-radius: 3px
+  color: #ffffff
+  &:disabled
+    box-shadow: 0 1px 5px #000000
+    color: lighten(#333333, 50%)
   &:hover
     box-shadow: 0 1px 5px #000000
-    background: darken(#969696, 12%)
+
+.unSub
+  background: #636363
+
+  &:hover
+    background: lighten(#636363, 10%)
 
   &:disabled
-    color: lighten(#333333, 60%)
-    box-shadow: 0 1px 5px #000000
+    background: lighten(#636363, 20%)
 
 .sub
   background: #c90813
-  border: none
-  margin: 30px 30px
-  box-shadow: 0 2px 8px #000000
-  outline: none
-  cursor: pointer
-  transition: all, .2s
-  color: #ffffff
-  position: absolute
-  right: 0
-  padding: 10px
 
   &:hover
-    box-shadow: 0 1px 5px #000000
-    background: darken(#c90813, 10%)
+    background: lighten(#c90813, 15%)
 
   &:disabled
-    color: lighten(#333333, 50%)
-    box-shadow: 0 1px 5px #000000
     background: lighten(#c90813, 30%)
 

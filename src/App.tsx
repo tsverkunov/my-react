@@ -17,10 +17,12 @@ import ProfileContainer from './components/Profile/ProfileContainer'
 import {LoginPage} from './components/Login/LoginPage'
 import {UsersPage} from './components/Users/UsersContainer'
 import {Dialogs} from './components/Dialogs/Dialogs'
+// import {ChatPage} from './pages/ChatPage/ChatPage'
 // import 'antd/dist/antd.css'
 
 //Lazy-Loading
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
+const ChatPage = React.lazy(() => import('./pages/ChatPage/ChatPage'))
 // const LoginPage = React.lazy(() => import("./components/Login/LoginPage"));
 // const News = React.lazy(() => import("./components/News/News"));
 // const Setting = React.lazy(() => import("./components/Setting/Setting"));
@@ -66,6 +68,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/users' render={() => <UsersPage/>}/>
                 <Route path='/setting' render={() => <Setting/>}/>
+                <Route path='/chat' render={() => <ChatPage/>}/>
                 <Redirect from="/" to="/profile"/>
                 {/*<Route path='*' render={() => <h3>404 - Not found</h3>}/>*/}
               </Switch>

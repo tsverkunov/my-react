@@ -47,7 +47,7 @@ const Description: FC<PropsType> = ({
     <div className={style.wrap}>
       <div className={style.descriptionWrap}>
         <div className={style.editIcon}>
-          {isOwner &&
+          {isOwner && editMode &&
           <EditIcon
              fontSize="default"
              onClick={activateEditMode}/>}

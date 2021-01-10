@@ -51,6 +51,12 @@ const Navbar: FC<PropsType> = () => {
           <span>Settings</span>
         </NavLink>
       </div>
+      <div className={style.item}>
+        <NavLink to="/chat" className={style.link} activeClassName={style.active}>
+          <UsersImg/>
+          <span>Chat</span>
+        </NavLink>
+      </div>
       <SideBar/>
     </nav>
   )
