@@ -3,7 +3,6 @@ import {Input} from '../../../../common/FormsControls/FormsControls'
 import React, {FC} from 'react'
 import style from './ProfileForm.module.sass'
 import {ProfileType} from '../../../../types/types'
-import { FilledInput } from '@material-ui/core'
 
 type PropsType = {
   profile: ProfileType
@@ -49,7 +48,10 @@ const ProfileDataForm: FC<InjectedFormProps<ProfileType, PropsType> & PropsType>
         <Field type="checkbox"
                name="lookingForAJob"
                component={'input'}
-        /><span>looking for a job</span>
+        />
+        <div>
+          <span>looking for a job</span>
+      </div>
       </div>
       <div>
         <p>Contacts:</p>

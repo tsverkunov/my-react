@@ -29,7 +29,7 @@ const Description: FC<PropsType> = ({
   let [editMode, setEditMode] = useState(true)
 
   const activateEditMode = () => {
-    setEditMode(false)
+    setEditMode(!editMode)
   }
   const deActivateEditMode = (formData: ProfileType) => {
     //todo: remove then
@@ -47,9 +47,9 @@ const Description: FC<PropsType> = ({
     <div className={style.wrap}>
       <div className={style.descriptionWrap}>
         <div className={style.editIcon}>
-          {isOwner && editMode &&
+          {isOwner &&
           <EditIcon
-             fontSize="default"
+             // fontSize="default"
              onClick={activateEditMode}/>}
           {/*<img src={editIcon} alt="" onClick={activateEditMode}/>}*/}
         </div>

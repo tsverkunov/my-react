@@ -34,14 +34,14 @@ const Messages: React.FC = () => {
     })
   }, [])
 
-  return <div style={{height: '400px', overflowY: 'auto'}}>
+  return <div style={{height: '400px', overflowY: 'auto', padding: '20px'}}>
     {messages.map((m, index) => <Message key={index} message={m}/>)}
   </div>
 }
 
 const Message: React.FC<{ message: ChatMessageType }> = ({message}) => {
   return <div>
-    <img src={message.photo} style={{width: '40px'}}/> <b>{message.userId}</b>
+    <img src={message.photo} alt='' style={{width: '40px'}}/> <b>{message.userId}</b>
     <br/>
     {message.message}
     <hr/>
